@@ -18,7 +18,7 @@
   "_requiredBy": [
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/three/-/three-0.87.1.tgz",
+  "_resolved": "https://registry.npmjs.org/three/-/three-0.90.tgz",
   "_shasum": "466a34edc4543459ced9b9d7d276b65216fe2ba8",
   "_spec": "three@^0.87.1",
   "_where": "/home/VICOMTECH/itamayo/projects/v-drive/cloudlsva_based",
@@ -88,5 +88,5 @@
     "lint": "eslint src",
     "test": "rollup -c test/rollup.unit.config.js -w"
   },
-  "version": "0.87.1"
+  "version": "0.91"
 }
