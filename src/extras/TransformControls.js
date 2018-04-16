@@ -2,7 +2,7 @@
  * @author arodic / https://github.com/arodic
  */
 
-( function () {
+function TransformControls () {
 
 	'use strict';
 
@@ -1143,7 +1143,10 @@
 
 	};
 
-	THREE.TransformControls.prototype = Object.create( THREE.Object3D.prototype );
-	THREE.TransformControls.prototype.constructor = THREE.TransformControls;
 
-}() );
+}
+
+THREE.TransformControls.prototype = Object.create( THREE.Object3D.prototype );
+THREE.TransformControls.prototype.constructor = THREE.TransformControls;
+export {TransformControls}
+
