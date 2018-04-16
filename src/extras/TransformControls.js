@@ -1,8 +1,18 @@
 /**
  * @author arodic / https://github.com/arodic
  */
-
+import { Color } from '../math/Color.js';
 import {Object3D} from "../core/Object3D";
+import { Vector3 } from '../math/Vector3';
+import { Vector2 } from '../math/Vector2';
+import { Matrix4 } from '../math/Matrix4';
+import { Euler } from '../math/Euler';
+import { Quaternion } from '../math/Quaternion';
+import { BufferGeometry } from '../core/BufferGeometry';
+import { MeshBasicMaterial,LinehBasicMaterial} from '../materials/Materials';
+import { BoxGeometry, BoxBufferGeometry,CylinderGeometry, CylinderBufferGeometry,CircleGeometry, CircleBufferGeometry,PlaneGeometry, PlaneBufferGeometry} from '../geometries/Geometries';
+
+
 function TransformControls () {
 
 	'use strict';
