@@ -1146,7 +1146,7 @@ function TransformControls () {
 
 }
 
-THREE.TransformControls.prototype = Object.create( THREE.Object3D.prototype );
-THREE.TransformControls.prototype.constructor = THREE.TransformControls;
+TransformControls.prototype = Object.create( Object3D.prototype );
+TransformControls.prototype.constructor = TransformControls;
 export {TransformControls}
 
