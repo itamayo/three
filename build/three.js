@@ -196,9 +196,9 @@
 	var BasicShadowMap = 0;
 	var PCFShadowMap = 1;
 	var PCFSoftShadowMap = 2;
-	var FrontSide = 0;
+	var FrontSide$1 = 0;
 	var BackSide = 1;
-	var DoubleSide = 2;
+	var DoubleSide$1 = 2;
 	var FlatShading = 1;
 	var SmoothShading = 2;
 	var NoColors = 0;
@@ -484,14 +484,14 @@
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
 	 */
 
-	function Vector2( x, y ) {
+	function Vector2$1( x, y ) {
 
 		this.x = x || 0;
 		this.y = y || 0;
 
 	}
 
-	Object.defineProperties( Vector2.prototype, {
+	Object.defineProperties( Vector2$1.prototype, {
 
 		"width" : {
 
@@ -527,7 +527,7 @@
 
 	} );
 
-	Object.assign( Vector2.prototype, {
+	Object.assign( Vector2$1.prototype, {
 
 		isVector2: true,
 
@@ -747,8 +747,8 @@
 
 		clampScalar: function () {
 
-			var min = new Vector2();
-			var max = new Vector2();
+			var min = new Vector2$1();
+			var max = new Vector2$1();
 
 			return function clampScalar( minVal, maxVal ) {
 
@@ -988,8 +988,8 @@
 		this.format = format !== undefined ? format : RGBAFormat;
 		this.type = type !== undefined ? type : UnsignedByteType;
 
-		this.offset = new Vector2( 0, 0 );
-		this.repeat = new Vector2( 1, 1 );
+		this.offset = new Vector2$1( 0, 0 );
+		this.repeat = new Vector2$1( 1, 1 );
 
 		this.generateMipmaps = true;
 		this.premultiplyAlpha = false;
@@ -1990,7 +1990,7 @@
 	 * @author bhouston / http://clara.io
 	 */
 
-	function Quaternion( x, y, z, w ) {
+	function Quaternion$1( x, y, z, w ) {
 
 		this._x = x || 0;
 		this._y = y || 0;
@@ -1999,7 +1999,7 @@
 
 	}
 
-	Object.assign( Quaternion, {
+	Object.assign( Quaternion$1, {
 
 		slerp: function ( qa, qb, qm, t ) {
 
@@ -2071,7 +2071,7 @@
 
 	} );
 
-	Object.defineProperties( Quaternion.prototype, {
+	Object.defineProperties( Quaternion$1.prototype, {
 
 		x: {
 
@@ -2143,7 +2143,7 @@
 
 	} );
 
-	Object.assign( Quaternion.prototype, {
+	Object.assign( Quaternion$1.prototype, {
 
 		set: function ( x, y, z, w ) {
 
@@ -2334,14 +2334,14 @@
 
 			// assumes direction vectors vFrom and vTo are normalized
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 			var r;
 
 			var EPS = 0.000001;
 
 			return function setFromUnitVectors( vFrom, vTo ) {
 
-				if ( v1 === undefined ) v1 = new Vector3();
+				if ( v1 === undefined ) v1 = new Vector3$1();
 
 				r = vFrom.dot( vTo ) + 1;
 
@@ -2598,7 +2598,7 @@
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
 
-	function Vector3( x, y, z ) {
+	function Vector3$1( x, y, z ) {
 
 		this.x = x || 0;
 		this.y = y || 0;
@@ -2606,7 +2606,7 @@
 
 	}
 
-	Object.assign( Vector3.prototype, {
+	Object.assign( Vector3$1.prototype, {
 
 		isVector3: true,
 
@@ -2821,7 +2821,7 @@
 
 		applyEuler: function () {
 
-			var quaternion = new Quaternion();
+			var quaternion = new Quaternion$1();
 
 			return function applyEuler( euler ) {
 
@@ -2839,7 +2839,7 @@
 
 		applyAxisAngle: function () {
 
-			var quaternion = new Quaternion();
+			var quaternion = new Quaternion$1();
 
 			return function applyAxisAngle( axis, angle ) {
 
@@ -2901,7 +2901,7 @@
 
 		project: function () {
 
-			var matrix = new Matrix4();
+			var matrix = new Matrix4$1();
 
 			return function project( camera ) {
 
@@ -2914,7 +2914,7 @@
 
 		unproject: function () {
 
-			var matrix = new Matrix4();
+			var matrix = new Matrix4$1();
 
 			return function unproject( camera ) {
 
@@ -2991,8 +2991,8 @@
 
 		clampScalar: function () {
 
-			var min = new Vector3();
-			var max = new Vector3();
+			var min = new Vector3$1();
+			var max = new Vector3$1();
 
 			return function clampScalar( minVal, maxVal ) {
 
@@ -3159,7 +3159,7 @@
 
 		projectOnPlane: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function projectOnPlane( planeNormal ) {
 
@@ -3176,7 +3176,7 @@
 			// reflect incident vector off plane orthogonal to normal
 			// normal is assumed to have unit length
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function reflect( normal ) {
 
@@ -3332,7 +3332,7 @@
 	 * @author WestLangley / http://github.com/WestLangley
 	 */
 
-	function Matrix4() {
+	function Matrix4$1() {
 
 		this.elements = [
 
@@ -3351,7 +3351,7 @@
 
 	}
 
-	Object.assign( Matrix4.prototype, {
+	Object.assign( Matrix4$1.prototype, {
 
 		isMatrix4: true,
 
@@ -3385,7 +3385,7 @@
 
 		clone: function () {
 
-			return new Matrix4().fromArray( this.elements );
+			return new Matrix4$1().fromArray( this.elements );
 
 		},
 
@@ -3440,7 +3440,7 @@
 
 		extractRotation: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function extractRotation( m ) {
 
@@ -3636,9 +3636,9 @@
 
 		lookAt: function () {
 
-			var x = new Vector3();
-			var y = new Vector3();
-			var z = new Vector3();
+			var x = new Vector3$1();
+			var y = new Vector3$1();
+			var z = new Vector3$1();
 
 			return function lookAt( eye, target, up ) {
 
@@ -3763,7 +3763,7 @@
 
 		applyToBufferAttribute: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function applyToBufferAttribute( attribute ) {
 
@@ -4083,8 +4083,8 @@
 
 		decompose: function () {
 
-			var vector = new Vector3();
-			var matrix = new Matrix4();
+			var vector = new Vector3$1();
+			var matrix = new Matrix4$1();
 
 			return function decompose( position, quaternion, scale ) {
 
@@ -5436,7 +5436,7 @@
 		normalmap: {
 
 			normalMap: { value: null },
-			normalScale: { value: new Vector2( 1, 1 ) }
+			normalScale: { value: new Vector2$1( 1, 1 ) }
 
 		},
 
@@ -6144,7 +6144,7 @@
 				UniformsLib.common,
 				UniformsLib.displacementmap,
 				{
-					referencePosition: { value: new Vector3() },
+					referencePosition: { value: new Vector3$1() },
 					nearDistance: { value: 1 },
 					farDistance: { value: 1000 }
 				}
@@ -6193,8 +6193,8 @@
 
 	function Box2( min, max ) {
 
-		this.min = ( min !== undefined ) ? min : new Vector2( + Infinity, + Infinity );
-		this.max = ( max !== undefined ) ? max : new Vector2( - Infinity, - Infinity );
+		this.min = ( min !== undefined ) ? min : new Vector2$1( + Infinity, + Infinity );
+		this.max = ( max !== undefined ) ? max : new Vector2$1( - Infinity, - Infinity );
 
 	}
 
@@ -6225,7 +6225,7 @@
 
 		setFromCenterAndSize: function () {
 
-			var v1 = new Vector2();
+			var v1 = new Vector2$1();
 
 			return function setFromCenterAndSize( center, size ) {
 
@@ -6273,14 +6273,14 @@
 
 		getCenter: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector2();
+			var result = optionalTarget || new Vector2$1();
 			return this.isEmpty() ? result.set( 0, 0 ) : result.addVectors( this.min, this.max ).multiplyScalar( 0.5 );
 
 		},
 
 		getSize: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector2();
+			var result = optionalTarget || new Vector2$1();
 			return this.isEmpty() ? result.set( 0, 0 ) : result.subVectors( this.max, this.min );
 
 		},
@@ -6331,7 +6331,7 @@
 			// This can potentially have a divide by zero if the box
 			// has a size dimension of 0.
 
-			var result = optionalTarget || new Vector2();
+			var result = optionalTarget || new Vector2$1();
 
 			return result.set(
 				( point.x - this.min.x ) / ( this.max.x - this.min.x ),
@@ -6351,14 +6351,14 @@
 
 		clampPoint: function ( point, optionalTarget ) {
 
-			var result = optionalTarget || new Vector2();
+			var result = optionalTarget || new Vector2$1();
 			return result.copy( point ).clamp( this.min, this.max );
 
 		},
 
 		distanceToPoint: function () {
 
-			var v1 = new Vector2();
+			var v1 = new Vector2$1();
 
 			return function distanceToPoint( point ) {
 
@@ -6584,17 +6584,17 @@
 
 			if ( flares.length === 0 ) return;
 
-			var tempPosition = new Vector3();
+			var tempPosition = new Vector3$1();
 
 			var invAspect = viewport.w / viewport.z,
 				halfViewportWidth = viewport.z * 0.5,
 				halfViewportHeight = viewport.w * 0.5;
 
 			var size = 16 / viewport.w,
-				scale = new Vector2( size * invAspect, size );
+				scale = new Vector2$1( size * invAspect, size );
 
-			var screenPosition = new Vector3( 1, 1, 0 ),
-				screenPositionPixels = new Vector2( 1, 1 );
+			var screenPosition = new Vector3$1( 1, 1, 0 ),
+				screenPositionPixels = new Vector2$1( 1, 1 );
 
 			var validArea = new Box2();
 
@@ -6814,9 +6814,9 @@
 
 		// decompose matrixWorld
 
-		var spritePosition = new Vector3();
-		var spriteRotation = new Quaternion();
-		var spriteScale = new Vector3();
+		var spritePosition = new Vector3$1();
+		var spriteRotation = new Quaternion$1();
+		var spriteScale = new Vector3$1();
 
 		function init() {
 
@@ -7190,7 +7190,7 @@
 		this.lights = true;
 
 		this.blending = NormalBlending;
-		this.side = FrontSide;
+		this.side = FrontSide$1;
 		this.flatShading = false;
 		this.vertexColors = NoColors; // THREE.NoColors, THREE.VertexColors, THREE.FaceColors
 
@@ -7381,7 +7381,7 @@
 
 			if ( this.blending !== NormalBlending ) data.blending = this.blending;
 			if ( this.flatShading === true ) data.flatShading = this.flatShading;
-			if ( this.side !== FrontSide ) data.side = this.side;
+			if ( this.side !== FrontSide$1 ) data.side = this.side;
 			if ( this.vertexColors !== NoColors ) data.vertexColors = this.vertexColors;
 
 			if ( this.opacity < 1 ) data.opacity = this.opacity;
@@ -7751,7 +7751,7 @@
 
 		this.type = 'MeshDistanceMaterial';
 
-		this.referencePosition = new Vector3();
+		this.referencePosition = new Vector3$1();
 		this.nearDistance = 1;
 		this.farDistance = 1000;
 
@@ -7808,8 +7808,8 @@
 
 	function Box3( min, max ) {
 
-		this.min = ( min !== undefined ) ? min : new Vector3( + Infinity, + Infinity, + Infinity );
-		this.max = ( max !== undefined ) ? max : new Vector3( - Infinity, - Infinity, - Infinity );
+		this.min = ( min !== undefined ) ? min : new Vector3$1( + Infinity, + Infinity, + Infinity );
+		this.max = ( max !== undefined ) ? max : new Vector3$1( - Infinity, - Infinity, - Infinity );
 
 	}
 
@@ -7908,7 +7908,7 @@
 
 		setFromCenterAndSize: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function setFromCenterAndSize( center, size ) {
 
@@ -7965,14 +7965,14 @@
 
 		getCenter: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			return this.isEmpty() ? result.set( 0, 0, 0 ) : result.addVectors( this.min, this.max ).multiplyScalar( 0.5 );
 
 		},
 
 		getSize: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			return this.isEmpty() ? result.set( 0, 0, 0 ) : result.subVectors( this.max, this.min );
 
 		},
@@ -8009,7 +8009,7 @@
 			// Computes the world-axis-aligned bounding box of an object (including its children),
 			// accounting for both the object's, and children's, world transforms
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function expandByObject( object ) {
 
@@ -8087,7 +8087,7 @@
 			// This can potentially have a divide by zero if the box
 			// has a size dimension of 0.
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			return result.set(
 				( point.x - this.min.x ) / ( this.max.x - this.min.x ),
@@ -8108,7 +8108,7 @@
 
 		intersectsSphere: ( function () {
 
-			var closestPoint = new Vector3();
+			var closestPoint = new Vector3$1();
 
 			return function intersectsSphere( sphere ) {
 
@@ -8171,14 +8171,14 @@
 
 		clampPoint: function ( point, optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			return result.copy( point ).clamp( this.min, this.max );
 
 		},
 
 		distanceToPoint: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function distanceToPoint( point ) {
 
@@ -8191,7 +8191,7 @@
 
 		getBoundingSphere: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function getBoundingSphere( optionalTarget ) {
 
@@ -8231,14 +8231,14 @@
 		applyMatrix4: function () {
 
 			var points = [
-				new Vector3(),
-				new Vector3(),
-				new Vector3(),
-				new Vector3(),
-				new Vector3(),
-				new Vector3(),
-				new Vector3(),
-				new Vector3()
+				new Vector3$1(),
+				new Vector3$1(),
+				new Vector3$1(),
+				new Vector3$1(),
+				new Vector3$1(),
+				new Vector3$1(),
+				new Vector3$1(),
+				new Vector3$1()
 			];
 
 			return function applyMatrix4( matrix ) {
@@ -8288,7 +8288,7 @@
 
 	function Sphere( center, radius ) {
 
-		this.center = ( center !== undefined ) ? center : new Vector3();
+		this.center = ( center !== undefined ) ? center : new Vector3$1();
 		this.radius = ( radius !== undefined ) ? radius : 0;
 
 	}
@@ -8395,7 +8395,7 @@
 
 			var deltaLengthSq = this.center.distanceToSquared( point );
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			result.copy( point );
 
@@ -8538,7 +8538,7 @@
 
 		applyToBufferAttribute: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function applyToBufferAttribute( attribute ) {
 
@@ -8781,7 +8781,7 @@
 
 		// normal is assumed to be normalized
 
-		this.normal = ( normal !== undefined ) ? normal : new Vector3( 1, 0, 0 );
+		this.normal = ( normal !== undefined ) ? normal : new Vector3$1( 1, 0, 0 );
 		this.constant = ( constant !== undefined ) ? constant : 0;
 
 	}
@@ -8817,8 +8817,8 @@
 
 		setFromCoplanarPoints: function () {
 
-			var v1 = new Vector3();
-			var v2 = new Vector3();
+			var v1 = new Vector3$1();
+			var v2 = new Vector3$1();
 
 			return function setFromCoplanarPoints( a, b, c ) {
 
@@ -8884,7 +8884,7 @@
 
 		projectPoint: function ( point, optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			return result.copy( this.normal ).multiplyScalar( - this.distanceToPoint( point ) ).add( point );
 
@@ -8892,11 +8892,11 @@
 
 		intersectLine: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function intersectLine( line, optionalTarget ) {
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 
 				var direction = line.delta( v1 );
 
@@ -8955,7 +8955,7 @@
 
 		coplanarPoint: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			return result.copy( this.normal ).multiplyScalar( - this.constant );
 
@@ -8963,7 +8963,7 @@
 
 		applyMatrix4: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 			var m1 = new Matrix3();
 
 			return function applyMatrix4( matrix, optionalNormalMatrix ) {
@@ -9136,8 +9136,8 @@
 
 		intersectsBox: function () {
 
-			var p1 = new Vector3(),
-				p2 = new Vector3();
+			var p1 = new Vector3$1(),
+				p2 = new Vector3$1();
 
 			return function intersectsBox( box ) {
 
@@ -9201,13 +9201,13 @@
 	function WebGLShadowMap( _renderer, _objects, maxTextureSize ) {
 
 		var _frustum = new Frustum(),
-			_projScreenMatrix = new Matrix4(),
+			_projScreenMatrix = new Matrix4$1(),
 
-			_shadowMapSize = new Vector2(),
-			_maxShadowMapSize = new Vector2( maxTextureSize, maxTextureSize ),
+			_shadowMapSize = new Vector2$1(),
+			_maxShadowMapSize = new Vector2$1( maxTextureSize, maxTextureSize ),
 
-			_lookTarget = new Vector3(),
-			_lightPositionWorld = new Vector3(),
+			_lookTarget = new Vector3$1(),
+			_lightPositionWorld = new Vector3$1(),
 
 			_MorphingFlag = 1,
 			_SkinningFlag = 2,
@@ -9220,13 +9220,13 @@
 			_materialCache = {};
 
 		var cubeDirections = [
-			new Vector3( 1, 0, 0 ), new Vector3( - 1, 0, 0 ), new Vector3( 0, 0, 1 ),
-			new Vector3( 0, 0, - 1 ), new Vector3( 0, 1, 0 ), new Vector3( 0, - 1, 0 )
+			new Vector3$1( 1, 0, 0 ), new Vector3$1( - 1, 0, 0 ), new Vector3$1( 0, 0, 1 ),
+			new Vector3$1( 0, 0, - 1 ), new Vector3$1( 0, 1, 0 ), new Vector3$1( 0, - 1, 0 )
 		];
 
 		var cubeUps = [
-			new Vector3( 0, 1, 0 ), new Vector3( 0, 1, 0 ), new Vector3( 0, 1, 0 ),
-			new Vector3( 0, 1, 0 ), new Vector3( 0, 0, 1 ),	new Vector3( 0, 0, - 1 )
+			new Vector3$1( 0, 1, 0 ), new Vector3$1( 0, 1, 0 ), new Vector3$1( 0, 1, 0 ),
+			new Vector3$1( 0, 1, 0 ), new Vector3$1( 0, 0, 1 ),	new Vector3$1( 0, 0, - 1 )
 		];
 
 		var cube2DViewPorts = [
@@ -9537,16 +9537,16 @@
 
 			var side = material.side;
 
-			if ( scope.renderSingleSided && side == DoubleSide ) {
+			if ( scope.renderSingleSided && side == DoubleSide$1 ) {
 
-				side = FrontSide;
+				side = FrontSide$1;
 
 			}
 
 			if ( scope.renderReverseSided ) {
 
-				if ( side === FrontSide ) side = BackSide;
-				else if ( side === BackSide ) side = FrontSide;
+				if ( side === FrontSide$1 ) side = BackSide;
+				else if ( side === BackSide ) side = FrontSide$1;
 
 			}
 
@@ -9786,20 +9786,20 @@
 	 * @author bhouston / http://clara.io
 	 */
 
-	function Euler( x, y, z, order ) {
+	function Euler$1( x, y, z, order ) {
 
 		this._x = x || 0;
 		this._y = y || 0;
 		this._z = z || 0;
-		this._order = order || Euler.DefaultOrder;
+		this._order = order || Euler$1.DefaultOrder;
 
 	}
 
-	Euler.RotationOrders = [ 'XYZ', 'YZX', 'ZXY', 'XZY', 'YXZ', 'ZYX' ];
+	Euler$1.RotationOrders = [ 'XYZ', 'YZX', 'ZXY', 'XZY', 'YXZ', 'ZYX' ];
 
-	Euler.DefaultOrder = 'XYZ';
+	Euler$1.DefaultOrder = 'XYZ';
 
-	Object.defineProperties( Euler.prototype, {
+	Object.defineProperties( Euler$1.prototype, {
 
 		x: {
 
@@ -9871,7 +9871,7 @@
 
 	} );
 
-	Object.assign( Euler.prototype, {
+	Object.assign( Euler$1.prototype, {
 
 		isEuler: true,
 
@@ -10032,7 +10032,7 @@
 
 		setFromQuaternion: function () {
 
-			var matrix = new Matrix4();
+			var matrix = new Matrix4$1();
 
 			return function setFromQuaternion( q, order, update ) {
 
@@ -10054,7 +10054,7 @@
 
 			// WARNING: this discards revolution information -bhouston
 
-			var q = new Quaternion();
+			var q = new Quaternion$1();
 
 			return function reorder( newOrder ) {
 
@@ -10107,7 +10107,7 @@
 
 			} else {
 
-				return new Vector3( this._x, this._y, this._z );
+				return new Vector3$1( this._x, this._y, this._z );
 
 			}
 
@@ -10193,10 +10193,10 @@
 
 		this.up = Object3D.DefaultUp.clone();
 
-		var position = new Vector3();
-		var rotation = new Euler();
-		var quaternion = new Quaternion();
-		var scale = new Vector3( 1, 1, 1 );
+		var position = new Vector3$1();
+		var rotation = new Euler$1();
+		var quaternion = new Quaternion$1();
+		var scale = new Vector3$1( 1, 1, 1 );
 
 		function onRotationChange() {
 
@@ -10231,15 +10231,15 @@
 				value: scale
 			},
 			modelViewMatrix: {
-				value: new Matrix4()
+				value: new Matrix4$1()
 			},
 			normalMatrix: {
 				value: new Matrix3()
 			}
 		} );
 
-		this.matrix = new Matrix4();
-		this.matrixWorld = new Matrix4();
+		this.matrix = new Matrix4$1();
+		this.matrixWorld = new Matrix4$1();
 
 		this.matrixAutoUpdate = Object3D.DefaultMatrixAutoUpdate;
 		this.matrixWorldNeedsUpdate = false;
@@ -10256,7 +10256,7 @@
 		this.userData = {};
 	}
 
-	Object3D.DefaultUp = new Vector3( 0, 1, 0 );
+	Object3D.DefaultUp = new Vector3$1( 0, 1, 0 );
 	Object3D.DefaultMatrixAutoUpdate = true;
 
 	Object.assign( Object3D.prototype, EventDispatcher.prototype, {
@@ -10317,7 +10317,7 @@
 			// rotate object on axis in object space
 			// axis is assumed to be normalized
 
-			var q1 = new Quaternion();
+			var q1 = new Quaternion$1();
 
 			return function rotateOnAxis( axis, angle ) {
 
@@ -10333,7 +10333,7 @@
 
 		rotateX: function () {
 
-			var v1 = new Vector3( 1, 0, 0 );
+			var v1 = new Vector3$1( 1, 0, 0 );
 
 			return function rotateX( angle ) {
 
@@ -10345,7 +10345,7 @@
 
 		rotateY: function () {
 
-			var v1 = new Vector3( 0, 1, 0 );
+			var v1 = new Vector3$1( 0, 1, 0 );
 
 			return function rotateY( angle ) {
 
@@ -10357,7 +10357,7 @@
 
 		rotateZ: function () {
 
-			var v1 = new Vector3( 0, 0, 1 );
+			var v1 = new Vector3$1( 0, 0, 1 );
 
 			return function rotateZ( angle ) {
 
@@ -10372,7 +10372,7 @@
 			// translate object by distance along axis in object space
 			// axis is assumed to be normalized
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function translateOnAxis( axis, distance ) {
 
@@ -10388,7 +10388,7 @@
 
 		translateX: function () {
 
-			var v1 = new Vector3( 1, 0, 0 );
+			var v1 = new Vector3$1( 1, 0, 0 );
 
 			return function translateX( distance ) {
 
@@ -10400,7 +10400,7 @@
 
 		translateY: function () {
 
-			var v1 = new Vector3( 0, 1, 0 );
+			var v1 = new Vector3$1( 0, 1, 0 );
 
 			return function translateY( distance ) {
 
@@ -10412,7 +10412,7 @@
 
 		translateZ: function () {
 
-			var v1 = new Vector3( 0, 0, 1 );
+			var v1 = new Vector3$1( 0, 0, 1 );
 
 			return function translateZ( distance ) {
 
@@ -10430,7 +10430,7 @@
 
 		worldToLocal: function () {
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function worldToLocal( vector ) {
 
@@ -10444,7 +10444,7 @@
 
 			// This method does not support objects with rotated and/or translated parent(s)
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function lookAt( vector ) {
 
@@ -10573,7 +10573,7 @@
 
 		getWorldPosition: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			this.updateMatrixWorld( true );
 
@@ -10583,12 +10583,12 @@
 
 		getWorldQuaternion: function () {
 
-			var position = new Vector3();
-			var scale = new Vector3();
+			var position = new Vector3$1();
+			var scale = new Vector3$1();
 
 			return function getWorldQuaternion( optionalTarget ) {
 
-				var result = optionalTarget || new Quaternion();
+				var result = optionalTarget || new Quaternion$1();
 
 				this.updateMatrixWorld( true );
 
@@ -10602,11 +10602,11 @@
 
 		getWorldRotation: function () {
 
-			var quaternion = new Quaternion();
+			var quaternion = new Quaternion$1();
 
 			return function getWorldRotation( optionalTarget ) {
 
-				var result = optionalTarget || new Euler();
+				var result = optionalTarget || new Euler$1();
 
 				this.getWorldQuaternion( quaternion );
 
@@ -10618,12 +10618,12 @@
 
 		getWorldScale: function () {
 
-			var position = new Vector3();
-			var quaternion = new Quaternion();
+			var position = new Vector3$1();
+			var quaternion = new Quaternion$1();
 
 			return function getWorldScale( optionalTarget ) {
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 
 				this.updateMatrixWorld( true );
 
@@ -10637,11 +10637,11 @@
 
 		getWorldDirection: function () {
 
-			var quaternion = new Quaternion();
+			var quaternion = new Quaternion$1();
 
 			return function getWorldDirection( optionalTarget ) {
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 
 				this.getWorldQuaternion( quaternion );
 
@@ -10939,8 +10939,8 @@
 
 		this.type = 'Camera';
 
-		this.matrixWorldInverse = new Matrix4();
-		this.projectionMatrix = new Matrix4();
+		this.matrixWorldInverse = new Matrix4$1();
+		this.projectionMatrix = new Matrix4$1();
 
 	}
 
@@ -10963,11 +10963,11 @@
 
 		getWorldDirection: function () {
 
-			var quaternion = new Quaternion();
+			var quaternion = new Quaternion$1();
 
 			return function getWorldDirection( optionalTarget ) {
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 
 				this.getWorldQuaternion( quaternion );
 
@@ -10998,7 +10998,7 @@
 	 * @author arose / http://github.com/arose
 	 */
 
-	function OrthographicCamera( left, right, top, bottom, near, far ) {
+	function OrthographicCamera$1( left, right, top, bottom, near, far ) {
 
 		Camera.call( this );
 
@@ -11019,9 +11019,9 @@
 
 	}
 
-	OrthographicCamera.prototype = Object.assign( Object.create( Camera.prototype ), {
+	OrthographicCamera$1.prototype = Object.assign( Object.create( Camera.prototype ), {
 
-		constructor: OrthographicCamera,
+		constructor: OrthographicCamera$1,
 
 		isOrthographicCamera: true,
 
@@ -11122,7 +11122,7 @@
 	 * @author tschw
 	 */
 
-	function PerspectiveCamera( fov, aspect, near, far ) {
+	function PerspectiveCamera$1( fov, aspect, near, far ) {
 
 		Camera.call( this );
 
@@ -11145,9 +11145,9 @@
 
 	}
 
-	PerspectiveCamera.prototype = Object.assign( Object.create( Camera.prototype ), {
+	PerspectiveCamera$1.prototype = Object.assign( Object.create( Camera.prototype ), {
 
-		constructor: PerspectiveCamera,
+		constructor: PerspectiveCamera$1,
 
 		isPerspectiveCamera: true,
 
@@ -11345,7 +11345,7 @@
 		this.b = b;
 		this.c = c;
 
-		this.normal = ( normal && normal.isVector3 ) ? normal : new Vector3();
+		this.normal = ( normal && normal.isVector3 ) ? normal : new Vector3$1();
 		this.vertexNormals = Array.isArray( normal ) ? normal : [];
 
 		this.color = ( color && color.isColor ) ? color : new Color();
@@ -11404,7 +11404,7 @@
 	var count = 0;
 	function GeometryIdCount() { return count++; }
 
-	function Geometry() {
+	function Geometry$1() {
 
 		Object.defineProperty( this, 'id', { value: GeometryIdCount() } );
 
@@ -11441,7 +11441,7 @@
 
 	}
 
-	Object.assign( Geometry.prototype, EventDispatcher.prototype, {
+	Object.assign( Geometry$1.prototype, EventDispatcher.prototype, {
 
 		isGeometry: true,
 
@@ -11492,7 +11492,7 @@
 
 			// rotate geometry around world x-axis
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function rotateX( angle ) {
 
@@ -11510,7 +11510,7 @@
 
 			// rotate geometry around world y-axis
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function rotateY( angle ) {
 
@@ -11528,7 +11528,7 @@
 
 			// rotate geometry around world z-axis
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function rotateZ( angle ) {
 
@@ -11546,7 +11546,7 @@
 
 			// translate geometry
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function translate( x, y, z ) {
 
@@ -11564,7 +11564,7 @@
 
 			// scale geometry
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function scale( x, y, z ) {
 
@@ -11615,11 +11615,11 @@
 
 			for ( var i = 0, j = 0; i < positions.length; i += 3, j += 2 ) {
 
-				scope.vertices.push( new Vector3( positions[ i ], positions[ i + 1 ], positions[ i + 2 ] ) );
+				scope.vertices.push( new Vector3$1( positions[ i ], positions[ i + 1 ], positions[ i + 2 ] ) );
 
 				if ( normals !== undefined ) {
 
-					tempNormals.push( new Vector3( normals[ i ], normals[ i + 1 ], normals[ i + 2 ] ) );
+					tempNormals.push( new Vector3$1( normals[ i ], normals[ i + 1 ], normals[ i + 2 ] ) );
 
 				}
 
@@ -11631,13 +11631,13 @@
 
 				if ( uvs !== undefined ) {
 
-					tempUVs.push( new Vector2( uvs[ j ], uvs[ j + 1 ] ) );
+					tempUVs.push( new Vector2$1( uvs[ j ], uvs[ j + 1 ] ) );
 
 				}
 
 				if ( uvs2 !== undefined ) {
 
-					tempUVs2.push( new Vector2( uvs2[ j ], uvs2[ j + 1 ] ) );
+					tempUVs2.push( new Vector2$1( uvs2[ j ], uvs2[ j + 1 ] ) );
 
 				}
 
@@ -11754,7 +11754,7 @@
 
 			var s = radius === 0 ? 1 : 1.0 / radius;
 
-			var matrix = new Matrix4();
+			var matrix = new Matrix4$1();
 			matrix.set(
 				s, 0, 0, - s * center.x,
 				0, s, 0, - s * center.y,
@@ -11770,7 +11770,7 @@
 
 		computeFaceNormals: function () {
 
-			var cb = new Vector3(), ab = new Vector3();
+			var cb = new Vector3$1(), ab = new Vector3$1();
 
 			for ( var f = 0, fl = this.faces.length; f < fl; f ++ ) {
 
@@ -11802,7 +11802,7 @@
 
 			for ( v = 0, vl = this.vertices.length; v < vl; v ++ ) {
 
-				vertices[ v ] = new Vector3();
+				vertices[ v ] = new Vector3$1();
 
 			}
 
@@ -11812,7 +11812,7 @@
 				// http://www.iquilezles.org/www/articles/normals/normals.htm
 
 				var vA, vB, vC;
-				var cb = new Vector3(), ab = new Vector3();
+				var cb = new Vector3$1(), ab = new Vector3$1();
 
 				for ( f = 0, fl = this.faces.length; f < fl; f ++ ) {
 
@@ -11962,7 +11962,7 @@
 
 			// use temp geometry to compute face and vertex normals for each morph
 
-			var tmpGeo = new Geometry();
+			var tmpGeo = new Geometry$1();
 			tmpGeo.faces = this.faces;
 
 			for ( i = 0, il = this.morphTargets.length; i < il; i ++ ) {
@@ -11982,8 +11982,8 @@
 
 					for ( f = 0, fl = this.faces.length; f < fl; f ++ ) {
 
-						faceNormal = new Vector3();
-						vertexNormals = { a: new Vector3(), b: new Vector3(), c: new Vector3() };
+						faceNormal = new Vector3$1();
+						vertexNormals = { a: new Vector3$1(), b: new Vector3$1(), c: new Vector3$1() };
 
 						dstNormalsFace.push( faceNormal );
 						dstNormalsVertex.push( vertexNormals );
@@ -12570,7 +12570,7 @@
 			 return new this.constructor().copy( this );
 			 */
 
-			return new Geometry().copy( this );
+			return new Geometry$1().copy( this );
 
 		},
 
@@ -12970,7 +12970,7 @@
 				if ( vector === undefined ) {
 
 					console.warn( 'THREE.BufferAttribute.copyVector2sArray(): vector is undefined', i );
-					vector = new Vector2();
+					vector = new Vector2$1();
 
 				}
 
@@ -12994,7 +12994,7 @@
 				if ( vector === undefined ) {
 
 					console.warn( 'THREE.BufferAttribute.copyVector3sArray(): vector is undefined', i );
-					vector = new Vector3();
+					vector = new Vector3$1();
 
 				}
 
@@ -13224,14 +13224,14 @@
 	Uint32BufferAttribute.prototype.constructor = Uint32BufferAttribute;
 
 
-	function Float32BufferAttribute( array, itemSize ) {
+	function Float32BufferAttribute$1( array, itemSize ) {
 
 		BufferAttribute.call( this, new Float32Array( array ), itemSize );
 
 	}
 
-	Float32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
-	Float32BufferAttribute.prototype.constructor = Float32BufferAttribute;
+	Float32BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
+	Float32BufferAttribute$1.prototype.constructor = Float32BufferAttribute$1;
 
 
 	function Float64BufferAttribute( array, itemSize ) {
@@ -13430,7 +13430,7 @@
 
 						console.warn( 'THREE.DirectGeometry.fromGeometry(): Undefined vertexUv ', i );
 
-						this.uvs.push( new Vector2(), new Vector2(), new Vector2() );
+						this.uvs.push( new Vector2$1(), new Vector2$1(), new Vector2$1() );
 
 					}
 
@@ -13448,7 +13448,7 @@
 
 						console.warn( 'THREE.DirectGeometry.fromGeometry(): Undefined vertexUv2 ', i );
 
-						this.uvs2.push( new Vector2(), new Vector2(), new Vector2() );
+						this.uvs2.push( new Vector2$1(), new Vector2$1(), new Vector2$1() );
 
 					}
 
@@ -13527,7 +13527,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 */
 
-	function BufferGeometry() {
+	function BufferGeometry$1() {
 
 		Object.defineProperty( this, 'id', { value: GeometryIdCount() } );
 
@@ -13550,9 +13550,9 @@
 
 	}
 
-	BufferGeometry.MaxIndex = 65535;
+	BufferGeometry$1.MaxIndex = 65535;
 
-	Object.assign( BufferGeometry.prototype, EventDispatcher.prototype, {
+	Object.assign( BufferGeometry$1.prototype, EventDispatcher.prototype, {
 
 		isBufferGeometry: true,
 
@@ -13684,7 +13684,7 @@
 
 			// rotate geometry around world x-axis
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function rotateX( angle ) {
 
@@ -13702,7 +13702,7 @@
 
 			// rotate geometry around world y-axis
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function rotateY( angle ) {
 
@@ -13720,7 +13720,7 @@
 
 			// rotate geometry around world z-axis
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function rotateZ( angle ) {
 
@@ -13738,7 +13738,7 @@
 
 			// translate geometry
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function translate( x, y, z ) {
 
@@ -13756,7 +13756,7 @@
 
 			// scale geometry
 
-			var m1 = new Matrix4();
+			var m1 = new Matrix4$1();
 
 			return function scale( x, y, z ) {
 
@@ -13806,15 +13806,15 @@
 
 			if ( object.isPoints || object.isLine ) {
 
-				var positions = new Float32BufferAttribute( geometry.vertices.length * 3, 3 );
-				var colors = new Float32BufferAttribute( geometry.colors.length * 3, 3 );
+				var positions = new Float32BufferAttribute$1( geometry.vertices.length * 3, 3 );
+				var colors = new Float32BufferAttribute$1( geometry.colors.length * 3, 3 );
 
 				this.addAttribute( 'position', positions.copyVector3sArray( geometry.vertices ) );
 				this.addAttribute( 'color', colors.copyColorsArray( geometry.colors ) );
 
 				if ( geometry.lineDistances && geometry.lineDistances.length === geometry.vertices.length ) {
 
-					var lineDistances = new Float32BufferAttribute( geometry.lineDistances.length, 1 );
+					var lineDistances = new Float32BufferAttribute$1( geometry.lineDistances.length, 1 );
 
 					this.addAttribute( 'lineDistance', lineDistances.copyArray( geometry.lineDistances ) );
 
@@ -14037,7 +14037,7 @@
 
 					var morphTarget = morphTargets[ i ];
 
-					var attribute = new Float32BufferAttribute( morphTarget.length * 3, 3 );
+					var attribute = new Float32BufferAttribute$1( morphTarget.length * 3, 3 );
 
 					array.push( attribute.copyVector3sArray( morphTarget ) );
 
@@ -14051,14 +14051,14 @@
 
 			if ( geometry.skinIndices.length > 0 ) {
 
-				var skinIndices = new Float32BufferAttribute( geometry.skinIndices.length * 4, 4 );
+				var skinIndices = new Float32BufferAttribute$1( geometry.skinIndices.length * 4, 4 );
 				this.addAttribute( 'skinIndex', skinIndices.copyVector4sArray( geometry.skinIndices ) );
 
 			}
 
 			if ( geometry.skinWeights.length > 0 ) {
 
-				var skinWeights = new Float32BufferAttribute( geometry.skinWeights.length * 4, 4 );
+				var skinWeights = new Float32BufferAttribute$1( geometry.skinWeights.length * 4, 4 );
 				this.addAttribute( 'skinWeight', skinWeights.copyVector4sArray( geometry.skinWeights ) );
 
 			}
@@ -14112,7 +14112,7 @@
 		computeBoundingSphere: function () {
 
 			var box = new Box3();
-			var vector = new Vector3();
+			var vector = new Vector3$1();
 
 			return function computeBoundingSphere() {
 
@@ -14196,8 +14196,8 @@
 				var normals = attributes.normal.array;
 
 				var vA, vB, vC;
-				var pA = new Vector3(), pB = new Vector3(), pC = new Vector3();
-				var cb = new Vector3(), ab = new Vector3();
+				var pA = new Vector3$1(), pB = new Vector3$1(), pC = new Vector3$1();
+				var cb = new Vector3$1(), ab = new Vector3$1();
 
 				// indexed elements
 
@@ -14325,7 +14325,7 @@
 
 		normalizeNormals: function () {
 
-			var vector = new Vector3();
+			var vector = new Vector3$1();
 
 			return function normalizeNormals() {
 
@@ -14356,7 +14356,7 @@
 
 			}
 
-			var geometry2 = new BufferGeometry();
+			var geometry2 = new BufferGeometry$1();
 
 			var indices = this.index.array;
 			var attributes = this.attributes;
@@ -14503,7 +14503,7 @@
 			 return new this.constructor().copy( this );
 			 */
 
-			return new BufferGeometry().copy( this );
+			return new BufferGeometry$1().copy( this );
 
 		},
 
@@ -14619,9 +14619,9 @@
 
 	// BoxGeometry
 
-	function BoxGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) {
+	function BoxGeometry$1( width, height, depth, widthSegments, heightSegments, depthSegments ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'BoxGeometry';
 
@@ -14634,19 +14634,19 @@
 			depthSegments: depthSegments
 		};
 
-		this.fromBufferGeometry( new BoxBufferGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) );
+		this.fromBufferGeometry( new BoxBufferGeometry$1( width, height, depth, widthSegments, heightSegments, depthSegments ) );
 		this.mergeVertices();
 
 	}
 
-	BoxGeometry.prototype = Object.create( Geometry.prototype );
-	BoxGeometry.prototype.constructor = BoxGeometry;
+	BoxGeometry$1.prototype = Object.create( Geometry$1.prototype );
+	BoxGeometry$1.prototype.constructor = BoxGeometry$1;
 
 	// BoxBufferGeometry
 
-	function BoxBufferGeometry( width, height, depth, widthSegments, heightSegments, depthSegments ) {
+	function BoxBufferGeometry$1( width, height, depth, widthSegments, heightSegments, depthSegments ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'BoxBufferGeometry';
 
@@ -14691,9 +14691,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 		function buildPlane( u, v, w, udir, vdir, width, height, depth, gridX, gridY, materialIndex ) {
 
@@ -14712,7 +14712,7 @@
 
 			var ix, iy;
 
-			var vector = new Vector3();
+			var vector = new Vector3$1();
 
 			// generate vertices, normals and uvs
 
@@ -14801,8 +14801,8 @@
 
 	}
 
-	BoxBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
-	BoxBufferGeometry.prototype.constructor = BoxBufferGeometry;
+	BoxBufferGeometry$1.prototype = Object.create( BufferGeometry$1.prototype );
+	BoxBufferGeometry$1.prototype.constructor = BoxBufferGeometry$1;
 
 	/**
 	 * @author mrdoob / http://mrdoob.com/
@@ -14813,7 +14813,7 @@
 
 	function PlaneGeometry( width, height, widthSegments, heightSegments ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'PlaneGeometry';
 
@@ -14824,19 +14824,19 @@
 			heightSegments: heightSegments
 		};
 
-		this.fromBufferGeometry( new PlaneBufferGeometry( width, height, widthSegments, heightSegments ) );
+		this.fromBufferGeometry( new PlaneBufferGeometry$1( width, height, widthSegments, heightSegments ) );
 		this.mergeVertices();
 
 	}
 
-	PlaneGeometry.prototype = Object.create( Geometry.prototype );
+	PlaneGeometry.prototype = Object.create( Geometry$1.prototype );
 	PlaneGeometry.prototype.constructor = PlaneGeometry;
 
 	// PlaneBufferGeometry
 
-	function PlaneBufferGeometry( width, height, widthSegments, heightSegments ) {
+	function PlaneBufferGeometry$1( width, height, widthSegments, heightSegments ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'PlaneBufferGeometry';
 
@@ -14912,14 +14912,14 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 	}
 
-	PlaneBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
-	PlaneBufferGeometry.prototype.constructor = PlaneBufferGeometry;
+	PlaneBufferGeometry$1.prototype = Object.create( BufferGeometry$1.prototype );
+	PlaneBufferGeometry$1.prototype.constructor = PlaneBufferGeometry$1;
 
 	/**
 	 * @author mrdoob / http://mrdoob.com/
@@ -14956,7 +14956,7 @@
 	 * }
 	 */
 
-	function MeshBasicMaterial( parameters ) {
+	function MeshBasicMaterial$1( parameters ) {
 
 		Material.call( this );
 
@@ -14995,12 +14995,12 @@
 
 	}
 
-	MeshBasicMaterial.prototype = Object.create( Material.prototype );
-	MeshBasicMaterial.prototype.constructor = MeshBasicMaterial;
+	MeshBasicMaterial$1.prototype = Object.create( Material.prototype );
+	MeshBasicMaterial$1.prototype.constructor = MeshBasicMaterial$1;
 
-	MeshBasicMaterial.prototype.isMeshBasicMaterial = true;
+	MeshBasicMaterial$1.prototype.isMeshBasicMaterial = true;
 
-	MeshBasicMaterial.prototype.copy = function ( source ) {
+	MeshBasicMaterial$1.prototype.copy = function ( source ) {
 
 		Material.prototype.copy.call( this, source );
 
@@ -15041,8 +15041,8 @@
 
 	function Ray( origin, direction ) {
 
-		this.origin = ( origin !== undefined ) ? origin : new Vector3();
-		this.direction = ( direction !== undefined ) ? direction : new Vector3();
+		this.origin = ( origin !== undefined ) ? origin : new Vector3$1();
+		this.direction = ( direction !== undefined ) ? direction : new Vector3$1();
 
 	}
 
@@ -15074,7 +15074,7 @@
 
 		at: function ( t, optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			return result.copy( this.direction ).multiplyScalar( t ).add( this.origin );
 
@@ -15090,7 +15090,7 @@
 
 		recast: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function recast( t ) {
 
@@ -15104,7 +15104,7 @@
 
 		closestPointToPoint: function ( point, optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			result.subVectors( point, this.origin );
 			var directionDistance = result.dot( this.direction );
 
@@ -15126,7 +15126,7 @@
 
 		distanceSqToPoint: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function distanceSqToPoint( point ) {
 
@@ -15150,9 +15150,9 @@
 
 		distanceSqToSegment: function () {
 
-			var segCenter = new Vector3();
-			var segDir = new Vector3();
-			var diff = new Vector3();
+			var segCenter = new Vector3$1();
+			var segDir = new Vector3$1();
+			var diff = new Vector3$1();
 
 			return function distanceSqToSegment( v0, v1, optionalPointOnRay, optionalPointOnSegment ) {
 
@@ -15277,7 +15277,7 @@
 
 		intersectSphere: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function intersectSphere( sphere, optionalTarget ) {
 
@@ -15455,7 +15455,7 @@
 
 		intersectsBox: ( function () {
 
-			var v = new Vector3();
+			var v = new Vector3$1();
 
 			return function intersectsBox( box ) {
 
@@ -15468,10 +15468,10 @@
 		intersectTriangle: function () {
 
 			// Compute the offset origin, edges, and normal.
-			var diff = new Vector3();
-			var edge1 = new Vector3();
-			var edge2 = new Vector3();
-			var normal = new Vector3();
+			var diff = new Vector3$1();
+			var edge1 = new Vector3$1();
+			var edge2 = new Vector3$1();
+			var normal = new Vector3$1();
 
 			return function intersectTriangle( a, b, c, backfaceCulling, optionalTarget ) {
 
@@ -15571,8 +15571,8 @@
 
 	function Line3( start, end ) {
 
-		this.start = ( start !== undefined ) ? start : new Vector3();
-		this.end = ( end !== undefined ) ? end : new Vector3();
+		this.start = ( start !== undefined ) ? start : new Vector3$1();
+		this.end = ( end !== undefined ) ? end : new Vector3$1();
 
 	}
 
@@ -15604,14 +15604,14 @@
 
 		getCenter: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			return result.addVectors( this.start, this.end ).multiplyScalar( 0.5 );
 
 		},
 
 		delta: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			return result.subVectors( this.end, this.start );
 
 		},
@@ -15630,7 +15630,7 @@
 
 		at: function ( t, optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			return this.delta( result ).multiplyScalar( t ).add( this.start );
 
@@ -15638,8 +15638,8 @@
 
 		closestPointToPointParameter: function () {
 
-			var startP = new Vector3();
-			var startEnd = new Vector3();
+			var startP = new Vector3$1();
+			var startEnd = new Vector3$1();
 
 			return function closestPointToPointParameter( point, clampToLine ) {
 
@@ -15667,7 +15667,7 @@
 
 			var t = this.closestPointToPointParameter( point, clampToLine );
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 
 			return this.delta( result ).multiplyScalar( t ).add( this.start );
 
@@ -15697,9 +15697,9 @@
 
 	function Triangle( a, b, c ) {
 
-		this.a = ( a !== undefined ) ? a : new Vector3();
-		this.b = ( b !== undefined ) ? b : new Vector3();
-		this.c = ( c !== undefined ) ? c : new Vector3();
+		this.a = ( a !== undefined ) ? a : new Vector3$1();
+		this.b = ( b !== undefined ) ? b : new Vector3$1();
+		this.c = ( c !== undefined ) ? c : new Vector3$1();
 
 	}
 
@@ -15707,11 +15707,11 @@
 
 		normal: function () {
 
-			var v0 = new Vector3();
+			var v0 = new Vector3$1();
 
 			return function normal( a, b, c, optionalTarget ) {
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 
 				result.subVectors( c, b );
 				v0.subVectors( a, b );
@@ -15734,9 +15734,9 @@
 		// based on: http://www.blackpawn.com/texts/pointinpoly/default.html
 		barycoordFromPoint: function () {
 
-			var v0 = new Vector3();
-			var v1 = new Vector3();
-			var v2 = new Vector3();
+			var v0 = new Vector3$1();
+			var v1 = new Vector3$1();
+			var v2 = new Vector3$1();
 
 			return function barycoordFromPoint( point, a, b, c, optionalTarget ) {
 
@@ -15752,7 +15752,7 @@
 
 				var denom = ( dot00 * dot11 - dot01 * dot01 );
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 
 				// collinear or singular triangle
 				if ( denom === 0 ) {
@@ -15776,7 +15776,7 @@
 
 		containsPoint: function () {
 
-			var v1 = new Vector3();
+			var v1 = new Vector3$1();
 
 			return function containsPoint( point, a, b, c ) {
 
@@ -15830,8 +15830,8 @@
 
 		area: function () {
 
-			var v0 = new Vector3();
-			var v1 = new Vector3();
+			var v0 = new Vector3$1();
+			var v1 = new Vector3$1();
 
 			return function area() {
 
@@ -15846,7 +15846,7 @@
 
 		midpoint: function ( optionalTarget ) {
 
-			var result = optionalTarget || new Vector3();
+			var result = optionalTarget || new Vector3$1();
 			return result.addVectors( this.a, this.b ).add( this.c ).multiplyScalar( 1 / 3 );
 
 		},
@@ -15881,12 +15881,12 @@
 
 			var plane = new Plane();
 			var edgeList = [ new Line3(), new Line3(), new Line3() ];
-			var projectedPoint = new Vector3();
-			var closestPoint = new Vector3();
+			var projectedPoint = new Vector3$1();
+			var closestPoint = new Vector3$1();
 
 			return function closestPointToPoint( point, optionalTarget ) {
 
-				var result = optionalTarget || new Vector3();
+				var result = optionalTarget || new Vector3$1();
 				var minDistance = Infinity;
 
 				// project the point onto the plane of the triangle
@@ -15949,14 +15949,14 @@
 	 * @author jonobr1 / http://jonobr1.com/
 	 */
 
-	function Mesh( geometry, material ) {
+	function Mesh$1( geometry, material ) {
 
 		Object3D.call( this );
 
 		this.type = 'Mesh';
 
-		this.geometry = geometry !== undefined ? geometry : new BufferGeometry();
-		this.material = material !== undefined ? material : new MeshBasicMaterial( { color: Math.random() * 0xffffff } );
+		this.geometry = geometry !== undefined ? geometry : new BufferGeometry$1();
+		this.material = material !== undefined ? material : new MeshBasicMaterial$1( { color: Math.random() * 0xffffff } );
 
 		this.drawMode = TrianglesDrawMode;
 
@@ -15964,9 +15964,9 @@
 
 	}
 
-	Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
+	Mesh$1.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
-		constructor: Mesh,
+		constructor: Mesh$1,
 
 		isMesh: true,
 
@@ -16044,26 +16044,26 @@
 
 		raycast: ( function () {
 
-			var inverseMatrix = new Matrix4();
+			var inverseMatrix = new Matrix4$1();
 			var ray = new Ray();
 			var sphere = new Sphere();
 
-			var vA = new Vector3();
-			var vB = new Vector3();
-			var vC = new Vector3();
+			var vA = new Vector3$1();
+			var vB = new Vector3$1();
+			var vC = new Vector3$1();
 
-			var tempA = new Vector3();
-			var tempB = new Vector3();
-			var tempC = new Vector3();
+			var tempA = new Vector3$1();
+			var tempB = new Vector3$1();
+			var tempC = new Vector3$1();
 
-			var uvA = new Vector2();
-			var uvB = new Vector2();
-			var uvC = new Vector2();
+			var uvA = new Vector2$1();
+			var uvB = new Vector2$1();
+			var uvC = new Vector2$1();
 
-			var barycoord = new Vector3();
+			var barycoord = new Vector3$1();
 
-			var intersectionPoint = new Vector3();
-			var intersectionPointWorld = new Vector3();
+			var intersectionPoint = new Vector3$1();
+			var intersectionPointWorld = new Vector3$1();
 
 			function uvIntersection( point, p1, p2, p3, uv1, uv2, uv3 ) {
 
@@ -16089,7 +16089,7 @@
 
 				} else {
 
-					intersect = ray.intersectTriangle( pA, pB, pC, material.side !== DoubleSide, point );
+					intersect = ray.intersectTriangle( pA, pB, pC, material.side !== DoubleSide$1, point );
 
 				}
 
@@ -16353,8 +16353,8 @@
 
 				if ( boxMesh === undefined ) {
 
-					boxMesh = new Mesh(
-						new BoxBufferGeometry( 1, 1, 1 ),
+					boxMesh = new Mesh$1(
+						new BoxBufferGeometry$1( 1, 1, 1 ),
 						new ShaderMaterial( {
 							uniforms: ShaderLib.cube.uniforms,
 							vertexShader: ShaderLib.cube.vertexShader,
@@ -16393,11 +16393,11 @@
 
 				if ( planeCamera === undefined ) {
 
-					planeCamera = new OrthographicCamera( - 1, 1, 1, - 1, 0, 1 );
+					planeCamera = new OrthographicCamera$1( - 1, 1, 1, - 1, 0, 1 );
 
-					planeMesh = new Mesh(
-						new PlaneBufferGeometry( 2, 2 ),
-						new MeshBasicMaterial( { depthTest: false, depthWrite: false, fog: false } )
+					planeMesh = new Mesh$1(
+						new PlaneBufferGeometry$1( 2, 2 ),
+						new MeshBasicMaterial$1( { depthTest: false, depthWrite: false, fog: false } )
 					);
 
 					geometries.update( planeMesh.geometry );
@@ -16921,7 +16921,7 @@
 
 				if ( geometry._bufferGeometry === undefined ) {
 
-					geometry._bufferGeometry = new BufferGeometry().setFromObject( object );
+					geometry._bufferGeometry = new BufferGeometry$1().setFromObject( object );
 
 				}
 
@@ -17062,20 +17062,20 @@
 
 					case 'DirectionalLight':
 						uniforms = {
-							direction: new Vector3(),
+							direction: new Vector3$1(),
 							color: new Color(),
 
 							shadow: false,
 							shadowBias: 0,
 							shadowRadius: 1,
-							shadowMapSize: new Vector2()
+							shadowMapSize: new Vector2$1()
 						};
 						break;
 
 					case 'SpotLight':
 						uniforms = {
-							position: new Vector3(),
-							direction: new Vector3(),
+							position: new Vector3$1(),
+							direction: new Vector3$1(),
 							color: new Color(),
 							distance: 0,
 							coneCos: 0,
@@ -17085,13 +17085,13 @@
 							shadow: false,
 							shadowBias: 0,
 							shadowRadius: 1,
-							shadowMapSize: new Vector2()
+							shadowMapSize: new Vector2$1()
 						};
 						break;
 
 					case 'PointLight':
 						uniforms = {
-							position: new Vector3(),
+							position: new Vector3$1(),
 							color: new Color(),
 							distance: 0,
 							decay: 0,
@@ -17099,7 +17099,7 @@
 							shadow: false,
 							shadowBias: 0,
 							shadowRadius: 1,
-							shadowMapSize: new Vector2(),
+							shadowMapSize: new Vector2$1(),
 							shadowCameraNear: 1,
 							shadowCameraFar: 1000
 						};
@@ -17107,7 +17107,7 @@
 
 					case 'HemisphereLight':
 						uniforms = {
-							direction: new Vector3(),
+							direction: new Vector3$1(),
 							skyColor: new Color(),
 							groundColor: new Color()
 						};
@@ -17116,9 +17116,9 @@
 					case 'RectAreaLight':
 						uniforms = {
 							color: new Color(),
-							position: new Vector3(),
-							halfWidth: new Vector3(),
-							halfHeight: new Vector3()
+							position: new Vector3$1(),
+							halfWidth: new Vector3$1(),
+							halfHeight: new Vector3$1()
 							// TODO (abelnation): set RectAreaLight shadow uniforms
 						};
 						break;
@@ -17158,9 +17158,9 @@
 
 		};
 
-		var vector3 = new Vector3();
-		var matrix4 = new Matrix4();
-		var matrix42 = new Matrix4();
+		var vector3 = new Vector3$1();
+		var matrix4 = new Matrix4$1();
+		var matrix42 = new Matrix4$1();
 
 		function setup( lights, shadows, camera ) {
 
@@ -18318,7 +18318,7 @@
 				premultipliedAlpha: material.premultipliedAlpha,
 
 				alphaTest: material.alphaTest,
-				doubleSided: material.side === DoubleSide,
+				doubleSided: material.side === DoubleSide$1,
 				flipSided: material.side === BackSide,
 
 				depthPacking: ( material.depthPacking !== undefined ) ? material.depthPacking : false
@@ -19903,7 +19903,7 @@
 
 		function setMaterial( material ) {
 
-			material.side === DoubleSide
+			material.side === DoubleSide$1
 				? disable( gl.CULL_FACE )
 				: enable( gl.CULL_FACE );
 
@@ -20316,13 +20316,13 @@
 
 	function ArrayCamera( array ) {
 
-		PerspectiveCamera.call( this );
+		PerspectiveCamera$1.call( this );
 
 		this.cameras = array || [];
 
 	}
 
-	ArrayCamera.prototype = Object.assign( Object.create( PerspectiveCamera.prototype ), {
+	ArrayCamera.prototype = Object.assign( Object.create( PerspectiveCamera$1.prototype ), {
 
 		constructor: ArrayCamera,
 
@@ -20347,16 +20347,16 @@
 
 		}
 
-		var matrixWorldInverse = new Matrix4();
+		var matrixWorldInverse = new Matrix4$1();
 
-		var standingMatrix = new Matrix4();
-		var standingMatrixInverse = new Matrix4();
+		var standingMatrix = new Matrix4$1();
+		var standingMatrixInverse = new Matrix4$1();
 
-		var cameraL = new PerspectiveCamera();
+		var cameraL = new PerspectiveCamera$1();
 		cameraL.bounds = new Vector4( 0.0, 0.0, 0.5, 1.0 );
 		cameraL.layers.enable( 1 );
 
-		var cameraR = new PerspectiveCamera();
+		var cameraR = new PerspectiveCamera$1();
 		cameraR.bounds = new Vector4( 0.5, 0.0, 0.5, 1.0 );
 		cameraR.layers.enable( 2 );
 
@@ -21024,9 +21024,9 @@
 
 			// camera matrices cache
 
-			_projScreenMatrix = new Matrix4(),
+			_projScreenMatrix = new Matrix4$1(),
 
-			_vector3 = new Vector3(),
+			_vector3 = new Vector3$1(),
 
 			// info
 
@@ -21133,7 +21133,7 @@
 
 			if ( extensions.get( 'OES_element_index_uint' ) ) {
 
-				BufferGeometry.MaxIndex = 4294967296;
+				BufferGeometry$1.MaxIndex = 4294967296;
 
 			}
 
@@ -23497,7 +23497,7 @@
 
 		this.lensFlares = [];
 
-		this.positionScreen = new Vector3();
+		this.positionScreen = new Vector3$1();
 		this.customUpdateCallback = undefined;
 
 		if ( texture !== undefined ) {
@@ -23654,9 +23654,9 @@
 
 		raycast: ( function () {
 
-			var intersectPoint = new Vector3();
-			var worldPosition = new Vector3();
-			var worldScale = new Vector3();
+			var intersectPoint = new Vector3$1();
+			var worldPosition = new Vector3$1();
+			var worldScale = new Vector3$1();
 
 			return function raycast( raycaster, intersects ) {
 
@@ -23780,7 +23780,7 @@
 
 		raycast: ( function () {
 
-			var matrixPosition = new Vector3();
+			var matrixPosition = new Vector3$1();
 
 			return function raycast( raycaster, intersects ) {
 
@@ -23796,8 +23796,8 @@
 
 		update: function () {
 
-			var v1 = new Vector3();
-			var v2 = new Vector3();
+			var v1 = new Vector3$1();
+			var v2 = new Vector3$1();
 
 			return function update( camera ) {
 
@@ -23900,7 +23900,7 @@
 
 				for ( var i = 0, il = this.bones.length; i < il; i ++ ) {
 
-					this.boneInverses.push( new Matrix4() );
+					this.boneInverses.push( new Matrix4$1() );
 
 				}
 
@@ -23918,7 +23918,7 @@
 
 			for ( var i = 0, il = this.bones.length; i < il; i ++ ) {
 
-				var inverse = new Matrix4();
+				var inverse = new Matrix4$1();
 
 				if ( this.bones[ i ] ) {
 
@@ -23979,8 +23979,8 @@
 
 		update: ( function () {
 
-			var offsetMatrix = new Matrix4();
-			var identityMatrix = new Matrix4();
+			var offsetMatrix = new Matrix4$1();
+			var identityMatrix = new Matrix4$1();
 
 			return function update() {
 
@@ -24050,13 +24050,13 @@
 
 	function SkinnedMesh( geometry, material ) {
 
-		Mesh.call( this, geometry, material );
+		Mesh$1.call( this, geometry, material );
 
 		this.type = 'SkinnedMesh';
 
 		this.bindMode = 'attached';
-		this.bindMatrix = new Matrix4();
-		this.bindMatrixInverse = new Matrix4();
+		this.bindMatrix = new Matrix4$1();
+		this.bindMatrixInverse = new Matrix4$1();
 
 		var bones = this.initBones();
 		var skeleton = new Skeleton( bones );
@@ -24067,7 +24067,7 @@
 
 	}
 
-	SkinnedMesh.prototype = Object.assign( Object.create( Mesh.prototype ), {
+	SkinnedMesh.prototype = Object.assign( Object.create( Mesh$1.prototype ), {
 
 		constructor: SkinnedMesh,
 
@@ -24217,7 +24217,7 @@
 
 		updateMatrixWorld: function ( force ) {
 
-			Mesh.prototype.updateMatrixWorld.call( this, force );
+			Mesh$1.prototype.updateMatrixWorld.call( this, force );
 
 			if ( this.bindMode === 'attached' ) {
 
@@ -24257,7 +24257,7 @@
 	 * }
 	 */
 
-	function LineBasicMaterial( parameters ) {
+	function LineBasicMaterial$1( parameters ) {
 
 		Material.call( this );
 
@@ -24275,12 +24275,12 @@
 
 	}
 
-	LineBasicMaterial.prototype = Object.create( Material.prototype );
-	LineBasicMaterial.prototype.constructor = LineBasicMaterial;
+	LineBasicMaterial$1.prototype = Object.create( Material.prototype );
+	LineBasicMaterial$1.prototype.constructor = LineBasicMaterial$1;
 
-	LineBasicMaterial.prototype.isLineBasicMaterial = true;
+	LineBasicMaterial$1.prototype.isLineBasicMaterial = true;
 
-	LineBasicMaterial.prototype.copy = function ( source ) {
+	LineBasicMaterial$1.prototype.copy = function ( source ) {
 
 		Material.prototype.copy.call( this, source );
 
@@ -24298,7 +24298,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 */
 
-	function Line( geometry, material, mode ) {
+	function Line$1( geometry, material, mode ) {
 
 		if ( mode === 1 ) {
 
@@ -24311,20 +24311,20 @@
 
 		this.type = 'Line';
 
-		this.geometry = geometry !== undefined ? geometry : new BufferGeometry();
-		this.material = material !== undefined ? material : new LineBasicMaterial( { color: Math.random() * 0xffffff } );
+		this.geometry = geometry !== undefined ? geometry : new BufferGeometry$1();
+		this.material = material !== undefined ? material : new LineBasicMaterial$1( { color: Math.random() * 0xffffff } );
 
 	}
 
-	Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
+	Line$1.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
-		constructor: Line,
+		constructor: Line$1,
 
 		isLine: true,
 
 		raycast: ( function () {
 
-			var inverseMatrix = new Matrix4();
+			var inverseMatrix = new Matrix4$1();
 			var ray = new Ray();
 			var sphere = new Sphere();
 
@@ -24350,10 +24350,10 @@
 				inverseMatrix.getInverse( matrixWorld );
 				ray.copy( raycaster.ray ).applyMatrix4( inverseMatrix );
 
-				var vStart = new Vector3();
-				var vEnd = new Vector3();
-				var interSegment = new Vector3();
-				var interRay = new Vector3();
+				var vStart = new Vector3$1();
+				var vEnd = new Vector3$1();
+				var interSegment = new Vector3$1();
+				var interRay = new Vector3$1();
 				var step = (this && this.isLineSegments) ? 2 : 1;
 
 				if ( geometry.isBufferGeometry ) {
@@ -24485,13 +24485,13 @@
 
 	function LineSegments( geometry, material ) {
 
-		Line.call( this, geometry, material );
+		Line$1.call( this, geometry, material );
 
 		this.type = 'LineSegments';
 
 	}
 
-	LineSegments.prototype = Object.assign( Object.create( Line.prototype ), {
+	LineSegments.prototype = Object.assign( Object.create( Line$1.prototype ), {
 
 		constructor: LineSegments,
 
@@ -24505,13 +24505,13 @@
 
 	function LineLoop( geometry, material ) {
 
-		Line.call( this, geometry, material );
+		Line$1.call( this, geometry, material );
 
 		this.type = 'LineLoop';
 
 	}
 
-	LineLoop.prototype = Object.assign( Object.create( Line.prototype ), {
+	LineLoop.prototype = Object.assign( Object.create( Line$1.prototype ), {
 
 		constructor: LineLoop,
 
@@ -24582,7 +24582,7 @@
 
 		this.type = 'Points';
 
-		this.geometry = geometry !== undefined ? geometry : new BufferGeometry();
+		this.geometry = geometry !== undefined ? geometry : new BufferGeometry$1();
 		this.material = material !== undefined ? material : new PointsMaterial( { color: Math.random() * 0xffffff } );
 
 	}
@@ -24595,7 +24595,7 @@
 
 		raycast: ( function () {
 
-			var inverseMatrix = new Matrix4();
+			var inverseMatrix = new Matrix4$1();
 			var ray = new Ray();
 			var sphere = new Sphere();
 
@@ -24623,7 +24623,7 @@
 
 				var localThreshold = threshold / ( ( this.scale.x + this.scale.y + this.scale.z ) / 3 );
 				var localThresholdSq = localThreshold * localThreshold;
-				var position = new Vector3();
+				var position = new Vector3$1();
 
 				function testPoint( point, index ) {
 
@@ -24827,7 +24827,7 @@
 
 	function WireframeGeometry( geometry ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'WireframeGeometry';
 
@@ -24893,7 +24893,7 @@
 			var group, start, count;
 			var index1, index2;
 
-			vertex = new Vector3();
+			vertex = new Vector3$1();
 
 			if ( geometry.index !== null ) {
 
@@ -24986,11 +24986,11 @@
 
 		// build geometry
 
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
 
 	}
 
-	WireframeGeometry.prototype = Object.create( BufferGeometry.prototype );
+	WireframeGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	WireframeGeometry.prototype.constructor = WireframeGeometry;
 
 	/**
@@ -25005,7 +25005,7 @@
 
 	function ParametricGeometry( func, slices, stacks ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'ParametricGeometry';
 
@@ -25020,14 +25020,14 @@
 
 	}
 
-	ParametricGeometry.prototype = Object.create( Geometry.prototype );
+	ParametricGeometry.prototype = Object.create( Geometry$1.prototype );
 	ParametricGeometry.prototype.constructor = ParametricGeometry;
 
 	// ParametricBufferGeometry
 
 	function ParametricBufferGeometry( func, slices, stacks ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'ParametricBufferGeometry';
 
@@ -25046,10 +25046,10 @@
 
 		var EPS = 0.00001;
 
-		var normal = new Vector3();
+		var normal = new Vector3$1();
 
-		var p0 = new Vector3(), p1 = new Vector3();
-		var pu = new Vector3(), pv = new Vector3();
+		var p0 = new Vector3$1(), p1 = new Vector3$1();
+		var pu = new Vector3$1(), pv = new Vector3$1();
 
 		var i, j;
 
@@ -25134,13 +25134,13 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 	}
 
-	ParametricBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	ParametricBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	ParametricBufferGeometry.prototype.constructor = ParametricBufferGeometry;
 
 	/**
@@ -25154,7 +25154,7 @@
 
 	function PolyhedronGeometry( vertices, indices, radius, detail ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'PolyhedronGeometry';
 
@@ -25170,14 +25170,14 @@
 
 	}
 
-	PolyhedronGeometry.prototype = Object.create( Geometry.prototype );
+	PolyhedronGeometry.prototype = Object.create( Geometry$1.prototype );
 	PolyhedronGeometry.prototype.constructor = PolyhedronGeometry;
 
 	// PolyhedronBufferGeometry
 
 	function PolyhedronBufferGeometry( vertices, indices, radius, detail ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'PolyhedronBufferGeometry';
 
@@ -25210,9 +25210,9 @@
 
 		// build non-indexed geometry
 
-		this.addAttribute( 'position', new Float32BufferAttribute( vertexBuffer, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( vertexBuffer.slice(), 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvBuffer, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertexBuffer, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( vertexBuffer.slice(), 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvBuffer, 2 ) );
 
 		if ( detail === 0 ) {
 
@@ -25228,9 +25228,9 @@
 
 		function subdivide( detail ) {
 
-			var a = new Vector3();
-			var b = new Vector3();
-			var c = new Vector3();
+			var a = new Vector3$1();
+			var b = new Vector3$1();
+			var c = new Vector3$1();
 
 			// iterate over all faces and apply a subdivison with the given detail value
 
@@ -25317,7 +25317,7 @@
 
 		function appplyRadius( radius ) {
 
-			var vertex = new Vector3();
+			var vertex = new Vector3$1();
 
 			// iterate over the entire buffer and apply the radius to each vertex
 
@@ -25339,7 +25339,7 @@
 
 		function generateUVs() {
 
-			var vertex = new Vector3();
+			var vertex = new Vector3$1();
 
 			for ( var i = 0; i < vertexBuffer.length; i += 3 ) {
 
@@ -25406,15 +25406,15 @@
 
 		function correctUVs() {
 
-			var a = new Vector3();
-			var b = new Vector3();
-			var c = new Vector3();
+			var a = new Vector3$1();
+			var b = new Vector3$1();
+			var c = new Vector3$1();
 
-			var centroid = new Vector3();
+			var centroid = new Vector3$1();
 
-			var uvA = new Vector2();
-			var uvB = new Vector2();
-			var uvC = new Vector2();
+			var uvA = new Vector2$1();
+			var uvB = new Vector2$1();
+			var uvC = new Vector2$1();
 
 			for ( var i = 0, j = 0; i < vertexBuffer.length; i += 9, j += 6 ) {
 
@@ -25473,7 +25473,7 @@
 
 	}
 
-	PolyhedronBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	PolyhedronBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	PolyhedronBufferGeometry.prototype.constructor = PolyhedronBufferGeometry;
 
 	/**
@@ -25485,7 +25485,7 @@
 
 	function TetrahedronGeometry( radius, detail ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'TetrahedronGeometry';
 
@@ -25499,7 +25499,7 @@
 
 	}
 
-	TetrahedronGeometry.prototype = Object.create( Geometry.prototype );
+	TetrahedronGeometry.prototype = Object.create( Geometry$1.prototype );
 	TetrahedronGeometry.prototype.constructor = TetrahedronGeometry;
 
 	// TetrahedronBufferGeometry
@@ -25535,9 +25535,9 @@
 
 	// OctahedronGeometry
 
-	function OctahedronGeometry( radius, detail ) {
+	function OctahedronGeometry$1( radius, detail ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'OctahedronGeometry';
 
@@ -25551,8 +25551,8 @@
 
 	}
 
-	OctahedronGeometry.prototype = Object.create( Geometry.prototype );
-	OctahedronGeometry.prototype.constructor = OctahedronGeometry;
+	OctahedronGeometry$1.prototype = Object.create( Geometry$1.prototype );
+	OctahedronGeometry$1.prototype.constructor = OctahedronGeometry$1;
 
 	// OctahedronBufferGeometry
 
@@ -25589,7 +25589,7 @@
 
 	function IcosahedronGeometry( radius, detail ) {
 
-	 	Geometry.call( this );
+	 	Geometry$1.call( this );
 
 		this.type = 'IcosahedronGeometry';
 
@@ -25603,7 +25603,7 @@
 
 	}
 
-	IcosahedronGeometry.prototype = Object.create( Geometry.prototype );
+	IcosahedronGeometry.prototype = Object.create( Geometry$1.prototype );
 	IcosahedronGeometry.prototype.constructor = IcosahedronGeometry;
 
 	// IcosahedronBufferGeometry
@@ -25648,7 +25648,7 @@
 
 	function DodecahedronGeometry( radius, detail ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'DodecahedronGeometry';
 
@@ -25662,7 +25662,7 @@
 
 	}
 
-	DodecahedronGeometry.prototype = Object.create( Geometry.prototype );
+	DodecahedronGeometry.prototype = Object.create( Geometry$1.prototype );
 	DodecahedronGeometry.prototype.constructor = DodecahedronGeometry;
 
 	// DodecahedronBufferGeometry
@@ -25736,7 +25736,7 @@
 
 	function TubeGeometry( path, tubularSegments, radius, radialSegments, closed, taper ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'TubeGeometry';
 
@@ -25765,14 +25765,14 @@
 
 	}
 
-	TubeGeometry.prototype = Object.create( Geometry.prototype );
+	TubeGeometry.prototype = Object.create( Geometry$1.prototype );
 	TubeGeometry.prototype.constructor = TubeGeometry;
 
 	// TubeBufferGeometry
 
 	function TubeBufferGeometry( path, tubularSegments, radius, radialSegments, closed ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'TubeBufferGeometry';
 
@@ -25799,9 +25799,9 @@
 
 		// helper variables
 
-		var vertex = new Vector3();
-		var normal = new Vector3();
-		var uv = new Vector2();
+		var vertex = new Vector3$1();
+		var normal = new Vector3$1();
+		var uv = new Vector2$1();
 
 		var i, j;
 
@@ -25819,9 +25819,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 		// functions
 
@@ -25933,7 +25933,7 @@
 
 	}
 
-	TubeBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	TubeBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	TubeBufferGeometry.prototype.constructor = TubeBufferGeometry;
 
 	/**
@@ -25947,7 +25947,7 @@
 
 	function TorusKnotGeometry( radius, tube, tubularSegments, radialSegments, p, q, heightScale ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'TorusKnotGeometry';
 
@@ -25967,14 +25967,14 @@
 
 	}
 
-	TorusKnotGeometry.prototype = Object.create( Geometry.prototype );
+	TorusKnotGeometry.prototype = Object.create( Geometry$1.prototype );
 	TorusKnotGeometry.prototype.constructor = TorusKnotGeometry;
 
 	// TorusKnotBufferGeometry
 
 	function TorusKnotBufferGeometry( radius, tube, tubularSegments, radialSegments, p, q ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'TorusKnotBufferGeometry';
 
@@ -26005,15 +26005,15 @@
 
 		var i, j;
 
-		var vertex = new Vector3();
-		var normal = new Vector3();
+		var vertex = new Vector3$1();
+		var normal = new Vector3$1();
 
-		var P1 = new Vector3();
-		var P2 = new Vector3();
+		var P1 = new Vector3$1();
+		var P2 = new Vector3$1();
 
-		var B = new Vector3();
-		var T = new Vector3();
-		var N = new Vector3();
+		var B = new Vector3$1();
+		var T = new Vector3$1();
+		var N = new Vector3$1();
 
 		// generate vertices, normals and uvs
 
@@ -26099,9 +26099,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 		// this function calculates the current position on the torus curve
 
@@ -26120,7 +26120,7 @@
 
 	}
 
-	TorusKnotBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	TorusKnotBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	TorusKnotBufferGeometry.prototype.constructor = TorusKnotBufferGeometry;
 
 	/**
@@ -26133,7 +26133,7 @@
 
 	function TorusGeometry( radius, tube, radialSegments, tubularSegments, arc ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'TorusGeometry';
 
@@ -26145,19 +26145,19 @@
 			arc: arc
 		};
 
-		this.fromBufferGeometry( new TorusBufferGeometry( radius, tube, radialSegments, tubularSegments, arc ) );
+		this.fromBufferGeometry( new TorusBufferGeometry$1( radius, tube, radialSegments, tubularSegments, arc ) );
 		this.mergeVertices();
 
 	}
 
-	TorusGeometry.prototype = Object.create( Geometry.prototype );
+	TorusGeometry.prototype = Object.create( Geometry$1.prototype );
 	TorusGeometry.prototype.constructor = TorusGeometry;
 
 	// TorusBufferGeometry
 
-	function TorusBufferGeometry( radius, tube, radialSegments, tubularSegments, arc ) {
+	function TorusBufferGeometry$1( radius, tube, radialSegments, tubularSegments, arc ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'TorusBufferGeometry';
 
@@ -26184,9 +26184,9 @@
 
 		// helper variables
 
-		var center = new Vector3();
-		var vertex = new Vector3();
-		var normal = new Vector3();
+		var center = new Vector3$1();
+		var vertex = new Vector3$1();
+		var normal = new Vector3$1();
 
 		var j, i;
 
@@ -26249,14 +26249,14 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 	}
 
-	TorusBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
-	TorusBufferGeometry.prototype.constructor = TorusBufferGeometry;
+	TorusBufferGeometry$1.prototype = Object.create( BufferGeometry$1.prototype );
+	TorusBufferGeometry$1.prototype.constructor = TorusBufferGeometry$1;
 
 	/**
 	 * @author zz85 / http://www.lab4games.net/zz85/blog
@@ -26979,7 +26979,7 @@
 
 	function ExtrudeGeometry( shapes, options ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'ExtrudeGeometry';
 
@@ -26993,7 +26993,7 @@
 
 	}
 
-	ExtrudeGeometry.prototype = Object.create( Geometry.prototype );
+	ExtrudeGeometry.prototype = Object.create( Geometry$1.prototype );
 	ExtrudeGeometry.prototype.constructor = ExtrudeGeometry;
 
 	// ExtrudeBufferGeometry
@@ -27006,7 +27006,7 @@
 
 		}
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'ExtrudeBufferGeometry';
 
@@ -27026,7 +27026,7 @@
 
 	}
 
-	ExtrudeBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	ExtrudeBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	ExtrudeBufferGeometry.prototype.constructor = ExtrudeBufferGeometry;
 
 	ExtrudeBufferGeometry.prototype.getArrays = function () {
@@ -27061,8 +27061,8 @@
 		}
 
 		this.setIndex( options.arrays.index );
-		this.addAttribute( 'position', new Float32BufferAttribute( options.arrays.position, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( options.arrays.uv, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( options.arrays.position, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( options.arrays.uv, 2 ) );
 
 	};
 
@@ -27110,9 +27110,9 @@
 
 			// console.log(splineTube, 'splineTube', splineTube.normals.length, 'steps', steps, 'extrudePts', extrudePts.length);
 
-			binormal = new Vector3();
-			normal = new Vector3();
-			position2 = new Vector3();
+			binormal = new Vector3$1();
+			normal = new Vector3$1();
+			position2 = new Vector3$1();
 
 		}
 
@@ -27247,7 +27247,7 @@
 				var v_trans_lensq = ( v_trans_x * v_trans_x + v_trans_y * v_trans_y );
 				if ( v_trans_lensq <= 2 ) {
 
-					return new Vector2( v_trans_x, v_trans_y );
+					return new Vector2$1( v_trans_x, v_trans_y );
 
 				} else {
 
@@ -27308,7 +27308,7 @@
 
 			}
 
-			return new Vector2( v_trans_x / shrink_by, v_trans_y / shrink_by );
+			return new Vector2$1( v_trans_x / shrink_by, v_trans_y / shrink_by );
 
 		}
 
@@ -27692,8 +27692,8 @@
 		if ( ! options.arrays ) {
 
 			this.setIndex( indicesArray );
-			this.addAttribute( 'position', new Float32BufferAttribute( verticesArray, 3 ) );
-			this.addAttribute( 'uv', new Float32BufferAttribute( options.arrays.uv, 2 ) );
+			this.addAttribute( 'position', new Float32BufferAttribute$1( verticesArray, 3 ) );
+			this.addAttribute( 'uv', new Float32BufferAttribute$1( options.arrays.uv, 2 ) );
 
 		}
 
@@ -27711,9 +27711,9 @@
 			var c_y = vertices[ indexC * 3 + 1 ];
 
 			return [
-				new Vector2( a_x, a_y ),
-				new Vector2( b_x, b_y ),
-				new Vector2( c_x, c_y )
+				new Vector2$1( a_x, a_y ),
+				new Vector2$1( b_x, b_y ),
+				new Vector2$1( c_x, c_y )
 			];
 
 		},
@@ -27736,19 +27736,19 @@
 			if ( Math.abs( a_y - b_y ) < 0.01 ) {
 
 				return [
-					new Vector2( a_x, 1 - a_z ),
-					new Vector2( b_x, 1 - b_z ),
-					new Vector2( c_x, 1 - c_z ),
-					new Vector2( d_x, 1 - d_z )
+					new Vector2$1( a_x, 1 - a_z ),
+					new Vector2$1( b_x, 1 - b_z ),
+					new Vector2$1( c_x, 1 - c_z ),
+					new Vector2$1( d_x, 1 - d_z )
 				];
 
 			} else {
 
 				return [
-					new Vector2( a_y, 1 - a_z ),
-					new Vector2( b_y, 1 - b_z ),
-					new Vector2( c_y, 1 - c_z ),
-					new Vector2( d_y, 1 - d_z )
+					new Vector2$1( a_y, 1 - a_z ),
+					new Vector2$1( b_y, 1 - b_z ),
+					new Vector2$1( c_y, 1 - c_z ),
+					new Vector2$1( d_y, 1 - d_z )
 				];
 
 			}
@@ -27779,7 +27779,7 @@
 
 	function TextGeometry(  text, parameters ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'TextGeometry';
 
@@ -27793,7 +27793,7 @@
 
 	}
 
-	TextGeometry.prototype = Object.create( Geometry.prototype );
+	TextGeometry.prototype = Object.create( Geometry$1.prototype );
 	TextGeometry.prototype.constructor = TextGeometry;
 
 	// TextBufferGeometry
@@ -27807,7 +27807,7 @@
 		if ( ! ( font && font.isFont ) ) {
 
 			console.error( 'THREE.TextGeometry: font parameter is not an instance of THREE.Font.' );
-			return new Geometry();
+			return new Geometry$1();
 
 		}
 
@@ -27842,7 +27842,7 @@
 
 	function SphereGeometry( radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'SphereGeometry';
 
@@ -27861,14 +27861,14 @@
 
 	}
 
-	SphereGeometry.prototype = Object.create( Geometry.prototype );
+	SphereGeometry.prototype = Object.create( Geometry$1.prototype );
 	SphereGeometry.prototype.constructor = SphereGeometry;
 
 	// SphereBufferGeometry
 
 	function SphereBufferGeometry( radius, widthSegments, heightSegments, phiStart, phiLength, thetaStart, thetaLength ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'SphereBufferGeometry';
 
@@ -27900,8 +27900,8 @@
 		var index = 0;
 		var grid = [];
 
-		var vertex = new Vector3();
-		var normal = new Vector3();
+		var vertex = new Vector3$1();
+		var normal = new Vector3$1();
 
 		// buffers
 
@@ -27968,13 +27968,13 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 	}
 
-	SphereBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	SphereBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	SphereBufferGeometry.prototype.constructor = SphereBufferGeometry;
 
 	/**
@@ -27986,7 +27986,7 @@
 
 	function RingGeometry( innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'RingGeometry';
 
@@ -28004,14 +28004,14 @@
 
 	}
 
-	RingGeometry.prototype = Object.create( Geometry.prototype );
+	RingGeometry.prototype = Object.create( Geometry$1.prototype );
 	RingGeometry.prototype.constructor = RingGeometry;
 
 	// RingBufferGeometry
 
 	function RingBufferGeometry( innerRadius, outerRadius, thetaSegments, phiSegments, thetaStart, thetaLength ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'RingBufferGeometry';
 
@@ -28045,8 +28045,8 @@
 		var segment;
 		var radius = innerRadius;
 		var radiusStep = ( ( outerRadius - innerRadius ) / phiSegments );
-		var vertex = new Vector3();
-		var uv = new Vector2();
+		var vertex = new Vector3$1();
+		var uv = new Vector2$1();
 		var j, i;
 
 		// generate vertices, normals and uvs
@@ -28112,13 +28112,13 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 	}
 
-	RingBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	RingBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	RingBufferGeometry.prototype.constructor = RingBufferGeometry;
 
 	/**
@@ -28132,7 +28132,7 @@
 
 	function LatheGeometry( points, segments, phiStart, phiLength ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'LatheGeometry';
 
@@ -28148,14 +28148,14 @@
 
 	}
 
-	LatheGeometry.prototype = Object.create( Geometry.prototype );
+	LatheGeometry.prototype = Object.create( Geometry$1.prototype );
 	LatheGeometry.prototype.constructor = LatheGeometry;
 
 	// LatheBufferGeometry
 
 	function LatheBufferGeometry( points, segments, phiStart, phiLength ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'LatheBufferGeometry';
 
@@ -28185,8 +28185,8 @@
 
 		var base;
 		var inverseSegments = 1.0 / segments;
-		var vertex = new Vector3();
-		var uv = new Vector2();
+		var vertex = new Vector3$1();
+		var uv = new Vector2$1();
 		var i, j;
 
 		// generate vertices and uvs
@@ -28245,8 +28245,8 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 		// generate normals
 
@@ -28258,9 +28258,9 @@
 		if ( phiLength === Math.PI * 2 ) {
 
 			var normals = this.attributes.normal.array;
-			var n1 = new Vector3();
-			var n2 = new Vector3();
-			var n = new Vector3();
+			var n1 = new Vector3$1();
+			var n2 = new Vector3$1();
+			var n = new Vector3$1();
 
 			// this is the buffer offset for the last line of vertices
 
@@ -28296,7 +28296,7 @@
 
 	}
 
-	LatheBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	LatheBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	LatheBufferGeometry.prototype.constructor = LatheBufferGeometry;
 
 	/**
@@ -28308,7 +28308,7 @@
 
 	function ShapeGeometry( shapes, curveSegments ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'ShapeGeometry';
 
@@ -28330,14 +28330,14 @@
 
 	}
 
-	ShapeGeometry.prototype = Object.create( Geometry.prototype );
+	ShapeGeometry.prototype = Object.create( Geometry$1.prototype );
 	ShapeGeometry.prototype.constructor = ShapeGeometry;
 
 	// ShapeBufferGeometry
 
 	function ShapeBufferGeometry( shapes, curveSegments ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'ShapeBufferGeometry';
 
@@ -28384,9 +28384,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 
 		// helper functions
@@ -28465,7 +28465,7 @@
 
 	}
 
-	ShapeBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	ShapeBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	ShapeBufferGeometry.prototype.constructor = ShapeBufferGeometry;
 
 	/**
@@ -28475,7 +28475,7 @@
 
 	function EdgesGeometry( geometry, thresholdAngle ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'EdgesGeometry';
 
@@ -28501,7 +28501,7 @@
 
 		if ( geometry.isBufferGeometry ) {
 
-			geometry2 = new Geometry();
+			geometry2 = new Geometry$1();
 			geometry2.fromBufferGeometry( geometry );
 
 		} else {
@@ -28567,11 +28567,11 @@
 
 		// build geometry
 
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
 
 	}
 
-	EdgesGeometry.prototype = Object.create( BufferGeometry.prototype );
+	EdgesGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	EdgesGeometry.prototype.constructor = EdgesGeometry;
 
 	/**
@@ -28581,9 +28581,9 @@
 
 	// CylinderGeometry
 
-	function CylinderGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
+	function CylinderGeometry$1( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'CylinderGeometry';
 
@@ -28598,19 +28598,19 @@
 			thetaLength: thetaLength
 		};
 
-		this.fromBufferGeometry( new CylinderBufferGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) );
+		this.fromBufferGeometry( new CylinderBufferGeometry$1( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) );
 		this.mergeVertices();
 
 	}
 
-	CylinderGeometry.prototype = Object.create( Geometry.prototype );
-	CylinderGeometry.prototype.constructor = CylinderGeometry;
+	CylinderGeometry$1.prototype = Object.create( Geometry$1.prototype );
+	CylinderGeometry$1.prototype.constructor = CylinderGeometry$1;
 
 	// CylinderBufferGeometry
 
-	function CylinderBufferGeometry( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
+	function CylinderBufferGeometry$1( radiusTop, radiusBottom, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'CylinderBufferGeometry';
 
@@ -28666,15 +28666,15 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 		function generateTorso() {
 
 			var x, y;
-			var normal = new Vector3();
-			var vertex = new Vector3();
+			var normal = new Vector3$1();
+			var vertex = new Vector3$1();
 
 			var groupCount = 0;
 
@@ -28770,8 +28770,8 @@
 
 			var x, centerIndexStart, centerIndexEnd;
 
-			var uv = new Vector2();
-			var vertex = new Vector3();
+			var uv = new Vector2$1();
+			var vertex = new Vector3$1();
 
 			var groupCount = 0;
 
@@ -28879,8 +28879,8 @@
 
 	}
 
-	CylinderBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
-	CylinderBufferGeometry.prototype.constructor = CylinderBufferGeometry;
+	CylinderBufferGeometry$1.prototype = Object.create( BufferGeometry$1.prototype );
+	CylinderBufferGeometry$1.prototype.constructor = CylinderBufferGeometry$1;
 
 	/**
 	 * @author abelnation / http://github.com/abelnation
@@ -28890,7 +28890,7 @@
 
 	function ConeGeometry( radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
-		CylinderGeometry.call( this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength );
+		CylinderGeometry$1.call( this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength );
 
 		this.type = 'ConeGeometry';
 
@@ -28906,14 +28906,14 @@
 
 	}
 
-	ConeGeometry.prototype = Object.create( CylinderGeometry.prototype );
+	ConeGeometry.prototype = Object.create( CylinderGeometry$1.prototype );
 	ConeGeometry.prototype.constructor = ConeGeometry;
 
 	// ConeBufferGeometry
 
 	function ConeBufferGeometry( radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength ) {
 
-		CylinderBufferGeometry.call( this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength );
+		CylinderBufferGeometry$1.call( this, 0, radius, height, radialSegments, heightSegments, openEnded, thetaStart, thetaLength );
 
 		this.type = 'ConeBufferGeometry';
 
@@ -28929,7 +28929,7 @@
 
 	}
 
-	ConeBufferGeometry.prototype = Object.create( CylinderBufferGeometry.prototype );
+	ConeBufferGeometry.prototype = Object.create( CylinderBufferGeometry$1.prototype );
 	ConeBufferGeometry.prototype.constructor = ConeBufferGeometry;
 
 	/**
@@ -28942,7 +28942,7 @@
 
 	function CircleGeometry( radius, segments, thetaStart, thetaLength ) {
 
-		Geometry.call( this );
+		Geometry$1.call( this );
 
 		this.type = 'CircleGeometry';
 
@@ -28958,14 +28958,14 @@
 
 	}
 
-	CircleGeometry.prototype = Object.create( Geometry.prototype );
+	CircleGeometry.prototype = Object.create( Geometry$1.prototype );
 	CircleGeometry.prototype.constructor = CircleGeometry;
 
 	// CircleBufferGeometry
 
 	function CircleBufferGeometry( radius, segments, thetaStart, thetaLength ) {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'CircleBufferGeometry';
 
@@ -28992,8 +28992,8 @@
 		// helper variables
 
 		var i, s;
-		var vertex = new Vector3();
-		var uv = new Vector2();
+		var vertex = new Vector3$1();
+		var uv = new Vector2$1();
 
 		// center point
 
@@ -29036,13 +29036,13 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
 
 	}
 
-	CircleBufferGeometry.prototype = Object.create( BufferGeometry.prototype );
+	CircleBufferGeometry.prototype = Object.create( BufferGeometry$1.prototype );
 	CircleBufferGeometry.prototype.constructor = CircleBufferGeometry;
 
 
@@ -29053,7 +29053,7 @@
 		ParametricBufferGeometry: ParametricBufferGeometry,
 		TetrahedronGeometry: TetrahedronGeometry,
 		TetrahedronBufferGeometry: TetrahedronBufferGeometry,
-		OctahedronGeometry: OctahedronGeometry,
+		OctahedronGeometry: OctahedronGeometry$1,
 		OctahedronBufferGeometry: OctahedronBufferGeometry,
 		IcosahedronGeometry: IcosahedronGeometry,
 		IcosahedronBufferGeometry: IcosahedronBufferGeometry,
@@ -29066,7 +29066,7 @@
 		TorusKnotGeometry: TorusKnotGeometry,
 		TorusKnotBufferGeometry: TorusKnotBufferGeometry,
 		TorusGeometry: TorusGeometry,
-		TorusBufferGeometry: TorusBufferGeometry,
+		TorusBufferGeometry: TorusBufferGeometry$1,
 		TextGeometry: TextGeometry,
 		TextBufferGeometry: TextBufferGeometry,
 		SphereGeometry: SphereGeometry,
@@ -29074,7 +29074,7 @@
 		RingGeometry: RingGeometry,
 		RingBufferGeometry: RingBufferGeometry,
 		PlaneGeometry: PlaneGeometry,
-		PlaneBufferGeometry: PlaneBufferGeometry,
+		PlaneBufferGeometry: PlaneBufferGeometry$1,
 		LatheGeometry: LatheGeometry,
 		LatheBufferGeometry: LatheBufferGeometry,
 		ShapeGeometry: ShapeGeometry,
@@ -29084,12 +29084,12 @@
 		EdgesGeometry: EdgesGeometry,
 		ConeGeometry: ConeGeometry,
 		ConeBufferGeometry: ConeBufferGeometry,
-		CylinderGeometry: CylinderGeometry,
-		CylinderBufferGeometry: CylinderBufferGeometry,
+		CylinderGeometry: CylinderGeometry$1,
+		CylinderBufferGeometry: CylinderBufferGeometry$1,
 		CircleGeometry: CircleGeometry,
 		CircleBufferGeometry: CircleBufferGeometry,
-		BoxGeometry: BoxGeometry,
-		BoxBufferGeometry: BoxBufferGeometry
+		BoxGeometry: BoxGeometry$1,
+		BoxBufferGeometry: BoxBufferGeometry$1
 	});
 
 	/**
@@ -29218,7 +29218,7 @@
 		this.bumpScale = 1;
 
 		this.normalMap = null;
-		this.normalScale = new Vector2( 1, 1 );
+		this.normalScale = new Vector2$1( 1, 1 );
 
 		this.displacementMap = null;
 		this.displacementScale = 1;
@@ -29430,7 +29430,7 @@
 		this.bumpScale = 1;
 
 		this.normalMap = null;
-		this.normalScale = new Vector2( 1, 1 );
+		this.normalScale = new Vector2$1( 1, 1 );
 
 		this.displacementMap = null;
 		this.displacementScale = 1;
@@ -29588,7 +29588,7 @@
 		this.bumpScale = 1;
 
 		this.normalMap = null;
-		this.normalScale = new Vector2( 1, 1 );
+		this.normalScale = new Vector2$1( 1, 1 );
 
 		this.displacementMap = null;
 		this.displacementScale = 1;
@@ -29780,7 +29780,7 @@
 
 	function LineDashedMaterial( parameters ) {
 
-		LineBasicMaterial.call( this );
+		LineBasicMaterial$1.call( this );
 
 		this.type = 'LineDashedMaterial';
 
@@ -29792,14 +29792,14 @@
 
 	}
 
-	LineDashedMaterial.prototype = Object.create( LineBasicMaterial.prototype );
+	LineDashedMaterial.prototype = Object.create( LineBasicMaterial$1.prototype );
 	LineDashedMaterial.prototype.constructor = LineDashedMaterial;
 
 	LineDashedMaterial.prototype.isLineDashedMaterial = true;
 
 	LineDashedMaterial.prototype.copy = function ( source ) {
 
-		LineBasicMaterial.prototype.copy.call( this, source );
+		LineBasicMaterial$1.prototype.copy.call( this, source );
 
 		this.scale = source.scale;
 		this.dashSize = source.dashSize;
@@ -29825,9 +29825,9 @@
 		MeshLambertMaterial: MeshLambertMaterial,
 		MeshDepthMaterial: MeshDepthMaterial,
 		MeshDistanceMaterial: MeshDistanceMaterial,
-		MeshBasicMaterial: MeshBasicMaterial,
+		MeshBasicMaterial: MeshBasicMaterial$1,
 		LineDashedMaterial: LineDashedMaterial,
-		LineBasicMaterial: LineBasicMaterial,
+		LineBasicMaterial: LineBasicMaterial$1,
 		Material: Material
 	});
 
@@ -30742,10 +30742,10 @@
 		this.bias = 0;
 		this.radius = 1;
 
-		this.mapSize = new Vector2( 512, 512 );
+		this.mapSize = new Vector2$1( 512, 512 );
 
 		this.map = null;
-		this.matrix = new Matrix4();
+		this.matrix = new Matrix4$1();
 
 	}
 
@@ -30793,7 +30793,7 @@
 
 	function SpotLightShadow() {
 
-		LightShadow.call( this, new PerspectiveCamera( 50, 1, 0.5, 500 ) );
+		LightShadow.call( this, new PerspectiveCamera$1( 50, 1, 0.5, 500 ) );
 
 	}
 
@@ -30914,7 +30914,7 @@
 		this.distance = ( distance !== undefined ) ? distance : 0;
 		this.decay = ( decay !== undefined ) ? decay : 1;	// for physically correct lights, should be 2.
 
-		this.shadow = new LightShadow( new PerspectiveCamera( 90, 1, 0.5, 500 ) );
+		this.shadow = new LightShadow( new PerspectiveCamera$1( 90, 1, 0.5, 500 ) );
 
 	}
 
@@ -30945,7 +30945,7 @@
 
 	function DirectionalLightShadow( ) {
 
-		LightShadow.call( this, new OrthographicCamera( - 5, 5, 5, - 5, 0.5, 500 ) );
+		LightShadow.call( this, new OrthographicCamera$1( - 5, 5, 5, - 5, 0.5, 500 ) );
 
 	}
 
@@ -32144,7 +32144,7 @@
 
 			for ( var end = offset + stride; offset !== end; offset += 4 ) {
 
-				Quaternion.slerpFlat( result, 0,
+				Quaternion$1.slerpFlat( result, 0,
 						values, offset - stride, values, offset, alpha );
 
 			}
@@ -32935,7 +32935,7 @@
 
 				}
 
-				material.normalScale = new Vector2().fromArray( normalScale );
+				material.normalScale = new Vector2$1().fromArray( normalScale );
 
 			}
 
@@ -32996,7 +32996,7 @@
 
 		parse: function ( json ) {
 
-			var geometry = new BufferGeometry();
+			var geometry = new BufferGeometry$1();
 
 			var index = json.data.index;
 
@@ -33036,7 +33036,7 @@
 
 			if ( boundingSphere !== undefined ) {
 
-				var center = new Vector3();
+				var center = new Vector3$1();
 
 				if ( boundingSphere.center !== undefined ) {
 
@@ -33355,7 +33355,7 @@
 							json.side = BackSide;
 							break;
 						case 'doubleSided':
-							json.side = DoubleSide;
+							json.side = DoubleSide$1;
 							break;
 						case 'transparency':
 							console.warn( 'THREE.Loader.createMaterial: transparency has been renamed to opacity' );
@@ -33530,7 +33530,7 @@
 
 				while ( offset < zLength ) {
 
-					vertex = new Vector3();
+					vertex = new Vector3$1();
 
 					vertex.x = vertices[ offset ++ ] * scale;
 					vertex.y = vertices[ offset ++ ] * scale;
@@ -33599,7 +33599,7 @@
 									u = uvLayer[ uvIndex * 2 ];
 									v = uvLayer[ uvIndex * 2 + 1 ];
 
-									uv = new Vector2( u, v );
+									uv = new Vector2$1( u, v );
 
 									if ( j !== 2 ) geometry.faceVertexUvs[ i ][ fi ].push( uv );
 									if ( j !== 0 ) geometry.faceVertexUvs[ i ][ fi + 1 ].push( uv );
@@ -33630,7 +33630,7 @@
 
 								normalIndex = faces[ offset ++ ] * 3;
 
-								normal = new Vector3(
+								normal = new Vector3$1(
 									normals[ normalIndex ++ ],
 									normals[ normalIndex ++ ],
 									normals[ normalIndex ]
@@ -33706,7 +33706,7 @@
 									u = uvLayer[ uvIndex * 2 ];
 									v = uvLayer[ uvIndex * 2 + 1 ];
 
-									uv = new Vector2( u, v );
+									uv = new Vector2$1( u, v );
 
 									geometry.faceVertexUvs[ i ][ fi ].push( uv );
 
@@ -33734,7 +33734,7 @@
 
 								normalIndex = faces[ offset ++ ] * 3;
 
-								normal = new Vector3(
+								normal = new Vector3$1(
 									normals[ normalIndex ++ ],
 									normals[ normalIndex ++ ],
 									normals[ normalIndex ]
@@ -33836,7 +33836,7 @@
 
 						for ( var v = 0, vl = srcVertices.length; v < vl; v += 3 ) {
 
-							var vertex = new Vector3();
+							var vertex = new Vector3$1();
 							vertex.x = srcVertices[ v ] * scale;
 							vertex.y = srcVertices[ v + 1 ] * scale;
 							vertex.z = srcVertices[ v + 2 ] * scale;
@@ -33932,7 +33932,7 @@
 
 				}
 
-				var geometry = new Geometry();
+				var geometry = new Geometry$1();
 
 				parseModel( json, geometry );
 				parseSkin( json, geometry );
@@ -34429,7 +34429,7 @@
 
 		parseObject: function () {
 
-			var matrix = new Matrix4();
+			var matrix = new Matrix4$1();
 
 			return function parseObject( data, geometries, materials ) {
 
@@ -34517,7 +34517,7 @@
 
 					case 'PerspectiveCamera':
 
-						object = new PerspectiveCamera( data.fov, data.aspect, data.near, data.far );
+						object = new PerspectiveCamera$1( data.fov, data.aspect, data.near, data.far );
 
 						if ( data.focus !== undefined ) object.focus = data.focus;
 						if ( data.zoom !== undefined ) object.zoom = data.zoom;
@@ -34529,7 +34529,7 @@
 
 					case 'OrthographicCamera':
 
-						object = new OrthographicCamera( data.left, data.right, data.top, data.bottom, data.near, data.far );
+						object = new OrthographicCamera$1( data.left, data.right, data.top, data.bottom, data.near, data.far );
 
 						break;
 
@@ -34584,7 +34584,7 @@
 
 						} else {
 
-							object = new Mesh( geometry, material );
+							object = new Mesh$1( geometry, material );
 
 						}
 
@@ -34598,7 +34598,7 @@
 
 					case 'Line':
 
-						object = new Line( getGeometry( data.geometry ), getMaterial( data.material ), data.mode );
+						object = new Line$1( getGeometry( data.geometry ), getMaterial( data.material ), data.mode );
 
 						break;
 
@@ -35079,14 +35079,14 @@
 
 			// see http://www.cs.indiana.edu/pub/techreports/TR425.pdf
 
-			var normal = new Vector3();
+			var normal = new Vector3$1();
 
 			var tangents = [];
 			var normals = [];
 			var binormals = [];
 
-			var vec = new Vector3();
-			var mat = new Matrix4();
+			var vec = new Vector3$1();
+			var mat = new Matrix4$1();
 
 			var i, u, theta;
 
@@ -35104,8 +35104,8 @@
 			// select an initial normal vector perpendicular to the first tangent vector,
 			// and in the direction of the minimum tangent xyz component
 
-			normals[ 0 ] = new Vector3();
-			binormals[ 0 ] = new Vector3();
+			normals[ 0 ] = new Vector3$1();
+			binormals[ 0 ] = new Vector3$1();
 			var min = Number.MAX_VALUE;
 			var tx = Math.abs( tangents[ 0 ].x );
 			var ty = Math.abs( tangents[ 0 ].y );
@@ -35460,12 +35460,12 @@
 
 		createGeometry: function ( points ) {
 
-			var geometry = new Geometry();
+			var geometry = new Geometry$1();
 
 			for ( var i = 0, l = points.length; i < l; i ++ ) {
 
 				var point = points[ i ];
-				geometry.vertices.push( new Vector3( point.x, point.y, point.z || 0 ) );
+				geometry.vertices.push( new Vector3$1( point.x, point.y, point.z || 0 ) );
 
 			}
 
@@ -35555,7 +35555,7 @@
 
 		}
 
-		return new Vector2( x, y );
+		return new Vector2$1( x, y );
 
 	};
 
@@ -35585,7 +35585,7 @@
 		var point2 = points[ intPoint > points.length - 2 ? points.length - 1 : intPoint + 1 ];
 		var point3 = points[ intPoint > points.length - 3 ? points.length - 1 : intPoint + 2 ];
 
-		return new Vector2(
+		return new Vector2$1(
 			CatmullRom( weight, point0.x, point1.x, point2.x, point3.x ),
 			CatmullRom( weight, point0.y, point1.y, point2.y, point3.y )
 		);
@@ -35610,7 +35610,7 @@
 
 		var v0 = this.v0, v1 = this.v1, v2 = this.v2, v3 = this.v3;
 
-		return new Vector2(
+		return new Vector2$1(
 			CubicBezier( t, v0.x, v1.x, v2.x, v3.x ),
 			CubicBezier( t, v0.y, v1.y, v2.y, v3.y )
 		);
@@ -35634,7 +35634,7 @@
 
 		var v0 = this.v0, v1 = this.v1, v2 = this.v2;
 
-		return new Vector2(
+		return new Vector2$1(
 			QuadraticBezier( t, v0.x, v1.x, v2.x ),
 			QuadraticBezier( t, v0.y, v1.y, v2.y )
 		);
@@ -35663,7 +35663,7 @@
 
 		lineTo: function ( x, y ) {
 
-			var curve = new LineCurve( this.currentPoint.clone(), new Vector2( x, y ) );
+			var curve = new LineCurve( this.currentPoint.clone(), new Vector2$1( x, y ) );
 			this.curves.push( curve );
 
 			this.currentPoint.set( x, y );
@@ -35674,8 +35674,8 @@
 
 			var curve = new QuadraticBezierCurve(
 				this.currentPoint.clone(),
-				new Vector2( aCPx, aCPy ),
-				new Vector2( aX, aY )
+				new Vector2$1( aCPx, aCPy ),
+				new Vector2$1( aX, aY )
 			);
 
 			this.curves.push( curve );
@@ -35688,9 +35688,9 @@
 
 			var curve = new CubicBezierCurve(
 				this.currentPoint.clone(),
-				new Vector2( aCP1x, aCP1y ),
-				new Vector2( aCP2x, aCP2y ),
-				new Vector2( aX, aY )
+				new Vector2$1( aCP1x, aCP1y ),
+				new Vector2$1( aCP2x, aCP2y ),
+				new Vector2$1( aX, aY )
 			);
 
 			this.curves.push( curve );
@@ -35770,7 +35770,7 @@
 	function Path( points ) {
 
 		CurvePath.call( this );
-		this.currentPoint = new Vector2();
+		this.currentPoint = new Vector2$1();
 
 		if ( points ) {
 
@@ -36613,11 +36613,11 @@
 
 			// build geometry
 
-			var geometry = new BufferGeometry();
+			var geometry = new BufferGeometry$1();
 
-			if ( position.length > 0 ) geometry.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) );
-			if ( normal.length > 0 ) geometry.addAttribute( 'normal', new Float32BufferAttribute( normal, 3 ) );
-			if ( color.length > 0 ) geometry.addAttribute( 'color', new Float32BufferAttribute( color, 3 ) );
+			if ( position.length > 0 ) geometry.addAttribute( 'position', new Float32BufferAttribute$1( position, 3 ) );
+			if ( normal.length > 0 ) geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normal, 3 ) );
+			if ( color.length > 0 ) geometry.addAttribute( 'color', new Float32BufferAttribute$1( color, 3 ) );
 
 			geometry.computeBoundingSphere();
 
@@ -36717,11 +36717,11 @@
 
 		this.eyeSep = 0.064;
 
-		this.cameraL = new PerspectiveCamera();
+		this.cameraL = new PerspectiveCamera$1();
 		this.cameraL.layers.enable( 1 );
 		this.cameraL.matrixAutoUpdate = false;
 
-		this.cameraR = new PerspectiveCamera();
+		this.cameraR = new PerspectiveCamera$1();
 		this.cameraR.layers.enable( 2 );
 		this.cameraR.matrixAutoUpdate = false;
 
@@ -36733,8 +36733,8 @@
 
 			var instance, focus, fov, aspect, near, far, zoom, eyeSep;
 
-			var eyeRight = new Matrix4();
-			var eyeLeft = new Matrix4();
+			var eyeRight = new Matrix4$1();
+			var eyeLeft = new Matrix4$1();
 
 			return function update( camera ) {
 
@@ -36812,34 +36812,34 @@
 
 		var fov = 90, aspect = 1;
 
-		var cameraPX = new PerspectiveCamera( fov, aspect, near, far );
+		var cameraPX = new PerspectiveCamera$1( fov, aspect, near, far );
 		cameraPX.up.set( 0, - 1, 0 );
-		cameraPX.lookAt( new Vector3( 1, 0, 0 ) );
+		cameraPX.lookAt( new Vector3$1( 1, 0, 0 ) );
 		this.add( cameraPX );
 
-		var cameraNX = new PerspectiveCamera( fov, aspect, near, far );
+		var cameraNX = new PerspectiveCamera$1( fov, aspect, near, far );
 		cameraNX.up.set( 0, - 1, 0 );
-		cameraNX.lookAt( new Vector3( - 1, 0, 0 ) );
+		cameraNX.lookAt( new Vector3$1( - 1, 0, 0 ) );
 		this.add( cameraNX );
 
-		var cameraPY = new PerspectiveCamera( fov, aspect, near, far );
+		var cameraPY = new PerspectiveCamera$1( fov, aspect, near, far );
 		cameraPY.up.set( 0, 0, 1 );
-		cameraPY.lookAt( new Vector3( 0, 1, 0 ) );
+		cameraPY.lookAt( new Vector3$1( 0, 1, 0 ) );
 		this.add( cameraPY );
 
-		var cameraNY = new PerspectiveCamera( fov, aspect, near, far );
+		var cameraNY = new PerspectiveCamera$1( fov, aspect, near, far );
 		cameraNY.up.set( 0, 0, - 1 );
-		cameraNY.lookAt( new Vector3( 0, - 1, 0 ) );
+		cameraNY.lookAt( new Vector3$1( 0, - 1, 0 ) );
 		this.add( cameraNY );
 
-		var cameraPZ = new PerspectiveCamera( fov, aspect, near, far );
+		var cameraPZ = new PerspectiveCamera$1( fov, aspect, near, far );
 		cameraPZ.up.set( 0, - 1, 0 );
-		cameraPZ.lookAt( new Vector3( 0, 0, 1 ) );
+		cameraPZ.lookAt( new Vector3$1( 0, 0, 1 ) );
 		this.add( cameraPZ );
 
-		var cameraNZ = new PerspectiveCamera( fov, aspect, near, far );
+		var cameraNZ = new PerspectiveCamera$1( fov, aspect, near, far );
 		cameraNZ.up.set( 0, - 1, 0 );
-		cameraNZ.lookAt( new Vector3( 0, 0, - 1 ) );
+		cameraNZ.lookAt( new Vector3$1( 0, 0, - 1 ) );
 		this.add( cameraNZ );
 
 		var options = { format: RGBFormat, magFilter: LinearFilter, minFilter: LinearFilter };
@@ -36983,11 +36983,11 @@
 
 		updateMatrixWorld: ( function () {
 
-			var position = new Vector3();
-			var quaternion = new Quaternion();
-			var scale = new Vector3();
+			var position = new Vector3$1();
+			var quaternion = new Quaternion$1();
+			var scale = new Vector3$1();
 
-			var orientation = new Vector3();
+			var orientation = new Vector3$1();
 
 			return function updateMatrixWorld( force ) {
 
@@ -37395,7 +37395,7 @@
 
 		updateMatrixWorld: ( function () {
 
-			var position = new Vector3();
+			var position = new Vector3$1();
 
 			return function updateMatrixWorld( force ) {
 
@@ -37638,7 +37638,7 @@
 
 		_slerp: function ( buffer, dstOffset, srcOffset, t ) {
 
-			Quaternion.slerpFlat( buffer, dstOffset, buffer, dstOffset, buffer, srcOffset, t );
+			Quaternion$1.slerpFlat( buffer, dstOffset, buffer, dstOffset, buffer, srcOffset, t );
 
 		},
 
@@ -40171,14 +40171,14 @@
 
 	function InstancedBufferGeometry() {
 
-		BufferGeometry.call( this );
+		BufferGeometry$1.call( this );
 
 		this.type = 'InstancedBufferGeometry';
 		this.maxInstancedCount = undefined;
 
 	}
 
-	InstancedBufferGeometry.prototype = Object.assign( Object.create( BufferGeometry.prototype ), {
+	InstancedBufferGeometry.prototype = Object.assign( Object.create( BufferGeometry$1.prototype ), {
 
 		constructor: InstancedBufferGeometry,
 
@@ -40542,7 +40542,7 @@
 	 * @author stephomi / http://stephaneginier.com/
 	 */
 
-	function Raycaster( origin, direction, near, far ) {
+	function Raycaster$1( origin, direction, near, far ) {
 
 		this.ray = new Ray( origin, direction );
 		// direction is assumed to be normalized (for accurate distance calculations)
@@ -40595,7 +40595,7 @@
 
 	}
 
-	Object.assign( Raycaster.prototype, {
+	Object.assign( Raycaster$1.prototype, {
 
 		linePrecision: 1,
 
@@ -40923,13 +40923,13 @@
 
 		//
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 
-		var positions = new Float32BufferAttribute( nNormals * 2 * 3, 3 );
+		var positions = new Float32BufferAttribute$1( nNormals * 2 * 3, 3 );
 
 		geometry.addAttribute( 'position', positions );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color, linewidth: width } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color, linewidth: width } ) );
 
 		//
 
@@ -40944,8 +40944,8 @@
 
 	VertexNormalsHelper.prototype.update = ( function () {
 
-		var v1 = new Vector3();
-		var v2 = new Vector3();
+		var v1 = new Vector3$1();
+		var v2 = new Vector3$1();
 		var normalMatrix = new Matrix3();
 
 		return function update() {
@@ -41052,7 +41052,7 @@
 
 		this.color = color;
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 
 		var positions = [
 			0, 0, 0,   0,   0,   1,
@@ -41074,9 +41074,9 @@
 
 		}
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
 
-		var material = new LineBasicMaterial( { fog: false } );
+		var material = new LineBasicMaterial$1( { fog: false } );
 
 		this.cone = new LineSegments( geometry, material );
 		this.add( this.cone );
@@ -41097,8 +41097,8 @@
 
 	SpotLightHelper.prototype.update = function () {
 
-		var vector = new Vector3();
-		var vector2 = new Vector3();
+		var vector = new Vector3$1();
+		var vector2 = new Vector3$1();
 
 		return function update() {
 
@@ -41160,7 +41160,7 @@
 
 		var bones = getBoneList( object );
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 
 		var vertices = [];
 		var colors = [];
@@ -41183,10 +41183,10 @@
 
 		}
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
 
-		var material = new LineBasicMaterial( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true } );
+		var material = new LineBasicMaterial$1( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41205,10 +41205,10 @@
 
 	SkeletonHelper.prototype.onBeforeRender = function () {
 
-		var vector = new Vector3();
+		var vector = new Vector3$1();
 
-		var boneMatrix = new Matrix4();
-		var matrixWorldInv = new Matrix4();
+		var boneMatrix = new Matrix4$1();
+		var matrixWorldInv = new Matrix4$1();
 
 		return function onBeforeRender() {
 
@@ -41258,9 +41258,9 @@
 		this.color = color;
 
 		var geometry = new SphereBufferGeometry( sphereSize, 4, 2 );
-		var material = new MeshBasicMaterial( { wireframe: true, fog: false } );
+		var material = new MeshBasicMaterial$1( { wireframe: true, fog: false } );
 
-		Mesh.call( this, geometry, material );
+		Mesh$1.call( this, geometry, material );
 
 		this.matrix = this.light.matrixWorld;
 		this.matrixAutoUpdate = false;
@@ -41292,7 +41292,7 @@
 
 	}
 
-	PointLightHelper.prototype = Object.create( Mesh.prototype );
+	PointLightHelper.prototype = Object.create( Mesh$1.prototype );
 	PointLightHelper.prototype.constructor = PointLightHelper;
 
 	PointLightHelper.prototype.dispose = function () {
@@ -41349,13 +41349,13 @@
 
 		this.color = color;
 
-		var material = new LineBasicMaterial( { fog: false } );
+		var material = new LineBasicMaterial$1( { fog: false } );
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 
 		geometry.addAttribute( 'position', new BufferAttribute( new Float32Array( 5 * 3 ), 3 ) );
 
-		this.line = new Line( geometry, material );
+		this.line = new Line$1( geometry, material );
 		this.add( this.line );
 
 
@@ -41426,7 +41426,7 @@
 		var geometry = new OctahedronBufferGeometry( size );
 		geometry.rotateY( Math.PI * 0.5 );
 
-		this.material = new MeshBasicMaterial( { wireframe: true, fog: false } );
+		this.material = new MeshBasicMaterial$1( { wireframe: true, fog: false } );
 		if ( this.color === undefined ) this.material.vertexColors = VertexColors;
 
 		var position = geometry.getAttribute( 'position' );
@@ -41434,7 +41434,7 @@
 
 		geometry.addAttribute( 'color', new BufferAttribute( colors, 3 ) );
 
-		this.add( new Mesh( geometry, this.material ) );
+		this.add( new Mesh$1( geometry, this.material ) );
 
 		this.update();
 
@@ -41452,7 +41452,7 @@
 
 	HemisphereLightHelper.prototype.update = function () {
 
-		var vector = new Vector3();
+		var vector = new Vector3$1();
 
 		var color1 = new Color();
 		var color2 = new Color();
@@ -41521,11 +41521,11 @@
 
 		}
 
-		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
+		var geometry = new BufferGeometry$1();
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
 
-		var material = new LineBasicMaterial( { vertexColors: VertexColors } );
+		var material = new LineBasicMaterial$1( { vertexColors: VertexColors } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41608,11 +41608,11 @@
 
 		}
 
-		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
+		var geometry = new BufferGeometry$1();
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
 
-		var material = new LineBasicMaterial( { vertexColors: VertexColors } );
+		var material = new LineBasicMaterial$1( { vertexColors: VertexColors } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41656,13 +41656,13 @@
 
 		//
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 
-		var positions = new Float32BufferAttribute( nNormals * 2 * 3, 3 );
+		var positions = new Float32BufferAttribute$1( nNormals * 2 * 3, 3 );
 
 		geometry.addAttribute( 'position', positions );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color, linewidth: width } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color, linewidth: width } ) );
 
 		//
 
@@ -41676,8 +41676,8 @@
 
 	FaceNormalsHelper.prototype.update = ( function () {
 
-		var v1 = new Vector3();
-		var v2 = new Vector3();
+		var v1 = new Vector3$1();
+		var v2 = new Vector3$1();
 		var normalMatrix = new Matrix3();
 
 		return function update() {
@@ -41750,8 +41750,8 @@
 
 		if ( size === undefined ) size = 1;
 
-		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute( [
+		var geometry = new BufferGeometry$1();
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( [
 			- size,   size, 0,
 			  size,   size, 0,
 			  size, - size, 0,
@@ -41759,15 +41759,15 @@
 			- size,   size, 0
 		], 3 ) );
 
-		var material = new LineBasicMaterial( { fog: false } );
+		var material = new LineBasicMaterial$1( { fog: false } );
 
-		this.lightPlane = new Line( geometry, material );
+		this.lightPlane = new Line$1( geometry, material );
 		this.add( this.lightPlane );
 
-		geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
+		geometry = new BufferGeometry$1();
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
 
-		this.targetLine = new Line( geometry, material );
+		this.targetLine = new Line$1( geometry, material );
 		this.add( this.targetLine );
 
 		this.update();
@@ -41788,9 +41788,9 @@
 
 	DirectionalLightHelper.prototype.update = function () {
 
-		var v1 = new Vector3();
-		var v2 = new Vector3();
-		var v3 = new Vector3();
+		var v1 = new Vector3$1();
+		var v2 = new Vector3$1();
+		var v3 = new Vector3$1();
 
 		return function update() {
 
@@ -41831,8 +41831,8 @@
 
 	function CameraHelper( camera ) {
 
-		var geometry = new BufferGeometry();
-		var material = new LineBasicMaterial( { color: 0xffffff, vertexColors: FaceColors } );
+		var geometry = new BufferGeometry$1();
+		var material = new LineBasicMaterial$1( { color: 0xffffff, vertexColors: FaceColors } );
 
 		var vertices = [];
 		var colors = [];
@@ -41916,8 +41916,8 @@
 
 		}
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41940,7 +41940,7 @@
 
 		var geometry, pointMap;
 
-		var vector = new Vector3();
+		var vector = new Vector3$1();
 		var camera = new Camera();
 
 		function setPoint( point, x, y, z ) {
@@ -42032,11 +42032,11 @@
 		var indices = new Uint16Array( [ 0, 1, 1, 2, 2, 3, 3, 0, 4, 5, 5, 6, 6, 7, 7, 4, 0, 4, 1, 5, 2, 6, 3, 7 ] );
 		var positions = new Float32Array( 8 * 3 );
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 		geometry.setIndex( new BufferAttribute( indices, 1 ) );
 		geometry.addAttribute( 'position', new BufferAttribute( positions, 3 ) );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color } ) );
 
 		this.matrixAutoUpdate = false;
 
@@ -42131,13 +42131,13 @@
 
 		var positions = [ 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, - 1, 1, 1, 1, - 1, - 1, 1, - 1, - 1, - 1, - 1, 1, - 1, - 1 ];
 
-		var geometry = new BufferGeometry();
+		var geometry = new BufferGeometry$1();
 
 		geometry.setIndex( new BufferAttribute( indices, 1 ) );
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color } ) );
 
 		this.geometry.computeBoundingSphere();
 
@@ -42178,21 +42178,21 @@
 
 		var positions = [ 1, - 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, - 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0 ];
 
-		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
+		var geometry = new BufferGeometry$1();
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
 		geometry.computeBoundingSphere();
 
-		Line.call( this, geometry, new LineBasicMaterial( { color: color } ) );
+		Line$1.call( this, geometry, new LineBasicMaterial$1( { color: color } ) );
 
 		//
 
 		var positions2 = [ 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, 1, 1, - 1, - 1, 1, 1, - 1, 1 ];
 
-		var geometry2 = new BufferGeometry();
-		geometry2.addAttribute( 'position', new Float32BufferAttribute( positions2, 3 ) );
+		var geometry2 = new BufferGeometry$1();
+		geometry2.addAttribute( 'position', new Float32BufferAttribute$1( positions2, 3 ) );
 		geometry2.computeBoundingSphere();
 
-		this.add( new Mesh( geometry2, new MeshBasicMaterial( { color: color, opacity: 0.2, transparent: true, depthWrite: false } ) ) );
+		this.add( new Mesh$1( geometry2, new MeshBasicMaterial$1( { color: color, opacity: 0.2, transparent: true, depthWrite: false } ) ) );
 
 		//
 
@@ -42200,7 +42200,7 @@
 
 	}
 
-	PlaneHelper.prototype = Object.create( Line.prototype );
+	PlaneHelper.prototype = Object.create( Line$1.prototype );
 	PlaneHelper.prototype.constructor = PlaneHelper;
 
 	PlaneHelper.prototype.onBeforeRender = function () {
@@ -42248,21 +42248,21 @@
 
 		if ( lineGeometry === undefined ) {
 
-			lineGeometry = new BufferGeometry();
-			lineGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
+			lineGeometry = new BufferGeometry$1();
+			lineGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
 
-			coneGeometry = new CylinderBufferGeometry( 0, 0.5, 1, 5, 1 );
+			coneGeometry = new CylinderBufferGeometry$1( 0, 0.5, 1, 5, 1 );
 			coneGeometry.translate( 0, - 0.5, 0 );
 
 		}
 
 		this.position.copy( origin );
 
-		this.line = new Line( lineGeometry, new LineBasicMaterial( { color: color } ) );
+		this.line = new Line$1( lineGeometry, new LineBasicMaterial$1( { color: color } ) );
 		this.line.matrixAutoUpdate = false;
 		this.add( this.line );
 
-		this.cone = new Mesh( coneGeometry, new MeshBasicMaterial( { color: color } ) );
+		this.cone = new Mesh$1( coneGeometry, new MeshBasicMaterial$1( { color: color } ) );
 		this.cone.matrixAutoUpdate = false;
 		this.add( this.cone );
 
@@ -42276,7 +42276,7 @@
 
 	ArrowHelper.prototype.setDirection = ( function () {
 
-		var axis = new Vector3();
+		var axis = new Vector3$1();
 		var radians;
 
 		return function setDirection( dir ) {
@@ -42347,11 +42347,11 @@
 			0, 0, 1,  0, 0.6, 1
 		];
 
-		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
+		var geometry = new BufferGeometry$1();
+		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
 
-		var material = new LineBasicMaterial( { vertexColors: VertexColors } );
+		var material = new LineBasicMaterial$1( { vertexColors: VertexColors } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -42439,7 +42439,7 @@
 
 	//
 
-	var tmp = new Vector3();
+	var tmp = new Vector3$1();
 	var px = new CubicPoly(), py = new CubicPoly(), pz = new CubicPoly();
 
 	function CatmullRomCurve3( points ) {
@@ -42531,7 +42531,7 @@
 
 		}
 
-		return new Vector3( px.calc( weight ), py.calc( weight ), pz.calc( weight ) );
+		return new Vector3$1( px.calc( weight ), py.calc( weight ), pz.calc( weight ) );
 
 	};
 
@@ -42553,7 +42553,7 @@
 
 		var v0 = this.v0, v1 = this.v1, v2 = this.v2, v3 = this.v3;
 
-		return new Vector3(
+		return new Vector3$1(
 			CubicBezier( t, v0.x, v1.x, v2.x, v3.x ),
 			CubicBezier( t, v0.y, v1.y, v2.y, v3.y ),
 			CubicBezier( t, v0.z, v1.z, v2.z, v3.z )
@@ -42578,7 +42578,7 @@
 
 		var v0 = this.v0, v1 = this.v1, v2 = this.v2;
 
-		return new Vector3(
+		return new Vector3$1(
 			QuadraticBezier( t, v0.x, v1.x, v2.x ),
 			QuadraticBezier( t, v0.y, v1.y, v2.y ),
 			QuadraticBezier( t, v0.z, v1.z, v2.z )
@@ -42606,7 +42606,7 @@
 
 		}
 
-		var vector = new Vector3();
+		var vector = new Vector3$1();
 
 		vector.subVectors( this.v2, this.v1 ); // diff
 		vector.multiplyScalar( t );
@@ -42637,7 +42637,7 @@
 
 			for ( var i = 0, l = materials.length; i < l; i ++ ) {
 
-				group.add( new Mesh( geometry, materials[ i ] ) );
+				group.add( new Mesh$1( geometry, materials[ i ] ) );
 
 			}
 
@@ -42655,7 +42655,7 @@
 
 		attach: function ( child, scene, parent ) {
 
-			child.applyMatrix( new Matrix4().getInverse( parent.matrixWorld ) );
+			child.applyMatrix( new Matrix4$1().getInverse( parent.matrixWorld ) );
 
 			scene.remove( child );
 			parent.add( child );
@@ -42703,31 +42703,31 @@
 
 		// internals
 
-		this.target = new Vector3();
+		this.target = new Vector3$1();
 
 		var EPS = 0.000001;
 
-		var lastPosition = new Vector3();
+		var lastPosition = new Vector3$1();
 
 		var _state = STATE.NONE,
 		_prevState = STATE.NONE,
 
-		_eye = new Vector3(),
+		_eye = new Vector3$1(),
 
-		_movePrev = new Vector2(),
-		_moveCurr = new Vector2(),
+		_movePrev = new Vector2$1(),
+		_moveCurr = new Vector2$1(),
 
-		_lastAxis = new Vector3(),
+		_lastAxis = new Vector3$1(),
 		_lastAngle = 0,
 
-		_zoomStart = new Vector2(),
-		_zoomEnd = new Vector2(),
+		_zoomStart = new Vector2$1(),
+		_zoomEnd = new Vector2$1(),
 
 		_touchZoomDistanceStart = 0,
 		_touchZoomDistanceEnd = 0,
 
-		_panStart = new Vector2(),
-		_panEnd = new Vector2();
+		_panStart = new Vector2$1(),
+		_panEnd = new Vector2$1();
 
 		// for reset
 
@@ -42779,7 +42779,7 @@
 
 		var getMouseOnScreen = ( function () {
 
-			var vector = new Vector2();
+			var vector = new Vector2$1();
 
 			return function getMouseOnScreen( pageX, pageY ) {
 
@@ -42796,7 +42796,7 @@
 
 		var getMouseOnCircle = ( function () {
 
-			var vector = new Vector2();
+			var vector = new Vector2$1();
 
 			return function getMouseOnCircle( pageX, pageY ) {
 
@@ -42813,12 +42813,12 @@
 
 		this.rotateCamera = ( function() {
 
-			var axis = new Vector3(),
-				quaternion = new Quaternion(),
-				eyeDirection = new Vector3(),
-				objectUpDirection = new Vector3(),
-				objectSidewaysDirection = new Vector3(),
-				moveDirection = new Vector3(),
+			var axis = new Vector3$1(),
+				quaternion = new Quaternion$1(),
+				eyeDirection = new Vector3$1(),
+				objectUpDirection = new Vector3$1(),
+				objectSidewaysDirection = new Vector3$1(),
+				moveDirection = new Vector3$1(),
 				angle;
 
 			return function rotateCamera() {
@@ -42903,9 +42903,9 @@
 
 		this.panCamera = ( function() {
 
-			var mouseChange = new Vector2(),
-				objectUp = new Vector3(),
-				pan = new Vector3();
+			var mouseChange = new Vector2$1(),
+				objectUp = new Vector3$1(),
+				pan = new Vector3$1();
 
 			return function panCamera() {
 
@@ -43296,11 +43296,11 @@
 
 		var GizmoMaterial = function ( parameters ) {
 
-			THREE.MeshBasicMaterial.call( this );
+			MeshBasicMaterial.call( this );
 
 			this.depthTest = false;
 			this.depthWrite = false;
-			this.side = THREE.FrontSide;
+			this.side = FrontSide;
 			this.transparent = true;
 
 			this.setValues( parameters );
@@ -43326,13 +43326,13 @@
 
 		};
 
-		GizmoMaterial.prototype = Object.create( THREE.MeshBasicMaterial.prototype );
+		GizmoMaterial.prototype = Object.create( MeshBasicMaterial.prototype );
 		GizmoMaterial.prototype.constructor = GizmoMaterial;
 
 
 		var GizmoLineMaterial = function ( parameters ) {
 
-			THREE.LineBasicMaterial.call( this );
+			LineBasicMaterial.call( this );
 
 			this.depthTest = false;
 			this.depthWrite = false;
@@ -43362,22 +43362,22 @@
 
 		};
 
-		GizmoLineMaterial.prototype = Object.create( THREE.LineBasicMaterial.prototype );
+		GizmoLineMaterial.prototype = Object.create( LineBasicMaterial.prototype );
 		GizmoLineMaterial.prototype.constructor = GizmoLineMaterial;
 
 
 		var pickerMaterial = new GizmoMaterial( { visible: false, transparent: false } );
 
 
-		THREE.TransformGizmo = function () {
+		TransformGizmo = function () {
 
 			this.init = function () {
 
-				THREE.Object3D.call( this );
+				Object3D.call( this );
 
-				this.handles = new THREE.Object3D();
-				this.pickers = new THREE.Object3D();
-				this.planes = new THREE.Object3D();
+				this.handles = new Object3D();
+				this.pickers = new Object3D();
+				this.planes = new Object3D();
 
 				this.add( this.handles );
 				this.add( this.pickers );
@@ -43385,14 +43385,14 @@
 
 				//// PLANES
 
-				var planeGeometry = new THREE.PlaneBufferGeometry( 50, 50, 2, 2 );
-				var planeMaterial = new THREE.MeshBasicMaterial( { visible: false, side: THREE.DoubleSide } );
+				var planeGeometry = new PlaneBufferGeometry( 50, 50, 2, 2 );
+				var planeMaterial = new MeshBasicMaterial( { visible: false, side: DoubleSide } );
 
 				var planes = {
-					"XY":   new THREE.Mesh( planeGeometry, planeMaterial ),
-					"YZ":   new THREE.Mesh( planeGeometry, planeMaterial ),
-					"XZ":   new THREE.Mesh( planeGeometry, planeMaterial ),
-					"XYZE": new THREE.Mesh( planeGeometry, planeMaterial )
+					"XY":   new Mesh( planeGeometry, planeMaterial ),
+					"YZ":   new Mesh( planeGeometry, planeMaterial ),
+					"XZ":   new Mesh( planeGeometry, planeMaterial ),
+					"XYZE": new Mesh( planeGeometry, planeMaterial )
 				};
 
 				this.activePlane = planes[ "XYZE" ];
@@ -43440,7 +43440,7 @@
 
 				this.traverse( function ( child ) {
 
-					if ( child instanceof THREE.Mesh ) {
+					if ( child instanceof Mesh ) {
 
 						child.updateMatrix();
 
@@ -43482,14 +43482,14 @@
 
 		};
 
-		THREE.TransformGizmo.prototype = Object.create( THREE.Object3D.prototype );
-		THREE.TransformGizmo.prototype.constructor = THREE.TransformGizmo;
+		TransformGizmo.prototype = Object.create( Object3D.prototype );
+		TransformGizmo.prototype.constructor = TransformGizmo;
 
-		THREE.TransformGizmo.prototype.update = function ( rotation, eye ) {
+		TransformGizmo.prototype.update = function ( rotation, eye ) {
 
-			var vec1 = new THREE.Vector3( 0, 0, 0 );
-			var vec2 = new THREE.Vector3( 0, 1, 0 );
-			var lookAtMatrix = new THREE.Matrix4();
+			var vec1 = new Vector3( 0, 0, 0 );
+			var vec2 = new Vector3( 0, 1, 0 );
+			var lookAtMatrix = new Matrix4();
 
 			this.traverse( function( child ) {
 
@@ -43507,57 +43507,57 @@
 
 		};
 
-		THREE.TransformGizmoTranslate = function () {
+		TransformGizmoTranslate = function () {
 
-			THREE.TransformGizmo.call( this );
+			TransformGizmo.call( this );
 
-			var arrowGeometry = new THREE.Geometry();
-			var mesh = new THREE.Mesh( new THREE.CylinderGeometry( 0, 0.05, 0.2, 12, 1, false ) );
+			var arrowGeometry = new Geometry();
+			var mesh = new Mesh( new CylinderGeometry( 0, 0.05, 0.2, 12, 1, false ) );
 			mesh.position.y = 0.5;
 			mesh.updateMatrix();
 
 			arrowGeometry.merge( mesh.geometry, mesh.matrix );
 
-			var lineXGeometry = new THREE.BufferGeometry();
-			lineXGeometry.addAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0,  1, 0, 0 ], 3 ) );
+			var lineXGeometry = new BufferGeometry();
+			lineXGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  1, 0, 0 ], 3 ) );
 
-			var lineYGeometry = new THREE.BufferGeometry();
-			lineYGeometry.addAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0,  0, 1, 0 ], 3 ) );
+			var lineYGeometry = new BufferGeometry();
+			lineYGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  0, 1, 0 ], 3 ) );
 
-			var lineZGeometry = new THREE.BufferGeometry();
-			lineZGeometry.addAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0,  0, 0, 1 ], 3 ) );
+			var lineZGeometry = new BufferGeometry();
+			lineZGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  0, 0, 1 ], 3 ) );
 
 			this.handleGizmos = {
 
 				X: [
-					[ new THREE.Mesh( arrowGeometry, new GizmoMaterial( { color: 0xff0000 } ) ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ],
-					[ new THREE.Line( lineXGeometry, new GizmoLineMaterial( { color: 0xff0000 } ) ) ]
+					[ new Mesh( arrowGeometry, new GizmoMaterial( { color: 0xff0000 } ) ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ],
+					[ new Line( lineXGeometry, new GizmoLineMaterial( { color: 0xff0000 } ) ) ]
 				],
 
 				Y: [
-					[ new THREE.Mesh( arrowGeometry, new GizmoMaterial( { color: 0x00ff00 } ) ), [ 0, 0.5, 0 ] ],
-					[	new THREE.Line( lineYGeometry, new GizmoLineMaterial( { color: 0x00ff00 } ) ) ]
+					[ new Mesh( arrowGeometry, new GizmoMaterial( { color: 0x00ff00 } ) ), [ 0, 0.5, 0 ] ],
+					[	new Line( lineYGeometry, new GizmoLineMaterial( { color: 0x00ff00 } ) ) ]
 				],
 
 				Z: [
-					[ new THREE.Mesh( arrowGeometry, new GizmoMaterial( { color: 0x0000ff } ) ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ] ],
-					[ new THREE.Line( lineZGeometry, new GizmoLineMaterial( { color: 0x0000ff } ) ) ]
+					[ new Mesh( arrowGeometry, new GizmoMaterial( { color: 0x0000ff } ) ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ] ],
+					[ new Line( lineZGeometry, new GizmoLineMaterial( { color: 0x0000ff } ) ) ]
 				],
 
 				XYZ: [
-					[ new THREE.Mesh( new THREE.OctahedronGeometry( 0.1, 0 ), new GizmoMaterial( { color: 0xffffff, opacity: 0.25 } ) ), [ 0, 0, 0 ], [ 0, 0, 0 ] ]
+					[ new Mesh( new OctahedronGeometry( 0.1, 0 ), new GizmoMaterial( { color: 0xffffff, opacity: 0.25 } ) ), [ 0, 0, 0 ], [ 0, 0, 0 ] ]
 				],
 
 				XY: [
-					[ new THREE.Mesh( new THREE.PlaneBufferGeometry( 0.29, 0.29 ), new GizmoMaterial( { color: 0xffff00, opacity: 0.25 } ) ), [ 0.15, 0.15, 0 ] ]
+					[ new Mesh( new PlaneBufferGeometry( 0.29, 0.29 ), new GizmoMaterial( { color: 0xffff00, opacity: 0.25 } ) ), [ 0.15, 0.15, 0 ] ]
 				],
 
 				YZ: [
-					[ new THREE.Mesh( new THREE.PlaneBufferGeometry( 0.29, 0.29 ), new GizmoMaterial( { color: 0x00ffff, opacity: 0.25 } ) ), [ 0, 0.15, 0.15 ], [ 0, Math.PI / 2, 0 ] ]
+					[ new Mesh( new PlaneBufferGeometry( 0.29, 0.29 ), new GizmoMaterial( { color: 0x00ffff, opacity: 0.25 } ) ), [ 0, 0.15, 0.15 ], [ 0, Math.PI / 2, 0 ] ]
 				],
 
 				XZ: [
-					[ new THREE.Mesh( new THREE.PlaneBufferGeometry( 0.29, 0.29 ), new GizmoMaterial( { color: 0xff00ff, opacity: 0.25 } ) ), [ 0.15, 0, 0.15 ], [ - Math.PI / 2, 0, 0 ] ]
+					[ new Mesh( new PlaneBufferGeometry( 0.29, 0.29 ), new GizmoMaterial( { color: 0xff00ff, opacity: 0.25 } ) ), [ 0.15, 0, 0.15 ], [ - Math.PI / 2, 0, 0 ] ]
 				]
 
 			};
@@ -43565,38 +43565,38 @@
 			this.pickerGizmos = {
 
 				X: [
-					[ new THREE.Mesh( new THREE.CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0.6, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ]
+					[ new Mesh( new CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0.6, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ]
 				],
 
 				Y: [
-					[ new THREE.Mesh( new THREE.CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0.6, 0 ] ]
+					[ new Mesh( new CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0.6, 0 ] ]
 				],
 
 				Z: [
-					[ new THREE.Mesh( new THREE.CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0, 0.6 ], [ Math.PI / 2, 0, 0 ] ]
+					[ new Mesh( new CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0, 0.6 ], [ Math.PI / 2, 0, 0 ] ]
 				],
 
 				XYZ: [
-					[ new THREE.Mesh( new THREE.OctahedronGeometry( 0.2, 0 ), pickerMaterial ) ]
+					[ new Mesh( new OctahedronGeometry( 0.2, 0 ), pickerMaterial ) ]
 				],
 
 				XY: [
-					[ new THREE.Mesh( new THREE.PlaneBufferGeometry( 0.4, 0.4 ), pickerMaterial ), [ 0.2, 0.2, 0 ] ]
+					[ new Mesh( new PlaneBufferGeometry( 0.4, 0.4 ), pickerMaterial ), [ 0.2, 0.2, 0 ] ]
 				],
 
 				YZ: [
-					[ new THREE.Mesh( new THREE.PlaneBufferGeometry( 0.4, 0.4 ), pickerMaterial ), [ 0, 0.2, 0.2 ], [ 0, Math.PI / 2, 0 ] ]
+					[ new Mesh( new PlaneBufferGeometry( 0.4, 0.4 ), pickerMaterial ), [ 0, 0.2, 0.2 ], [ 0, Math.PI / 2, 0 ] ]
 				],
 
 				XZ: [
-					[ new THREE.Mesh( new THREE.PlaneBufferGeometry( 0.4, 0.4 ), pickerMaterial ), [ 0.2, 0, 0.2 ], [ - Math.PI / 2, 0, 0 ] ]
+					[ new Mesh( new PlaneBufferGeometry( 0.4, 0.4 ), pickerMaterial ), [ 0.2, 0, 0.2 ], [ - Math.PI / 2, 0, 0 ] ]
 				]
 
 			};
 
 			this.setActivePlane = function ( axis, eye ) {
 
-				var tempMatrix = new THREE.Matrix4();
+				var tempMatrix = new Matrix4();
 				eye.applyMatrix4( tempMatrix.getInverse( tempMatrix.extractRotation( this.planes[ "XY" ].matrixWorld ) ) );
 
 				if ( axis === "X" ) {
@@ -43637,16 +43637,16 @@
 
 		};
 
-		THREE.TransformGizmoTranslate.prototype = Object.create( THREE.TransformGizmo.prototype );
-		THREE.TransformGizmoTranslate.prototype.constructor = THREE.TransformGizmoTranslate;
+		TransformGizmoTranslate.prototype = Object.create( TransformGizmo.prototype );
+		TransformGizmoTranslate.prototype.constructor = TransformGizmoTranslate;
 
-		THREE.TransformGizmoRotate = function () {
+		TransformGizmoRotate = function () {
 
-			THREE.TransformGizmo.call( this );
+			TransformGizmo.call( this );
 
 			var CircleGeometry = function ( radius, facing, arc ) {
 
-				var geometry = new THREE.BufferGeometry();
+				var geometry = new BufferGeometry();
 				var vertices = [];
 				arc = arc ? arc : 1;
 
@@ -43658,7 +43658,7 @@
 
 				}
 
-				geometry.addAttribute( 'position', new THREE.Float32BufferAttribute( vertices, 3 ) );
+				geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 				return geometry;
 
 			};
@@ -43666,23 +43666,23 @@
 			this.handleGizmos = {
 
 				X: [
-					[ new THREE.Line( new CircleGeometry( 1, 'x', 0.5 ), new GizmoLineMaterial( { color: 0xff0000 } ) ) ]
+					[ new Line( new CircleGeometry( 1, 'x', 0.5 ), new GizmoLineMaterial( { color: 0xff0000 } ) ) ]
 				],
 
 				Y: [
-					[ new THREE.Line( new CircleGeometry( 1, 'y', 0.5 ), new GizmoLineMaterial( { color: 0x00ff00 } ) ) ]
+					[ new Line( new CircleGeometry( 1, 'y', 0.5 ), new GizmoLineMaterial( { color: 0x00ff00 } ) ) ]
 				],
 
 				Z: [
-					[ new THREE.Line( new CircleGeometry( 1, 'z', 0.5 ), new GizmoLineMaterial( { color: 0x0000ff } ) ) ]
+					[ new Line( new CircleGeometry( 1, 'z', 0.5 ), new GizmoLineMaterial( { color: 0x0000ff } ) ) ]
 				],
 
 				E: [
-					[ new THREE.Line( new CircleGeometry( 1.25, 'z', 1 ), new GizmoLineMaterial( { color: 0xcccc00 } ) ) ]
+					[ new Line( new CircleGeometry( 1.25, 'z', 1 ), new GizmoLineMaterial( { color: 0xcccc00 } ) ) ]
 				],
 
 				XYZE: [
-					[ new THREE.Line( new CircleGeometry( 1, 'z', 1 ), new GizmoLineMaterial( { color: 0x787878 } ) ) ]
+					[ new Line( new CircleGeometry( 1, 'z', 1 ), new GizmoLineMaterial( { color: 0x787878 } ) ) ]
 				]
 
 			};
@@ -43690,23 +43690,23 @@
 			this.pickerGizmos = {
 
 				X: [
-					[ new THREE.Mesh( new THREE.TorusBufferGeometry( 1, 0.12, 4, 12, Math.PI ), pickerMaterial ), [ 0, 0, 0 ], [ 0, - Math.PI / 2, - Math.PI / 2 ] ]
+					[ new Mesh( new TorusBufferGeometry( 1, 0.12, 4, 12, Math.PI ), pickerMaterial ), [ 0, 0, 0 ], [ 0, - Math.PI / 2, - Math.PI / 2 ] ]
 				],
 
 				Y: [
-					[ new THREE.Mesh( new THREE.TorusBufferGeometry( 1, 0.12, 4, 12, Math.PI ), pickerMaterial ), [ 0, 0, 0 ], [ Math.PI / 2, 0, 0 ] ]
+					[ new Mesh( new TorusBufferGeometry( 1, 0.12, 4, 12, Math.PI ), pickerMaterial ), [ 0, 0, 0 ], [ Math.PI / 2, 0, 0 ] ]
 				],
 
 				Z: [
-					[ new THREE.Mesh( new THREE.TorusBufferGeometry( 1, 0.12, 4, 12, Math.PI ), pickerMaterial ), [ 0, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ]
+					[ new Mesh( new TorusBufferGeometry( 1, 0.12, 4, 12, Math.PI ), pickerMaterial ), [ 0, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ]
 				],
 
 				E: [
-					[ new THREE.Mesh( new THREE.TorusBufferGeometry( 1.25, 0.12, 2, 24 ), pickerMaterial ) ]
+					[ new Mesh( new TorusBufferGeometry( 1.25, 0.12, 2, 24 ), pickerMaterial ) ]
 				],
 
 				XYZE: [
-					[ new THREE.Mesh() ]// TODO
+					[ new Mesh() ]// TODO
 				]
 
 			};
@@ -43725,17 +43725,17 @@
 
 			this.update = function ( rotation, eye2 ) {
 
-				THREE.TransformGizmo.prototype.update.apply( this, arguments );
+				TransformGizmo.prototype.update.apply( this, arguments );
 
-				var tempMatrix = new THREE.Matrix4();
-				var worldRotation = new THREE.Euler( 0, 0, 1 );
-				var tempQuaternion = new THREE.Quaternion();
-				var unitX = new THREE.Vector3( 1, 0, 0 );
-				var unitY = new THREE.Vector3( 0, 1, 0 );
-				var unitZ = new THREE.Vector3( 0, 0, 1 );
-				var quaternionX = new THREE.Quaternion();
-				var quaternionY = new THREE.Quaternion();
-				var quaternionZ = new THREE.Quaternion();
+				var tempMatrix = new Matrix4();
+				var worldRotation = new Euler( 0, 0, 1 );
+				var tempQuaternion = new Quaternion();
+				var unitX = new Vector3( 1, 0, 0 );
+				var unitY = new Vector3( 0, 1, 0 );
+				var unitZ = new Vector3( 0, 0, 1 );
+				var quaternionX = new Quaternion();
+				var quaternionY = new Quaternion();
+				var quaternionZ = new Quaternion();
 				var eye = eye2.clone();
 
 				worldRotation.copy( this.planes[ "XY" ].rotation );
@@ -43780,48 +43780,48 @@
 
 		};
 
-		THREE.TransformGizmoRotate.prototype = Object.create( THREE.TransformGizmo.prototype );
-		THREE.TransformGizmoRotate.prototype.constructor = THREE.TransformGizmoRotate;
+		TransformGizmoRotate.prototype = Object.create( TransformGizmo.prototype );
+		TransformGizmoRotate.prototype.constructor = TransformGizmoRotate;
 
-		THREE.TransformGizmoScale = function () {
+		TransformGizmoScale = function () {
 
-			THREE.TransformGizmo.call( this );
+			TransformGizmo.call( this );
 
-			var arrowGeometry = new THREE.Geometry();
-			var mesh = new THREE.Mesh( new THREE.BoxGeometry( 0.125, 0.125, 0.125 ) );
+			var arrowGeometry = new Geometry();
+			var mesh = new Mesh( new BoxGeometry( 0.125, 0.125, 0.125 ) );
 			mesh.position.y = 0.5;
 			mesh.updateMatrix();
 
 			arrowGeometry.merge( mesh.geometry, mesh.matrix );
 
-			var lineXGeometry = new THREE.BufferGeometry();
-			lineXGeometry.addAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0,  1, 0, 0 ], 3 ) );
+			var lineXGeometry = new BufferGeometry();
+			lineXGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  1, 0, 0 ], 3 ) );
 
-			var lineYGeometry = new THREE.BufferGeometry();
-			lineYGeometry.addAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0,  0, 1, 0 ], 3 ) );
+			var lineYGeometry = new BufferGeometry();
+			lineYGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  0, 1, 0 ], 3 ) );
 
-			var lineZGeometry = new THREE.BufferGeometry();
-			lineZGeometry.addAttribute( 'position', new THREE.Float32BufferAttribute( [ 0, 0, 0,  0, 0, 1 ], 3 ) );
+			var lineZGeometry = new BufferGeometry();
+			lineZGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0,  0, 0, 1 ], 3 ) );
 
 			this.handleGizmos = {
 
 				X: [
-					[ new THREE.Mesh( arrowGeometry, new GizmoMaterial( { color: 0xff0000 } ) ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ],
-					[ new THREE.Line( lineXGeometry, new GizmoLineMaterial( { color: 0xff0000 } ) ) ]
+					[ new Mesh( arrowGeometry, new GizmoMaterial( { color: 0xff0000 } ) ), [ 0.5, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ],
+					[ new Line( lineXGeometry, new GizmoLineMaterial( { color: 0xff0000 } ) ) ]
 				],
 
 				Y: [
-					[ new THREE.Mesh( arrowGeometry, new GizmoMaterial( { color: 0x00ff00 } ) ), [ 0, 0.5, 0 ] ],
-					[ new THREE.Line( lineYGeometry, new GizmoLineMaterial( { color: 0x00ff00 } ) ) ]
+					[ new Mesh( arrowGeometry, new GizmoMaterial( { color: 0x00ff00 } ) ), [ 0, 0.5, 0 ] ],
+					[ new Line( lineYGeometry, new GizmoLineMaterial( { color: 0x00ff00 } ) ) ]
 				],
 
 				Z: [
-					[ new THREE.Mesh( arrowGeometry, new GizmoMaterial( { color: 0x0000ff } ) ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ] ],
-					[ new THREE.Line( lineZGeometry, new GizmoLineMaterial( { color: 0x0000ff } ) ) ]
+					[ new Mesh( arrowGeometry, new GizmoMaterial( { color: 0x0000ff } ) ), [ 0, 0, 0.5 ], [ Math.PI / 2, 0, 0 ] ],
+					[ new Line( lineZGeometry, new GizmoLineMaterial( { color: 0x0000ff } ) ) ]
 				],
 
 				XYZ: [
-					[ new THREE.Mesh( new THREE.BoxBufferGeometry( 0.125, 0.125, 0.125 ), new GizmoMaterial( { color: 0xffffff, opacity: 0.25 } ) ) ]
+					[ new Mesh( new BoxBufferGeometry( 0.125, 0.125, 0.125 ), new GizmoMaterial( { color: 0xffffff, opacity: 0.25 } ) ) ]
 				]
 
 			};
@@ -43829,26 +43829,26 @@
 			this.pickerGizmos = {
 
 				X: [
-					[ new THREE.Mesh( new THREE.CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0.6, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ]
+					[ new Mesh( new CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0.6, 0, 0 ], [ 0, 0, - Math.PI / 2 ] ]
 				],
 
 				Y: [
-					[ new THREE.Mesh( new THREE.CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0.6, 0 ] ]
+					[ new Mesh( new CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0.6, 0 ] ]
 				],
 
 				Z: [
-					[ new THREE.Mesh( new THREE.CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0, 0.6 ], [ Math.PI / 2, 0, 0 ] ]
+					[ new Mesh( new CylinderBufferGeometry( 0.2, 0, 1, 4, 1, false ), pickerMaterial ), [ 0, 0, 0.6 ], [ Math.PI / 2, 0, 0 ] ]
 				],
 
 				XYZ: [
-					[ new THREE.Mesh( new THREE.BoxBufferGeometry( 0.4, 0.4, 0.4 ), pickerMaterial ) ]
+					[ new Mesh( new BoxBufferGeometry( 0.4, 0.4, 0.4 ), pickerMaterial ) ]
 				]
 
 			};
 
 			this.setActivePlane = function ( axis, eye ) {
 
-				var tempMatrix = new THREE.Matrix4();
+				var tempMatrix = new Matrix4();
 				eye.applyMatrix4( tempMatrix.getInverse( tempMatrix.extractRotation( this.planes[ "XY" ].matrixWorld ) ) );
 
 				if ( axis === "X" ) {
@@ -43880,15 +43880,15 @@
 
 		};
 
-		THREE.TransformGizmoScale.prototype = Object.create( THREE.TransformGizmo.prototype );
-		THREE.TransformGizmoScale.prototype.constructor = THREE.TransformGizmoScale;
+		TransformGizmoScale.prototype = Object.create( TransformGizmo.prototype );
+		TransformGizmoScale.prototype.constructor = TransformGizmoScale;
 
-		THREE.TransformControls = function ( camera, domElement ) {
+		TransformControls = function ( camera, domElement ) {
 
 			// TODO: Make non-uniform scale and rotate play nice in hierarchies
 			// TODO: ADD RXYZ contol
 
-			THREE.Object3D.call( this );
+			Object3D.call( this );
 
 			domElement = ( domElement !== undefined ) ? domElement : document;
 
@@ -43906,9 +43906,9 @@
 			var _dragging = false;
 			var _gizmo = {
 
-				"translate": new THREE.TransformGizmoTranslate(),
-				"rotate": new THREE.TransformGizmoRotate(),
-				"scale": new THREE.TransformGizmoScale()
+				"translate": new TransformGizmoTranslate(),
+				"rotate": new TransformGizmoRotate(),
+				"scale": new TransformGizmoScale()
 			};
 
 			for ( var type in _gizmo ) {
@@ -43925,44 +43925,44 @@
 			var mouseUpEvent = { type: "mouseUp", mode: _mode };
 			var objectChangeEvent = { type: "objectChange" };
 
-			var ray = new THREE.Raycaster();
-			var pointerVector = new THREE.Vector2();
+			var ray = new Raycaster();
+			var pointerVector = new Vector2();
 
-			var point = new THREE.Vector3();
-			var offset = new THREE.Vector3();
+			var point = new Vector3();
+			var offset = new Vector3();
 
-			var rotation = new THREE.Vector3();
-			var offsetRotation = new THREE.Vector3();
+			var rotation = new Vector3();
+			var offsetRotation = new Vector3();
 			var scale = 1;
 
-			var lookAtMatrix = new THREE.Matrix4();
-			var eye = new THREE.Vector3();
+			var lookAtMatrix = new Matrix4();
+			var eye = new Vector3();
 
-			var tempMatrix = new THREE.Matrix4();
-			var tempVector = new THREE.Vector3();
-			var tempQuaternion = new THREE.Quaternion();
-			var unitX = new THREE.Vector3( 1, 0, 0 );
-			var unitY = new THREE.Vector3( 0, 1, 0 );
-			var unitZ = new THREE.Vector3( 0, 0, 1 );
+			var tempMatrix = new Matrix4();
+			var tempVector = new Vector3();
+			var tempQuaternion = new Quaternion();
+			var unitX = new Vector3( 1, 0, 0 );
+			var unitY = new Vector3( 0, 1, 0 );
+			var unitZ = new Vector3( 0, 0, 1 );
 
-			var quaternionXYZ = new THREE.Quaternion();
-			var quaternionX = new THREE.Quaternion();
-			var quaternionY = new THREE.Quaternion();
-			var quaternionZ = new THREE.Quaternion();
-			var quaternionE = new THREE.Quaternion();
+			var quaternionXYZ = new Quaternion();
+			var quaternionX = new Quaternion();
+			var quaternionY = new Quaternion();
+			var quaternionZ = new Quaternion();
+			var quaternionE = new Quaternion();
 
-			var oldPosition = new THREE.Vector3();
-			var oldScale = new THREE.Vector3();
-			var oldRotationMatrix = new THREE.Matrix4();
+			var oldPosition = new Vector3();
+			var oldScale = new Vector3();
+			var oldRotationMatrix = new Matrix4();
 
-			var parentRotationMatrix  = new THREE.Matrix4();
-			var parentScale = new THREE.Vector3();
+			var parentRotationMatrix  = new Matrix4();
+			var parentScale = new Vector3();
 
-			var worldPosition = new THREE.Vector3();
-			var worldRotation = new THREE.Euler();
-			var worldRotationMatrix  = new THREE.Matrix4();
-			var camPosition = new THREE.Vector3();
-			var camRotation = new THREE.Euler();
+			var worldPosition = new Vector3();
+			var worldRotation = new Euler();
+			var worldRotationMatrix  = new Matrix4();
+			var camPosition = new Vector3();
+			var camRotation = new Euler();
 
 			domElement.addEventListener( "mousedown", onPointerDown, false );
 			domElement.addEventListener( "touchstart", onPointerDown, false );
@@ -44077,11 +44077,11 @@
 				this.position.copy( worldPosition );
 				this.scale.set( scale, scale, scale );
 
-				if ( camera instanceof THREE.PerspectiveCamera ) {
+				if ( camera instanceof PerspectiveCamera ) {
 
 					eye.copy( camPosition ).sub( worldPosition ).normalize();
 
-				} else if ( camera instanceof THREE.OrthographicCamera ) {
+				} else if ( camera instanceof OrthographicCamera ) {
 
 					eye.copy( camPosition ).normalize();
 
@@ -44093,7 +44093,7 @@
 
 				} else if ( scope.space === "world" ) {
 
-					_gizmo[ _mode ].update( new THREE.Euler(), eye );
+					_gizmo[ _mode ].update( new Euler(), eye );
 
 				}
 
@@ -44520,7 +44520,7 @@
 	function Vertex( x, y, z ) {
 
 		console.warn( 'THREE.Vertex has been removed. Use THREE.Vector3 instead.' );
-		return new Vector3( x, y, z );
+		return new Vector3$1( x, y, z );
 
 	}
 
@@ -44585,7 +44585,7 @@
 	function Float32Attribute( array, itemSize ) {
 
 		console.warn( 'THREE.Float32Attribute has been removed. Use new THREE.Float32BufferAttribute() instead.' );
-		return new Float32BufferAttribute( array, itemSize );
+		return new Float32BufferAttribute$1( array, itemSize );
 
 	}
 
@@ -44681,7 +44681,7 @@
 	function EdgesHelper( object, hex ) {
 
 		console.warn( 'THREE.EdgesHelper has been removed. Use THREE.EdgesGeometry instead.' );
-		return new LineSegments( new EdgesGeometry( object.geometry ), new LineBasicMaterial( { color: hex !== undefined ? hex : 0xffffff } ) );
+		return new LineSegments( new EdgesGeometry( object.geometry ), new LineBasicMaterial$1( { color: hex !== undefined ? hex : 0xffffff } ) );
 
 	}
 
@@ -44700,7 +44700,7 @@
 	function WireframeHelper( object, hex ) {
 
 		console.warn( 'THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead.' );
-		return new LineSegments( new WireframeGeometry( object.geometry ), new LineBasicMaterial( { color: hex !== undefined ? hex : 0xffffff } ) );
+		return new LineSegments( new WireframeGeometry( object.geometry ), new LineBasicMaterial$1( { color: hex !== undefined ? hex : 0xffffff } ) );
 
 	}
 
@@ -44831,7 +44831,7 @@
 
 	} );
 
-	Object.assign( Matrix4.prototype, {
+	Object.assign( Matrix4$1.prototype, {
 
 		extractPosition: function ( m ) {
 
@@ -44851,7 +44851,7 @@
 
 			return function getPosition() {
 
-				if ( v1 === undefined ) v1 = new Vector3();
+				if ( v1 === undefined ) v1 = new Vector3$1();
 				console.warn( 'THREE.Matrix4: .getPosition() has been removed. Use Vector3.setFromMatrixPosition( matrix ) instead.' );
 				return v1.setFromMatrixColumn( this, 3 );
 
@@ -44950,7 +44950,7 @@
 
 	};
 
-	Quaternion.prototype.multiplyVector3 = function ( vector ) {
+	Quaternion$1.prototype.multiplyVector3 = function ( vector ) {
 
 		console.warn( 'THREE.Quaternion: .multiplyVector3() has been removed. Use is now vector.applyQuaternion( quaternion ) instead.' );
 		return vector.applyQuaternion( this );
@@ -44997,7 +44997,7 @@
 
 	} );
 
-	Object.assign( Vector2.prototype, {
+	Object.assign( Vector2$1.prototype, {
 
 		fromAttribute: function ( attribute, index, offset ) {
 
@@ -45008,7 +45008,7 @@
 
 	} );
 
-	Object.assign( Vector3.prototype, {
+	Object.assign( Vector3$1.prototype, {
 
 		setEulerFromRotationMatrix: function () {
 
@@ -45066,7 +45066,7 @@
 
 	//
 
-	Geometry.prototype.computeTangents = function () {
+	Geometry$1.prototype.computeTangents = function () {
 
 		console.warn( 'THREE.Geometry: .computeTangents() has been removed.' );
 
@@ -45172,7 +45172,7 @@
 
 	//
 
-	PerspectiveCamera.prototype.setLens = function ( focalLength, filmGauge ) {
+	PerspectiveCamera$1.prototype.setLens = function ( focalLength, filmGauge ) {
 
 		console.warn( "THREE.PerspectiveCamera.setLens is deprecated. " +
 				"Use .setFocalLength and .filmGauge for a photographic setup." );
@@ -45303,7 +45303,7 @@
 
 	} );
 
-	Object.assign( BufferGeometry.prototype, {
+	Object.assign( BufferGeometry$1.prototype, {
 
 		addIndex: function ( index ) {
 
@@ -45341,7 +45341,7 @@
 
 	} );
 
-	Object.defineProperties( BufferGeometry.prototype, {
+	Object.defineProperties( BufferGeometry$1.prototype, {
 
 		drawcalls: {
 			get: function () {
@@ -45942,10 +45942,10 @@
 	exports.SkinnedMesh = SkinnedMesh;
 	exports.Skeleton = Skeleton;
 	exports.Bone = Bone;
-	exports.Mesh = Mesh;
+	exports.Mesh = Mesh$1;
 	exports.LineSegments = LineSegments;
 	exports.LineLoop = LineLoop;
-	exports.Line = Line;
+	exports.Line = Line$1;
 	exports.Points = Points;
 	exports.Group = Group;
 	exports.VideoTexture = VideoTexture;
@@ -45984,8 +45984,8 @@
 	exports.LightShadow = LightShadow;
 	exports.Light = Light;
 	exports.StereoCamera = StereoCamera;
-	exports.PerspectiveCamera = PerspectiveCamera;
-	exports.OrthographicCamera = OrthographicCamera;
+	exports.PerspectiveCamera = PerspectiveCamera$1;
+	exports.OrthographicCamera = OrthographicCamera$1;
 	exports.CubeCamera = CubeCamera;
 	exports.ArrayCamera = ArrayCamera;
 	exports.Camera = Camera;
@@ -46009,16 +46009,16 @@
 	exports.AnimationClip = AnimationClip;
 	exports.Uniform = Uniform;
 	exports.InstancedBufferGeometry = InstancedBufferGeometry;
-	exports.BufferGeometry = BufferGeometry;
+	exports.BufferGeometry = BufferGeometry$1;
 	exports.GeometryIdCount = GeometryIdCount;
-	exports.Geometry = Geometry;
+	exports.Geometry = Geometry$1;
 	exports.InterleavedBufferAttribute = InterleavedBufferAttribute;
 	exports.InstancedInterleavedBuffer = InstancedInterleavedBuffer;
 	exports.InterleavedBuffer = InterleavedBuffer;
 	exports.InstancedBufferAttribute = InstancedBufferAttribute;
 	exports.Face3 = Face3;
 	exports.Object3D = Object3D;
-	exports.Raycaster = Raycaster;
+	exports.Raycaster = Raycaster$1;
 	exports.Layers = Layers;
 	exports.EventDispatcher = EventDispatcher;
 	exports.Clock = Clock;
@@ -46035,16 +46035,16 @@
 	exports.Frustum = Frustum;
 	exports.Sphere = Sphere;
 	exports.Ray = Ray;
-	exports.Matrix4 = Matrix4;
+	exports.Matrix4 = Matrix4$1;
 	exports.Matrix3 = Matrix3;
 	exports.Box3 = Box3;
 	exports.Box2 = Box2;
 	exports.Line3 = Line3;
-	exports.Euler = Euler;
+	exports.Euler = Euler$1;
 	exports.Vector4 = Vector4;
-	exports.Vector3 = Vector3;
-	exports.Vector2 = Vector2;
-	exports.Quaternion = Quaternion;
+	exports.Vector3 = Vector3$1;
+	exports.Vector2 = Vector2$1;
+	exports.Quaternion = Quaternion$1;
 	exports.Color = Color;
 	exports.ImmediateRenderObject = ImmediateRenderObject;
 	exports.VertexNormalsHelper = VertexNormalsHelper;
@@ -46089,7 +46089,7 @@
 	exports.ParametricBufferGeometry = ParametricBufferGeometry;
 	exports.TetrahedronGeometry = TetrahedronGeometry;
 	exports.TetrahedronBufferGeometry = TetrahedronBufferGeometry;
-	exports.OctahedronGeometry = OctahedronGeometry;
+	exports.OctahedronGeometry = OctahedronGeometry$1;
 	exports.OctahedronBufferGeometry = OctahedronBufferGeometry;
 	exports.IcosahedronGeometry = IcosahedronGeometry;
 	exports.IcosahedronBufferGeometry = IcosahedronBufferGeometry;
@@ -46102,7 +46102,7 @@
 	exports.TorusKnotGeometry = TorusKnotGeometry;
 	exports.TorusKnotBufferGeometry = TorusKnotBufferGeometry;
 	exports.TorusGeometry = TorusGeometry;
-	exports.TorusBufferGeometry = TorusBufferGeometry;
+	exports.TorusBufferGeometry = TorusBufferGeometry$1;
 	exports.TextGeometry = TextGeometry;
 	exports.TextBufferGeometry = TextBufferGeometry;
 	exports.SphereGeometry = SphereGeometry;
@@ -46110,7 +46110,7 @@
 	exports.RingGeometry = RingGeometry;
 	exports.RingBufferGeometry = RingBufferGeometry;
 	exports.PlaneGeometry = PlaneGeometry;
-	exports.PlaneBufferGeometry = PlaneBufferGeometry;
+	exports.PlaneBufferGeometry = PlaneBufferGeometry$1;
 	exports.LatheGeometry = LatheGeometry;
 	exports.LatheBufferGeometry = LatheBufferGeometry;
 	exports.ShapeGeometry = ShapeGeometry;
@@ -46120,12 +46120,12 @@
 	exports.EdgesGeometry = EdgesGeometry;
 	exports.ConeGeometry = ConeGeometry;
 	exports.ConeBufferGeometry = ConeBufferGeometry;
-	exports.CylinderGeometry = CylinderGeometry;
-	exports.CylinderBufferGeometry = CylinderBufferGeometry;
+	exports.CylinderGeometry = CylinderGeometry$1;
+	exports.CylinderBufferGeometry = CylinderBufferGeometry$1;
 	exports.CircleGeometry = CircleGeometry;
 	exports.CircleBufferGeometry = CircleBufferGeometry;
-	exports.BoxGeometry = BoxGeometry;
-	exports.BoxBufferGeometry = BoxBufferGeometry;
+	exports.BoxGeometry = BoxGeometry$1;
+	exports.BoxBufferGeometry = BoxBufferGeometry$1;
 	exports.ShadowMaterial = ShadowMaterial;
 	exports.SpriteMaterial = SpriteMaterial;
 	exports.RawShaderMaterial = RawShaderMaterial;
@@ -46139,12 +46139,12 @@
 	exports.MeshLambertMaterial = MeshLambertMaterial;
 	exports.MeshDepthMaterial = MeshDepthMaterial;
 	exports.MeshDistanceMaterial = MeshDistanceMaterial;
-	exports.MeshBasicMaterial = MeshBasicMaterial;
+	exports.MeshBasicMaterial = MeshBasicMaterial$1;
 	exports.LineDashedMaterial = LineDashedMaterial;
-	exports.LineBasicMaterial = LineBasicMaterial;
+	exports.LineBasicMaterial = LineBasicMaterial$1;
 	exports.Material = Material;
 	exports.Float64BufferAttribute = Float64BufferAttribute;
-	exports.Float32BufferAttribute = Float32BufferAttribute;
+	exports.Float32BufferAttribute = Float32BufferAttribute$1;
 	exports.Uint32BufferAttribute = Uint32BufferAttribute;
 	exports.Int32BufferAttribute = Int32BufferAttribute;
 	exports.Uint16BufferAttribute = Uint16BufferAttribute;
@@ -46164,9 +46164,9 @@
 	exports.BasicShadowMap = BasicShadowMap;
 	exports.PCFShadowMap = PCFShadowMap;
 	exports.PCFSoftShadowMap = PCFSoftShadowMap;
-	exports.FrontSide = FrontSide;
+	exports.FrontSide = FrontSide$1;
 	exports.BackSide = BackSide;
-	exports.DoubleSide = DoubleSide;
+	exports.DoubleSide = DoubleSide$1;
 	exports.FlatShading = FlatShading;
 	exports.SmoothShading = SmoothShading;
 	exports.NoColors = NoColors;
@@ -46278,7 +46278,7 @@
 	exports.RGBDEncoding = RGBDEncoding;
 	exports.BasicDepthPacking = BasicDepthPacking;
 	exports.RGBADepthPacking = RGBADepthPacking;
-	exports.CubeGeometry = BoxGeometry;
+	exports.CubeGeometry = BoxGeometry$1;
 	exports.Face4 = Face4;
 	exports.LineStrip = LineStrip;
 	exports.LinePieces = LinePieces;
