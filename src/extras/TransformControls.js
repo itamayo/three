@@ -3,13 +3,14 @@
  */
 import { Color } from '../math/Color.js';
 import {Object3D} from "../core/Object3D";
+import { Float32BufferAttribute } from '../core/BufferAttribute';
 import { Vector3 } from '../math/Vector3';
 import { Vector2 } from '../math/Vector2';
 import { Matrix4 } from '../math/Matrix4';
 import { Euler } from '../math/Euler';
 import { Quaternion } from '../math/Quaternion';
 import { BufferGeometry } from '../core/BufferGeometry';
-import { MeshBasicMaterial,LinehBasicMaterial} from '../materials/Materials';
+import { MeshBasicMaterial,LineBasicMaterial} from '../materials/Materials';
 import { BoxGeometry, BoxBufferGeometry,CylinderGeometry, CylinderBufferGeometry,CircleGeometry, CircleBufferGeometry,PlaneGeometry, PlaneBufferGeometry} from '../geometries/Geometries';
 
 
