@@ -2,6 +2,7 @@
  * @author arodic / https://github.com/arodic
  */
 
+import {Object3D} from "../core/Object3D";
 function TransformControls () {
 
 	'use strict';

@@ -10173,7 +10173,7 @@ Object.assign( Layers.prototype, {
 
 var object3DId = 0;
 
-function Object3D$1() {
+function Object3D() {
 
 	Object.defineProperty( this, 'id', { value: object3DId ++ } );
 
@@ -10185,7 +10185,7 @@ function Object3D$1() {
 	this.parent = null;
 	this.children = [];
 
-	this.up = Object3D$1.DefaultUp.clone();
+	this.up = Object3D.DefaultUp.clone();
 
 	var position = new Vector3();
 	var rotation = new Euler();
@@ -10235,7 +10235,7 @@ function Object3D$1() {
 	this.matrix = new Matrix4();
 	this.matrixWorld = new Matrix4();
 
-	this.matrixAutoUpdate = Object3D$1.DefaultMatrixAutoUpdate;
+	this.matrixAutoUpdate = Object3D.DefaultMatrixAutoUpdate;
 	this.matrixWorldNeedsUpdate = false;
 
 	this.layers = new Layers();
@@ -10250,10 +10250,10 @@ function Object3D$1() {
 	this.userData = {};
 }
 
-Object3D$1.DefaultUp = new Vector3( 0, 1, 0 );
-Object3D$1.DefaultMatrixAutoUpdate = true;
+Object3D.DefaultUp = new Vector3( 0, 1, 0 );
+Object3D.DefaultMatrixAutoUpdate = true;
 
-Object.assign( Object3D$1.prototype, EventDispatcher.prototype, {
+Object.assign( Object3D.prototype, EventDispatcher.prototype, {
 
 	isObject3D: true,
 
@@ -10929,7 +10929,7 @@ Object.assign( Object3D$1.prototype, EventDispatcher.prototype, {
 
 function Camera() {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Camera';
 
@@ -10938,7 +10938,7 @@ function Camera() {
 
 }
 
-Camera.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Camera.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Camera,
 
@@ -10946,7 +10946,7 @@ Camera.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	copy: function ( source, recursive ) {
 
-		Object3D$1.prototype.copy.call( this, source, recursive );
+		Object3D.prototype.copy.call( this, source, recursive );
 
 		this.matrixWorldInverse.copy( source.matrixWorldInverse );
 		this.projectionMatrix.copy( source.projectionMatrix );
@@ -10973,7 +10973,7 @@ Camera.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	updateMatrixWorld: function ( force ) {
 
-		Object3D$1.prototype.updateMatrixWorld.call( this, force );
+		Object3D.prototype.updateMatrixWorld.call( this, force );
 
 		this.matrixWorldInverse.getInverse( this.matrixWorld );
 
@@ -11091,7 +11091,7 @@ OrthographicCamera.prototype = Object.assign( Object.create( Camera.prototype ),
 
 	toJSON: function ( meta ) {
 
-		var data = Object3D$1.prototype.toJSON.call( this, meta );
+		var data = Object3D.prototype.toJSON.call( this, meta );
 
 		data.object.zoom = this.zoom;
 		data.object.left = this.left;
@@ -11306,7 +11306,7 @@ PerspectiveCamera.prototype = Object.assign( Object.create( Camera.prototype ), 
 
 	toJSON: function ( meta ) {
 
-		var data = Object3D$1.prototype.toJSON.call( this, meta );
+		var data = Object3D.prototype.toJSON.call( this, meta );
 
 		data.object.fov = this.fov;
 		data.object.zoom = this.zoom;
@@ -11574,7 +11574,7 @@ Object.assign( Geometry.prototype, EventDispatcher.prototype, {
 
 	lookAt: function () {
 
-		var obj = new Object3D$1();
+		var obj = new Object3D();
 
 		return function lookAt( vector ) {
 
@@ -13766,7 +13766,7 @@ Object.assign( BufferGeometry.prototype, EventDispatcher.prototype, {
 
 	lookAt: function () {
 
-		var obj = new Object3D$1();
+		var obj = new Object3D();
 
 		return function lookAt( vector ) {
 
@@ -15945,7 +15945,7 @@ Object.assign( Triangle.prototype, {
 
 function Mesh( geometry, material ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Mesh';
 
@@ -15958,7 +15958,7 @@ function Mesh( geometry, material ) {
 
 }
 
-Mesh.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Mesh,
 
@@ -15972,7 +15972,7 @@ Mesh.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	copy: function ( source ) {
 
-		Object3D$1.prototype.copy.call( this, source );
+		Object3D.prototype.copy.call( this, source );
 
 		this.drawMode = source.drawMode;
 
@@ -23436,7 +23436,7 @@ Fog.prototype.toJSON = function ( meta ) {
 
 function Scene () {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Scene';
 
@@ -23448,13 +23448,13 @@ function Scene () {
 
 }
 
-Scene.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Scene.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Scene,
 
 	copy: function ( source, recursive ) {
 
-		Object3D$1.prototype.copy.call( this, source, recursive );
+		Object3D.prototype.copy.call( this, source, recursive );
 
 		if ( source.background !== null ) this.background = source.background.clone();
 		if ( source.fog !== null ) this.fog = source.fog.clone();
@@ -23469,7 +23469,7 @@ Scene.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	toJSON: function ( meta ) {
 
-		var data = Object3D$1.prototype.toJSON.call( this, meta );
+		var data = Object3D.prototype.toJSON.call( this, meta );
 
 		if ( this.background !== null ) data.object.background = this.background.toJSON( meta );
 		if ( this.fog !== null ) data.object.fog = this.fog.toJSON();
@@ -23487,7 +23487,7 @@ Scene.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 function LensFlare( texture, size, distance, blending, color ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.lensFlares = [];
 
@@ -23502,7 +23502,7 @@ function LensFlare( texture, size, distance, blending, color ) {
 
 }
 
-LensFlare.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+LensFlare.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: LensFlare,
 
@@ -23510,7 +23510,7 @@ LensFlare.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	copy: function ( source ) {
 
-		Object3D$1.prototype.copy.call( this, source );
+		Object3D.prototype.copy.call( this, source );
 
 		this.positionScreen.copy( source.positionScreen );
 		this.customUpdateCallback = source.customUpdateCallback;
@@ -23632,7 +23632,7 @@ SpriteMaterial.prototype.copy = function ( source ) {
 
 function Sprite( material ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Sprite';
 
@@ -23640,7 +23640,7 @@ function Sprite( material ) {
 
 }
 
-Sprite.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Sprite,
 
@@ -23695,7 +23695,7 @@ Sprite.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 function LOD() {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'LOD';
 
@@ -23708,13 +23708,13 @@ function LOD() {
 
 }
 
-LOD.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: LOD,
 
 	copy: function ( source ) {
 
-		Object3D$1.prototype.copy.call( this, source, false );
+		Object3D.prototype.copy.call( this, source, false );
 
 		var levels = source.levels;
 
@@ -23835,7 +23835,7 @@ LOD.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	toJSON: function ( meta ) {
 
-		var data = Object3D$1.prototype.toJSON.call( this, meta );
+		var data = Object3D.prototype.toJSON.call( this, meta );
 
 		data.object.levels = [];
 
@@ -24022,13 +24022,13 @@ Object.assign( Skeleton.prototype, {
 
 function Bone() {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Bone';
 
 }
 
-Bone.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Bone.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Bone,
 
@@ -24301,7 +24301,7 @@ function Line( geometry, material, mode ) {
 
 	}
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Line';
 
@@ -24310,7 +24310,7 @@ function Line( geometry, material, mode ) {
 
 }
 
-Line.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Line,
 
@@ -24572,7 +24572,7 @@ PointsMaterial.prototype.copy = function ( source ) {
 
 function Points( geometry, material ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Points';
 
@@ -24581,7 +24581,7 @@ function Points( geometry, material ) {
 
 }
 
-Points.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Points.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Points,
 
@@ -24709,13 +24709,13 @@ Points.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 function Group() {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Group';
 
 }
 
-Group.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Group.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Group
 
@@ -30638,7 +30638,7 @@ Object.assign( TextureLoader.prototype, {
 
 function Light( color, intensity ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Light';
 
@@ -30649,7 +30649,7 @@ function Light( color, intensity ) {
 
 }
 
-Light.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Light.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Light,
 
@@ -30657,7 +30657,7 @@ Light.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	copy: function ( source ) {
 
-		Object3D$1.prototype.copy.call( this, source );
+		Object3D.prototype.copy.call( this, source );
 
 		this.color.copy( source.color );
 		this.intensity = source.intensity;
@@ -30668,7 +30668,7 @@ Light.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
 
 	toJSON: function ( meta ) {
 
-		var data = Object3D$1.prototype.toJSON.call( this, meta );
+		var data = Object3D.prototype.toJSON.call( this, meta );
 
 		data.object.color = this.color.getHex();
 		data.object.intensity = this.intensity;
@@ -30700,7 +30700,7 @@ function HemisphereLight( skyColor, groundColor, intensity ) {
 
 	this.castShadow = undefined;
 
-	this.position.copy( Object3D$1.DefaultUp );
+	this.position.copy( Object3D.DefaultUp );
 	this.updateMatrix();
 
 	this.groundColor = new Color( groundColor );
@@ -30828,10 +30828,10 @@ function SpotLight( color, intensity, distance, angle, penumbra, decay ) {
 
 	this.type = 'SpotLight';
 
-	this.position.copy( Object3D$1.DefaultUp );
+	this.position.copy( Object3D.DefaultUp );
 	this.updateMatrix();
 
-	this.target = new Object3D$1();
+	this.target = new Object3D();
 
 	Object.defineProperty( this, 'power', {
 		get: function () {
@@ -30960,10 +30960,10 @@ function DirectionalLight( color, intensity ) {
 
 	this.type = 'DirectionalLight';
 
-	this.position.copy( Object3D$1.DefaultUp );
+	this.position.copy( Object3D.DefaultUp );
 	this.updateMatrix();
 
-	this.target = new Object3D$1();
+	this.target = new Object3D();
 
 	this.shadow = new DirectionalLightShadow();
 
@@ -34629,7 +34629,7 @@ Object.assign( ObjectLoader.prototype, {
 
 				default:
 
-					object = new Object3D$1();
+					object = new Object3D();
 
 			}
 
@@ -36800,7 +36800,7 @@ Object.assign( StereoCamera.prototype, {
 
 function CubeCamera( near, far, cubeResolution ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'CubeCamera';
 
@@ -36893,7 +36893,7 @@ function CubeCamera( near, far, cubeResolution ) {
 
 }
 
-CubeCamera.prototype = Object.create( Object3D$1.prototype );
+CubeCamera.prototype = Object.create( Object3D.prototype );
 CubeCamera.prototype.constructor = CubeCamera;
 
 /**
@@ -36902,7 +36902,7 @@ CubeCamera.prototype.constructor = CubeCamera;
 
 function AudioListener() {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'AudioListener';
 
@@ -36915,7 +36915,7 @@ function AudioListener() {
 
 }
 
-AudioListener.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: AudioListener,
 
@@ -36985,7 +36985,7 @@ AudioListener.prototype = Object.assign( Object.create( Object3D$1.prototype ), 
 
 		return function updateMatrixWorld( force ) {
 
-			Object3D$1.prototype.updateMatrixWorld.call( this, force );
+			Object3D.prototype.updateMatrixWorld.call( this, force );
 
 			var listener = this.context.listener;
 			var up = this.up;
@@ -37026,7 +37026,7 @@ AudioListener.prototype = Object.assign( Object.create( Object3D$1.prototype ), 
 
 function Audio( listener ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.type = 'Audio';
 
@@ -37049,7 +37049,7 @@ function Audio( listener ) {
 
 }
 
-Audio.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+Audio.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 	constructor: Audio,
 
@@ -37393,7 +37393,7 @@ PositionalAudio.prototype = Object.assign( Object.create( Audio.prototype ), {
 
 		return function updateMatrixWorld( force ) {
 
-			Object3D$1.prototype.updateMatrixWorld.call( this, force );
+			Object3D.prototype.updateMatrixWorld.call( this, force );
 
 			position.setFromMatrixPosition( this.matrixWorld );
 
@@ -40872,14 +40872,14 @@ Object.assign( Cylindrical.prototype, {
 
 function ImmediateRenderObject( material ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.material = material;
 	this.render = function ( renderCallback ) {};
 
 }
 
-ImmediateRenderObject.prototype = Object.create( Object3D$1.prototype );
+ImmediateRenderObject.prototype = Object.create( Object3D.prototype );
 ImmediateRenderObject.prototype.constructor = ImmediateRenderObject;
 
 ImmediateRenderObject.prototype.isImmediateRenderObject = true;
@@ -41036,7 +41036,7 @@ VertexNormalsHelper.prototype.update = ( function () {
 
 function SpotLightHelper( light, color ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.light = light;
 	this.light.updateMatrixWorld();
@@ -41079,7 +41079,7 @@ function SpotLightHelper( light, color ) {
 
 }
 
-SpotLightHelper.prototype = Object.create( Object3D$1.prototype );
+SpotLightHelper.prototype = Object.create( Object3D.prototype );
 SpotLightHelper.prototype.constructor = SpotLightHelper;
 
 SpotLightHelper.prototype.dispose = function () {
@@ -41333,7 +41333,7 @@ PointLightHelper.prototype.update = function () {
 
 function RectAreaLightHelper( light, color ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.light = light;
 	this.light.updateMatrixWorld();
@@ -41357,7 +41357,7 @@ function RectAreaLightHelper( light, color ) {
 
 }
 
-RectAreaLightHelper.prototype = Object.create( Object3D$1.prototype );
+RectAreaLightHelper.prototype = Object.create( Object3D.prototype );
 RectAreaLightHelper.prototype.constructor = RectAreaLightHelper;
 
 RectAreaLightHelper.prototype.dispose = function () {
@@ -41407,7 +41407,7 @@ RectAreaLightHelper.prototype.update = function () {
 
 function HemisphereLightHelper( light, size, color ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.light = light;
 	this.light.updateMatrixWorld();
@@ -41434,7 +41434,7 @@ function HemisphereLightHelper( light, size, color ) {
 
 }
 
-HemisphereLightHelper.prototype = Object.create( Object3D$1.prototype );
+HemisphereLightHelper.prototype = Object.create( Object3D.prototype );
 HemisphereLightHelper.prototype.constructor = HemisphereLightHelper;
 
 HemisphereLightHelper.prototype.dispose = function () {
@@ -41732,7 +41732,7 @@ FaceNormalsHelper.prototype.update = ( function () {
 
 function DirectionalLightHelper( light, size, color ) {
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	this.light = light;
 	this.light.updateMatrixWorld();
@@ -41768,7 +41768,7 @@ function DirectionalLightHelper( light, size, color ) {
 
 }
 
-DirectionalLightHelper.prototype = Object.create( Object3D$1.prototype );
+DirectionalLightHelper.prototype = Object.create( Object3D.prototype );
 DirectionalLightHelper.prototype.constructor = DirectionalLightHelper;
 
 DirectionalLightHelper.prototype.dispose = function () {
@@ -42233,7 +42233,7 @@ function ArrowHelper( dir, origin, length, color, headLength, headWidth ) {
 
 	// dir is assumed to be normalized
 
-	Object3D$1.call( this );
+	Object3D.call( this );
 
 	if ( color === undefined ) color = 0xffff00;
 	if ( length === undefined ) length = 1;
@@ -42265,7 +42265,7 @@ function ArrowHelper( dir, origin, length, color, headLength, headWidth ) {
 
 }
 
-ArrowHelper.prototype = Object.create( Object3D$1.prototype );
+ArrowHelper.prototype = Object.create( Object3D.prototype );
 ArrowHelper.prototype.constructor = ArrowHelper;
 
 ArrowHelper.prototype.setDirection = ( function () {
@@ -43286,7 +43286,6 @@ TrackballControls.prototype.constructor = TrackballControls;
 /**
  * @author arodic / https://github.com/arodic
  */
-
 function TransformControls () {
 
 	var GizmoMaterial = function ( parameters ) {
@@ -45067,7 +45066,7 @@ Geometry.prototype.computeTangents = function () {
 
 };
 
-Object.assign( Object3D$1.prototype, {
+Object.assign( Object3D.prototype, {
 
 	getChildByName: function ( name ) {
 
@@ -45089,7 +45088,7 @@ Object.assign( Object3D$1.prototype, {
 
 } );
 
-Object.defineProperties( Object3D$1.prototype, {
+Object.defineProperties( Object3D.prototype, {
 
 	eulerOrder: {
 		get: function () {
@@ -45921,4 +45920,4 @@ function CanvasRenderer() {
 
 }
 
-export { WebGLRenderTargetCube, WebGLRenderTarget, WebGLRenderer, ShaderLib, UniformsLib, UniformsUtils, ShaderChunk, FogExp2, Fog, Scene, LensFlare, Sprite, LOD, SkinnedMesh, Skeleton, Bone, Mesh, LineSegments, LineLoop, Line, Points, Group, VideoTexture, DataTexture, CompressedTexture, CubeTexture, CanvasTexture, DepthTexture, Texture, CompressedTextureLoader, DataTextureLoader, CubeTextureLoader, TextureLoader, ObjectLoader, MaterialLoader, BufferGeometryLoader, DefaultLoadingManager, LoadingManager, JSONLoader, ImageLoader, FontLoader, FileLoader, PCDLoader, LoaderUtils, Loader, Cache, AudioLoader, SpotLightShadow, SpotLight, PointLight, RectAreaLight, HemisphereLight, DirectionalLightShadow, DirectionalLight, AmbientLight, LightShadow, Light, StereoCamera, PerspectiveCamera, OrthographicCamera, CubeCamera, ArrayCamera, Camera, AudioListener, PositionalAudio, AudioContext, AudioAnalyser, Audio, VectorKeyframeTrack, StringKeyframeTrack, QuaternionKeyframeTrack, NumberKeyframeTrack, ColorKeyframeTrack, BooleanKeyframeTrack, PropertyMixer, PropertyBinding, KeyframeTrack, AnimationUtils, AnimationObjectGroup, AnimationMixer, AnimationClip, Uniform, InstancedBufferGeometry, BufferGeometry, GeometryIdCount, Geometry, InterleavedBufferAttribute, InstancedInterleavedBuffer, InterleavedBuffer, InstancedBufferAttribute, Face3, Object3D$1 as Object3D, Raycaster, Layers, EventDispatcher, Clock, QuaternionLinearInterpolant, LinearInterpolant, DiscreteInterpolant, CubicInterpolant, Interpolant, Triangle, _Math as Math, Spherical, Cylindrical, Plane, Frustum, Sphere, Ray, Matrix4, Matrix3, Box3, Box2, Line3, Euler, Vector4, Vector3, Vector2, Quaternion, Color, ImmediateRenderObject, VertexNormalsHelper, SpotLightHelper, SkeletonHelper, PointLightHelper, RectAreaLightHelper, HemisphereLightHelper, GridHelper, PolarGridHelper, FaceNormalsHelper, DirectionalLightHelper, CameraHelper, BoxHelper, Box3Helper, PlaneHelper, ArrowHelper, AxisHelper, CatmullRomCurve3, CubicBezierCurve3, QuadraticBezierCurve3, LineCurve3, ArcCurve, EllipseCurve, SplineCurve, CubicBezierCurve, QuadraticBezierCurve, LineCurve, Shape, Path, ShapePath, Font, CurvePath, Curve, ShapeUtils, SceneUtils, WebGLUtils, TrackballControls, TransformControls, WireframeGeometry, ParametricGeometry, ParametricBufferGeometry, TetrahedronGeometry, TetrahedronBufferGeometry, OctahedronGeometry, OctahedronBufferGeometry, IcosahedronGeometry, IcosahedronBufferGeometry, DodecahedronGeometry, DodecahedronBufferGeometry, PolyhedronGeometry, PolyhedronBufferGeometry, TubeGeometry, TubeBufferGeometry, TorusKnotGeometry, TorusKnotBufferGeometry, TorusGeometry, TorusBufferGeometry, TextGeometry, TextBufferGeometry, SphereGeometry, SphereBufferGeometry, RingGeometry, RingBufferGeometry, PlaneGeometry, PlaneBufferGeometry, LatheGeometry, LatheBufferGeometry, ShapeGeometry, ShapeBufferGeometry, ExtrudeGeometry, ExtrudeBufferGeometry, EdgesGeometry, ConeGeometry, ConeBufferGeometry, CylinderGeometry, CylinderBufferGeometry, CircleGeometry, CircleBufferGeometry, BoxGeometry, BoxBufferGeometry, ShadowMaterial, SpriteMaterial, RawShaderMaterial, ShaderMaterial, PointsMaterial, MeshPhysicalMaterial, MeshStandardMaterial, MeshPhongMaterial, MeshToonMaterial, MeshNormalMaterial, MeshLambertMaterial, MeshDepthMaterial, MeshDistanceMaterial, MeshBasicMaterial, LineDashedMaterial, LineBasicMaterial, Material, Float64BufferAttribute, Float32BufferAttribute, Uint32BufferAttribute, Int32BufferAttribute, Uint16BufferAttribute, Int16BufferAttribute, Uint8ClampedBufferAttribute, Uint8BufferAttribute, Int8BufferAttribute, BufferAttribute, REVISION, MOUSE, CullFaceNone, CullFaceBack, CullFaceFront, CullFaceFrontBack, FrontFaceDirectionCW, FrontFaceDirectionCCW, BasicShadowMap, PCFShadowMap, PCFSoftShadowMap, FrontSide, BackSide, DoubleSide, FlatShading, SmoothShading, NoColors, FaceColors, VertexColors, NoBlending, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, CustomBlending, AddEquation, SubtractEquation, ReverseSubtractEquation, MinEquation, MaxEquation, ZeroFactor, OneFactor, SrcColorFactor, OneMinusSrcColorFactor, SrcAlphaFactor, OneMinusSrcAlphaFactor, DstAlphaFactor, OneMinusDstAlphaFactor, DstColorFactor, OneMinusDstColorFactor, SrcAlphaSaturateFactor, NeverDepth, AlwaysDepth, LessDepth, LessEqualDepth, EqualDepth, GreaterEqualDepth, GreaterDepth, NotEqualDepth, MultiplyOperation, MixOperation, AddOperation, NoToneMapping, LinearToneMapping, ReinhardToneMapping, Uncharted2ToneMapping, CineonToneMapping, UVMapping, CubeReflectionMapping, CubeRefractionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping, SphericalReflectionMapping, CubeUVReflectionMapping, CubeUVRefractionMapping, RepeatWrapping, ClampToEdgeWrapping, MirroredRepeatWrapping, NearestFilter, NearestMipMapNearestFilter, NearestMipMapLinearFilter, LinearFilter, LinearMipMapNearestFilter, LinearMipMapLinearFilter, UnsignedByteType, ByteType, ShortType, UnsignedShortType, IntType, UnsignedIntType, FloatType, HalfFloatType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedInt248Type, AlphaFormat, RGBFormat, RGBAFormat, LuminanceFormat, LuminanceAlphaFormat, RGBEFormat, DepthFormat, DepthStencilFormat, RGB_S3TC_DXT1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGB_PVRTC_4BPPV1_Format, RGB_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGB_ETC1_Format, LoopOnce, LoopRepeat, LoopPingPong, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, ZeroCurvatureEnding, ZeroSlopeEnding, WrapAroundEnding, TrianglesDrawMode, TriangleStripDrawMode, TriangleFanDrawMode, LinearEncoding, sRGBEncoding, GammaEncoding, RGBEEncoding, LogLuvEncoding, RGBM7Encoding, RGBM16Encoding, RGBDEncoding, BasicDepthPacking, RGBADepthPacking, BoxGeometry as CubeGeometry, Face4, LineStrip, LinePieces, MeshFaceMaterial, MultiMaterial, PointCloud, Particle, ParticleSystem, PointCloudMaterial, ParticleBasicMaterial, ParticleSystemMaterial, Vertex, DynamicBufferAttribute, Int8Attribute, Uint8Attribute, Uint8ClampedAttribute, Int16Attribute, Uint16Attribute, Int32Attribute, Uint32Attribute, Float32Attribute, Float64Attribute, ClosedSplineCurve3, SplineCurve3, Spline, BoundingBoxHelper, EdgesHelper, WireframeHelper, XHRLoader, BinaryTextureLoader, GeometryUtils, ImageUtils, Projector, CanvasRenderer };
+export { WebGLRenderTargetCube, WebGLRenderTarget, WebGLRenderer, ShaderLib, UniformsLib, UniformsUtils, ShaderChunk, FogExp2, Fog, Scene, LensFlare, Sprite, LOD, SkinnedMesh, Skeleton, Bone, Mesh, LineSegments, LineLoop, Line, Points, Group, VideoTexture, DataTexture, CompressedTexture, CubeTexture, CanvasTexture, DepthTexture, Texture, CompressedTextureLoader, DataTextureLoader, CubeTextureLoader, TextureLoader, ObjectLoader, MaterialLoader, BufferGeometryLoader, DefaultLoadingManager, LoadingManager, JSONLoader, ImageLoader, FontLoader, FileLoader, PCDLoader, LoaderUtils, Loader, Cache, AudioLoader, SpotLightShadow, SpotLight, PointLight, RectAreaLight, HemisphereLight, DirectionalLightShadow, DirectionalLight, AmbientLight, LightShadow, Light, StereoCamera, PerspectiveCamera, OrthographicCamera, CubeCamera, ArrayCamera, Camera, AudioListener, PositionalAudio, AudioContext, AudioAnalyser, Audio, VectorKeyframeTrack, StringKeyframeTrack, QuaternionKeyframeTrack, NumberKeyframeTrack, ColorKeyframeTrack, BooleanKeyframeTrack, PropertyMixer, PropertyBinding, KeyframeTrack, AnimationUtils, AnimationObjectGroup, AnimationMixer, AnimationClip, Uniform, InstancedBufferGeometry, BufferGeometry, GeometryIdCount, Geometry, InterleavedBufferAttribute, InstancedInterleavedBuffer, InterleavedBuffer, InstancedBufferAttribute, Face3, Object3D, Raycaster, Layers, EventDispatcher, Clock, QuaternionLinearInterpolant, LinearInterpolant, DiscreteInterpolant, CubicInterpolant, Interpolant, Triangle, _Math as Math, Spherical, Cylindrical, Plane, Frustum, Sphere, Ray, Matrix4, Matrix3, Box3, Box2, Line3, Euler, Vector4, Vector3, Vector2, Quaternion, Color, ImmediateRenderObject, VertexNormalsHelper, SpotLightHelper, SkeletonHelper, PointLightHelper, RectAreaLightHelper, HemisphereLightHelper, GridHelper, PolarGridHelper, FaceNormalsHelper, DirectionalLightHelper, CameraHelper, BoxHelper, Box3Helper, PlaneHelper, ArrowHelper, AxisHelper, CatmullRomCurve3, CubicBezierCurve3, QuadraticBezierCurve3, LineCurve3, ArcCurve, EllipseCurve, SplineCurve, CubicBezierCurve, QuadraticBezierCurve, LineCurve, Shape, Path, ShapePath, Font, CurvePath, Curve, ShapeUtils, SceneUtils, WebGLUtils, TrackballControls, TransformControls, WireframeGeometry, ParametricGeometry, ParametricBufferGeometry, TetrahedronGeometry, TetrahedronBufferGeometry, OctahedronGeometry, OctahedronBufferGeometry, IcosahedronGeometry, IcosahedronBufferGeometry, DodecahedronGeometry, DodecahedronBufferGeometry, PolyhedronGeometry, PolyhedronBufferGeometry, TubeGeometry, TubeBufferGeometry, TorusKnotGeometry, TorusKnotBufferGeometry, TorusGeometry, TorusBufferGeometry, TextGeometry, TextBufferGeometry, SphereGeometry, SphereBufferGeometry, RingGeometry, RingBufferGeometry, PlaneGeometry, PlaneBufferGeometry, LatheGeometry, LatheBufferGeometry, ShapeGeometry, ShapeBufferGeometry, ExtrudeGeometry, ExtrudeBufferGeometry, EdgesGeometry, ConeGeometry, ConeBufferGeometry, CylinderGeometry, CylinderBufferGeometry, CircleGeometry, CircleBufferGeometry, BoxGeometry, BoxBufferGeometry, ShadowMaterial, SpriteMaterial, RawShaderMaterial, ShaderMaterial, PointsMaterial, MeshPhysicalMaterial, MeshStandardMaterial, MeshPhongMaterial, MeshToonMaterial, MeshNormalMaterial, MeshLambertMaterial, MeshDepthMaterial, MeshDistanceMaterial, MeshBasicMaterial, LineDashedMaterial, LineBasicMaterial, Material, Float64BufferAttribute, Float32BufferAttribute, Uint32BufferAttribute, Int32BufferAttribute, Uint16BufferAttribute, Int16BufferAttribute, Uint8ClampedBufferAttribute, Uint8BufferAttribute, Int8BufferAttribute, BufferAttribute, REVISION, MOUSE, CullFaceNone, CullFaceBack, CullFaceFront, CullFaceFrontBack, FrontFaceDirectionCW, FrontFaceDirectionCCW, BasicShadowMap, PCFShadowMap, PCFSoftShadowMap, FrontSide, BackSide, DoubleSide, FlatShading, SmoothShading, NoColors, FaceColors, VertexColors, NoBlending, NormalBlending, AdditiveBlending, SubtractiveBlending, MultiplyBlending, CustomBlending, AddEquation, SubtractEquation, ReverseSubtractEquation, MinEquation, MaxEquation, ZeroFactor, OneFactor, SrcColorFactor, OneMinusSrcColorFactor, SrcAlphaFactor, OneMinusSrcAlphaFactor, DstAlphaFactor, OneMinusDstAlphaFactor, DstColorFactor, OneMinusDstColorFactor, SrcAlphaSaturateFactor, NeverDepth, AlwaysDepth, LessDepth, LessEqualDepth, EqualDepth, GreaterEqualDepth, GreaterDepth, NotEqualDepth, MultiplyOperation, MixOperation, AddOperation, NoToneMapping, LinearToneMapping, ReinhardToneMapping, Uncharted2ToneMapping, CineonToneMapping, UVMapping, CubeReflectionMapping, CubeRefractionMapping, EquirectangularReflectionMapping, EquirectangularRefractionMapping, SphericalReflectionMapping, CubeUVReflectionMapping, CubeUVRefractionMapping, RepeatWrapping, ClampToEdgeWrapping, MirroredRepeatWrapping, NearestFilter, NearestMipMapNearestFilter, NearestMipMapLinearFilter, LinearFilter, LinearMipMapNearestFilter, LinearMipMapLinearFilter, UnsignedByteType, ByteType, ShortType, UnsignedShortType, IntType, UnsignedIntType, FloatType, HalfFloatType, UnsignedShort4444Type, UnsignedShort5551Type, UnsignedShort565Type, UnsignedInt248Type, AlphaFormat, RGBFormat, RGBAFormat, LuminanceFormat, LuminanceAlphaFormat, RGBEFormat, DepthFormat, DepthStencilFormat, RGB_S3TC_DXT1_Format, RGBA_S3TC_DXT1_Format, RGBA_S3TC_DXT3_Format, RGBA_S3TC_DXT5_Format, RGB_PVRTC_4BPPV1_Format, RGB_PVRTC_2BPPV1_Format, RGBA_PVRTC_4BPPV1_Format, RGBA_PVRTC_2BPPV1_Format, RGB_ETC1_Format, LoopOnce, LoopRepeat, LoopPingPong, InterpolateDiscrete, InterpolateLinear, InterpolateSmooth, ZeroCurvatureEnding, ZeroSlopeEnding, WrapAroundEnding, TrianglesDrawMode, TriangleStripDrawMode, TriangleFanDrawMode, LinearEncoding, sRGBEncoding, GammaEncoding, RGBEEncoding, LogLuvEncoding, RGBM7Encoding, RGBM16Encoding, RGBDEncoding, BasicDepthPacking, RGBADepthPacking, BoxGeometry as CubeGeometry, Face4, LineStrip, LinePieces, MeshFaceMaterial, MultiMaterial, PointCloud, Particle, ParticleSystem, PointCloudMaterial, ParticleBasicMaterial, ParticleSystemMaterial, Vertex, DynamicBufferAttribute, Int8Attribute, Uint8Attribute, Uint8ClampedAttribute, Int16Attribute, Uint16Attribute, Int32Attribute, Uint32Attribute, Float32Attribute, Float64Attribute, ClosedSplineCurve3, SplineCurve3, Spline, BoundingBoxHelper, EdgesHelper, WireframeHelper, XHRLoader, BinaryTextureLoader, GeometryUtils, ImageUtils, Projector, CanvasRenderer };

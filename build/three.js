@@ -10179,7 +10179,7 @@
 
 	var object3DId = 0;
 
-	function Object3D$1() {
+	function Object3D() {
 
 		Object.defineProperty( this, 'id', { value: object3DId ++ } );
 
@@ -10191,7 +10191,7 @@
 		this.parent = null;
 		this.children = [];
 
-		this.up = Object3D$1.DefaultUp.clone();
+		this.up = Object3D.DefaultUp.clone();
 
 		var position = new Vector3();
 		var rotation = new Euler();
@@ -10241,7 +10241,7 @@
 		this.matrix = new Matrix4();
 		this.matrixWorld = new Matrix4();
 
-		this.matrixAutoUpdate = Object3D$1.DefaultMatrixAutoUpdate;
+		this.matrixAutoUpdate = Object3D.DefaultMatrixAutoUpdate;
 		this.matrixWorldNeedsUpdate = false;
 
 		this.layers = new Layers();
@@ -10256,10 +10256,10 @@
 		this.userData = {};
 	}
 
-	Object3D$1.DefaultUp = new Vector3( 0, 1, 0 );
-	Object3D$1.DefaultMatrixAutoUpdate = true;
+	Object3D.DefaultUp = new Vector3( 0, 1, 0 );
+	Object3D.DefaultMatrixAutoUpdate = true;
 
-	Object.assign( Object3D$1.prototype, EventDispatcher.prototype, {
+	Object.assign( Object3D.prototype, EventDispatcher.prototype, {
 
 		isObject3D: true,
 
@@ -10935,7 +10935,7 @@
 
 	function Camera() {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Camera';
 
@@ -10944,7 +10944,7 @@
 
 	}
 
-	Camera.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Camera.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Camera,
 
@@ -10952,7 +10952,7 @@
 
 		copy: function ( source, recursive ) {
 
-			Object3D$1.prototype.copy.call( this, source, recursive );
+			Object3D.prototype.copy.call( this, source, recursive );
 
 			this.matrixWorldInverse.copy( source.matrixWorldInverse );
 			this.projectionMatrix.copy( source.projectionMatrix );
@@ -10979,7 +10979,7 @@
 
 		updateMatrixWorld: function ( force ) {
 
-			Object3D$1.prototype.updateMatrixWorld.call( this, force );
+			Object3D.prototype.updateMatrixWorld.call( this, force );
 
 			this.matrixWorldInverse.getInverse( this.matrixWorld );
 
@@ -11097,7 +11097,7 @@
 
 		toJSON: function ( meta ) {
 
-			var data = Object3D$1.prototype.toJSON.call( this, meta );
+			var data = Object3D.prototype.toJSON.call( this, meta );
 
 			data.object.zoom = this.zoom;
 			data.object.left = this.left;
@@ -11312,7 +11312,7 @@
 
 		toJSON: function ( meta ) {
 
-			var data = Object3D$1.prototype.toJSON.call( this, meta );
+			var data = Object3D.prototype.toJSON.call( this, meta );
 
 			data.object.fov = this.fov;
 			data.object.zoom = this.zoom;
@@ -11580,7 +11580,7 @@
 
 		lookAt: function () {
 
-			var obj = new Object3D$1();
+			var obj = new Object3D();
 
 			return function lookAt( vector ) {
 
@@ -13772,7 +13772,7 @@
 
 		lookAt: function () {
 
-			var obj = new Object3D$1();
+			var obj = new Object3D();
 
 			return function lookAt( vector ) {
 
@@ -15951,7 +15951,7 @@
 
 	function Mesh( geometry, material ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Mesh';
 
@@ -15964,7 +15964,7 @@
 
 	}
 
-	Mesh.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Mesh.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Mesh,
 
@@ -15978,7 +15978,7 @@
 
 		copy: function ( source ) {
 
-			Object3D$1.prototype.copy.call( this, source );
+			Object3D.prototype.copy.call( this, source );
 
 			this.drawMode = source.drawMode;
 
@@ -23442,7 +23442,7 @@
 
 	function Scene () {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Scene';
 
@@ -23454,13 +23454,13 @@
 
 	}
 
-	Scene.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Scene.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Scene,
 
 		copy: function ( source, recursive ) {
 
-			Object3D$1.prototype.copy.call( this, source, recursive );
+			Object3D.prototype.copy.call( this, source, recursive );
 
 			if ( source.background !== null ) this.background = source.background.clone();
 			if ( source.fog !== null ) this.fog = source.fog.clone();
@@ -23475,7 +23475,7 @@
 
 		toJSON: function ( meta ) {
 
-			var data = Object3D$1.prototype.toJSON.call( this, meta );
+			var data = Object3D.prototype.toJSON.call( this, meta );
 
 			if ( this.background !== null ) data.object.background = this.background.toJSON( meta );
 			if ( this.fog !== null ) data.object.fog = this.fog.toJSON();
@@ -23493,7 +23493,7 @@
 
 	function LensFlare( texture, size, distance, blending, color ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.lensFlares = [];
 
@@ -23508,7 +23508,7 @@
 
 	}
 
-	LensFlare.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	LensFlare.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: LensFlare,
 
@@ -23516,7 +23516,7 @@
 
 		copy: function ( source ) {
 
-			Object3D$1.prototype.copy.call( this, source );
+			Object3D.prototype.copy.call( this, source );
 
 			this.positionScreen.copy( source.positionScreen );
 			this.customUpdateCallback = source.customUpdateCallback;
@@ -23638,7 +23638,7 @@
 
 	function Sprite( material ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Sprite';
 
@@ -23646,7 +23646,7 @@
 
 	}
 
-	Sprite.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Sprite.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Sprite,
 
@@ -23701,7 +23701,7 @@
 
 	function LOD() {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'LOD';
 
@@ -23714,13 +23714,13 @@
 
 	}
 
-	LOD.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	LOD.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: LOD,
 
 		copy: function ( source ) {
 
-			Object3D$1.prototype.copy.call( this, source, false );
+			Object3D.prototype.copy.call( this, source, false );
 
 			var levels = source.levels;
 
@@ -23841,7 +23841,7 @@
 
 		toJSON: function ( meta ) {
 
-			var data = Object3D$1.prototype.toJSON.call( this, meta );
+			var data = Object3D.prototype.toJSON.call( this, meta );
 
 			data.object.levels = [];
 
@@ -24028,13 +24028,13 @@
 
 	function Bone() {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Bone';
 
 	}
 
-	Bone.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Bone.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Bone,
 
@@ -24307,7 +24307,7 @@
 
 		}
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Line';
 
@@ -24316,7 +24316,7 @@
 
 	}
 
-	Line.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Line.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Line,
 
@@ -24578,7 +24578,7 @@
 
 	function Points( geometry, material ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Points';
 
@@ -24587,7 +24587,7 @@
 
 	}
 
-	Points.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Points.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Points,
 
@@ -24715,13 +24715,13 @@
 
 	function Group() {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Group';
 
 	}
 
-	Group.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Group.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Group
 
@@ -30644,7 +30644,7 @@
 
 	function Light( color, intensity ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Light';
 
@@ -30655,7 +30655,7 @@
 
 	}
 
-	Light.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Light.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Light,
 
@@ -30663,7 +30663,7 @@
 
 		copy: function ( source ) {
 
-			Object3D$1.prototype.copy.call( this, source );
+			Object3D.prototype.copy.call( this, source );
 
 			this.color.copy( source.color );
 			this.intensity = source.intensity;
@@ -30674,7 +30674,7 @@
 
 		toJSON: function ( meta ) {
 
-			var data = Object3D$1.prototype.toJSON.call( this, meta );
+			var data = Object3D.prototype.toJSON.call( this, meta );
 
 			data.object.color = this.color.getHex();
 			data.object.intensity = this.intensity;
@@ -30706,7 +30706,7 @@
 
 		this.castShadow = undefined;
 
-		this.position.copy( Object3D$1.DefaultUp );
+		this.position.copy( Object3D.DefaultUp );
 		this.updateMatrix();
 
 		this.groundColor = new Color( groundColor );
@@ -30834,10 +30834,10 @@
 
 		this.type = 'SpotLight';
 
-		this.position.copy( Object3D$1.DefaultUp );
+		this.position.copy( Object3D.DefaultUp );
 		this.updateMatrix();
 
-		this.target = new Object3D$1();
+		this.target = new Object3D();
 
 		Object.defineProperty( this, 'power', {
 			get: function () {
@@ -30966,10 +30966,10 @@
 
 		this.type = 'DirectionalLight';
 
-		this.position.copy( Object3D$1.DefaultUp );
+		this.position.copy( Object3D.DefaultUp );
 		this.updateMatrix();
 
-		this.target = new Object3D$1();
+		this.target = new Object3D();
 
 		this.shadow = new DirectionalLightShadow();
 
@@ -34635,7 +34635,7 @@
 
 					default:
 
-						object = new Object3D$1();
+						object = new Object3D();
 
 				}
 
@@ -36806,7 +36806,7 @@
 
 	function CubeCamera( near, far, cubeResolution ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'CubeCamera';
 
@@ -36899,7 +36899,7 @@
 
 	}
 
-	CubeCamera.prototype = Object.create( Object3D$1.prototype );
+	CubeCamera.prototype = Object.create( Object3D.prototype );
 	CubeCamera.prototype.constructor = CubeCamera;
 
 	/**
@@ -36908,7 +36908,7 @@
 
 	function AudioListener() {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'AudioListener';
 
@@ -36921,7 +36921,7 @@
 
 	}
 
-	AudioListener.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	AudioListener.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: AudioListener,
 
@@ -36991,7 +36991,7 @@
 
 			return function updateMatrixWorld( force ) {
 
-				Object3D$1.prototype.updateMatrixWorld.call( this, force );
+				Object3D.prototype.updateMatrixWorld.call( this, force );
 
 				var listener = this.context.listener;
 				var up = this.up;
@@ -37032,7 +37032,7 @@
 
 	function Audio( listener ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.type = 'Audio';
 
@@ -37055,7 +37055,7 @@
 
 	}
 
-	Audio.prototype = Object.assign( Object.create( Object3D$1.prototype ), {
+	Audio.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
 		constructor: Audio,
 
@@ -37399,7 +37399,7 @@
 
 			return function updateMatrixWorld( force ) {
 
-				Object3D$1.prototype.updateMatrixWorld.call( this, force );
+				Object3D.prototype.updateMatrixWorld.call( this, force );
 
 				position.setFromMatrixPosition( this.matrixWorld );
 
@@ -40878,14 +40878,14 @@
 
 	function ImmediateRenderObject( material ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.material = material;
 		this.render = function ( renderCallback ) {};
 
 	}
 
-	ImmediateRenderObject.prototype = Object.create( Object3D$1.prototype );
+	ImmediateRenderObject.prototype = Object.create( Object3D.prototype );
 	ImmediateRenderObject.prototype.constructor = ImmediateRenderObject;
 
 	ImmediateRenderObject.prototype.isImmediateRenderObject = true;
@@ -41042,7 +41042,7 @@
 
 	function SpotLightHelper( light, color ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.light = light;
 		this.light.updateMatrixWorld();
@@ -41085,7 +41085,7 @@
 
 	}
 
-	SpotLightHelper.prototype = Object.create( Object3D$1.prototype );
+	SpotLightHelper.prototype = Object.create( Object3D.prototype );
 	SpotLightHelper.prototype.constructor = SpotLightHelper;
 
 	SpotLightHelper.prototype.dispose = function () {
@@ -41339,7 +41339,7 @@
 
 	function RectAreaLightHelper( light, color ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.light = light;
 		this.light.updateMatrixWorld();
@@ -41363,7 +41363,7 @@
 
 	}
 
-	RectAreaLightHelper.prototype = Object.create( Object3D$1.prototype );
+	RectAreaLightHelper.prototype = Object.create( Object3D.prototype );
 	RectAreaLightHelper.prototype.constructor = RectAreaLightHelper;
 
 	RectAreaLightHelper.prototype.dispose = function () {
@@ -41413,7 +41413,7 @@
 
 	function HemisphereLightHelper( light, size, color ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.light = light;
 		this.light.updateMatrixWorld();
@@ -41440,7 +41440,7 @@
 
 	}
 
-	HemisphereLightHelper.prototype = Object.create( Object3D$1.prototype );
+	HemisphereLightHelper.prototype = Object.create( Object3D.prototype );
 	HemisphereLightHelper.prototype.constructor = HemisphereLightHelper;
 
 	HemisphereLightHelper.prototype.dispose = function () {
@@ -41738,7 +41738,7 @@
 
 	function DirectionalLightHelper( light, size, color ) {
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		this.light = light;
 		this.light.updateMatrixWorld();
@@ -41774,7 +41774,7 @@
 
 	}
 
-	DirectionalLightHelper.prototype = Object.create( Object3D$1.prototype );
+	DirectionalLightHelper.prototype = Object.create( Object3D.prototype );
 	DirectionalLightHelper.prototype.constructor = DirectionalLightHelper;
 
 	DirectionalLightHelper.prototype.dispose = function () {
@@ -42239,7 +42239,7 @@
 
 		// dir is assumed to be normalized
 
-		Object3D$1.call( this );
+		Object3D.call( this );
 
 		if ( color === undefined ) color = 0xffff00;
 		if ( length === undefined ) length = 1;
@@ -42271,7 +42271,7 @@
 
 	}
 
-	ArrowHelper.prototype = Object.create( Object3D$1.prototype );
+	ArrowHelper.prototype = Object.create( Object3D.prototype );
 	ArrowHelper.prototype.constructor = ArrowHelper;
 
 	ArrowHelper.prototype.setDirection = ( function () {
@@ -43292,7 +43292,6 @@
 	/**
 	 * @author arodic / https://github.com/arodic
 	 */
-
 	function TransformControls () {
 
 		var GizmoMaterial = function ( parameters ) {
@@ -45073,7 +45072,7 @@
 
 	};
 
-	Object.assign( Object3D$1.prototype, {
+	Object.assign( Object3D.prototype, {
 
 		getChildByName: function ( name ) {
 
@@ -45095,7 +45094,7 @@
 
 	} );
 
-	Object.defineProperties( Object3D$1.prototype, {
+	Object.defineProperties( Object3D.prototype, {
 
 		eulerOrder: {
 			get: function () {
@@ -46018,7 +46017,7 @@
 	exports.InterleavedBuffer = InterleavedBuffer;
 	exports.InstancedBufferAttribute = InstancedBufferAttribute;
 	exports.Face3 = Face3;
-	exports.Object3D = Object3D$1;
+	exports.Object3D = Object3D;
 	exports.Raycaster = Raycaster;
 	exports.Layers = Layers;
 	exports.EventDispatcher = EventDispatcher;
