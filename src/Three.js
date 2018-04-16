@@ -159,5 +159,6 @@ export { ShapeUtils } from './extras/ShapeUtils.js';
 export { SceneUtils } from './extras/SceneUtils.js';
 export { WebGLUtils } from './renderers/webgl/WebGLUtils.js';
 export { TrackballControls } from './extras/TrackballControls.js';
+export { TransformControls } from './extras/TransformControls.js';
 export * from './constants.js';
 export * from './Three.Legacy.js';
