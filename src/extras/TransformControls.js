@@ -11,7 +11,9 @@ import { Euler } from '../math/Euler';
 import { Quaternion } from '../math/Quaternion';
 import { BufferGeometry } from '../core/BufferGeometry';
 import { BoxGeometry, BoxBufferGeometry,CylinderGeometry, CylinderBufferGeometry,CircleGeometry, CircleBufferGeometry,PlaneGeometry, PlaneBufferGeometry} from '../geometries/Geometries';
-import { MeshBasicMaterial,LineBasicMaterial} from '../materials/Materials';
+import { MeshBasicMaterial} from '../materials/Materials';
+import { LineBasicMaterial} from '../materials/LineBasicMaterial';
+
 
 
 function TransformControls () {
