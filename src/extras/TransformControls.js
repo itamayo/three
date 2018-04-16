@@ -10,8 +10,8 @@ import { Matrix4 } from '../math/Matrix4';
 import { Euler } from '../math/Euler';
 import { Quaternion } from '../math/Quaternion';
 import { BufferGeometry } from '../core/BufferGeometry';
-import { MeshBasicMaterial,LineBasicMaterial} from '../materials/Materials';
 import { BoxGeometry, BoxBufferGeometry,CylinderGeometry, CylinderBufferGeometry,CircleGeometry, CircleBufferGeometry,PlaneGeometry, PlaneBufferGeometry} from '../geometries/Geometries';
+import { MeshBasicMaterial,LineBasicMaterial} from '../materials/Materials';
 
 
 function TransformControls () {
