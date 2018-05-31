@@ -266,7 +266,7 @@ Object.assign(PCDLoader.prototype,{
 
 		} else {
 
-			material.color.setHex( Math.random() * 0xffffff );
+			material.color.setHex(0x6CA6CD);
 
 		}
 
