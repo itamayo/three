@@ -13224,14 +13224,14 @@
 	Uint32BufferAttribute.prototype.constructor = Uint32BufferAttribute;
 
 
-	function Float32BufferAttribute$1( array, itemSize ) {
+	function Float32BufferAttribute( array, itemSize ) {
 
 		BufferAttribute.call( this, new Float32Array( array ), itemSize );
 
 	}
 
-	Float32BufferAttribute$1.prototype = Object.create( BufferAttribute.prototype );
-	Float32BufferAttribute$1.prototype.constructor = Float32BufferAttribute$1;
+	Float32BufferAttribute.prototype = Object.create( BufferAttribute.prototype );
+	Float32BufferAttribute.prototype.constructor = Float32BufferAttribute;
 
 
 	function Float64BufferAttribute( array, itemSize ) {
@@ -13806,15 +13806,15 @@
 
 			if ( object.isPoints || object.isLine ) {
 
-				var positions = new Float32BufferAttribute$1( geometry.vertices.length * 3, 3 );
-				var colors = new Float32BufferAttribute$1( geometry.colors.length * 3, 3 );
+				var positions = new Float32BufferAttribute( geometry.vertices.length * 3, 3 );
+				var colors = new Float32BufferAttribute( geometry.colors.length * 3, 3 );
 
 				this.addAttribute( 'position', positions.copyVector3sArray( geometry.vertices ) );
 				this.addAttribute( 'color', colors.copyColorsArray( geometry.colors ) );
 
 				if ( geometry.lineDistances && geometry.lineDistances.length === geometry.vertices.length ) {
 
-					var lineDistances = new Float32BufferAttribute$1( geometry.lineDistances.length, 1 );
+					var lineDistances = new Float32BufferAttribute( geometry.lineDistances.length, 1 );
 
 					this.addAttribute( 'lineDistance', lineDistances.copyArray( geometry.lineDistances ) );
 
@@ -14037,7 +14037,7 @@
 
 					var morphTarget = morphTargets[ i ];
 
-					var attribute = new Float32BufferAttribute$1( morphTarget.length * 3, 3 );
+					var attribute = new Float32BufferAttribute( morphTarget.length * 3, 3 );
 
 					array.push( attribute.copyVector3sArray( morphTarget ) );
 
@@ -14051,14 +14051,14 @@
 
 			if ( geometry.skinIndices.length > 0 ) {
 
-				var skinIndices = new Float32BufferAttribute$1( geometry.skinIndices.length * 4, 4 );
+				var skinIndices = new Float32BufferAttribute( geometry.skinIndices.length * 4, 4 );
 				this.addAttribute( 'skinIndex', skinIndices.copyVector4sArray( geometry.skinIndices ) );
 
 			}
 
 			if ( geometry.skinWeights.length > 0 ) {
 
-				var skinWeights = new Float32BufferAttribute$1( geometry.skinWeights.length * 4, 4 );
+				var skinWeights = new Float32BufferAttribute( geometry.skinWeights.length * 4, 4 );
 				this.addAttribute( 'skinWeight', skinWeights.copyVector4sArray( geometry.skinWeights ) );
 
 			}
@@ -14691,9 +14691,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 		function buildPlane( u, v, w, udir, vdir, width, height, depth, gridX, gridY, materialIndex ) {
 
@@ -14912,9 +14912,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 	}
 
@@ -24257,7 +24257,7 @@
 	 * }
 	 */
 
-	function LineBasicMaterial$1( parameters ) {
+	function LineBasicMaterial( parameters ) {
 
 		Material.call( this );
 
@@ -24275,12 +24275,12 @@
 
 	}
 
-	LineBasicMaterial$1.prototype = Object.create( Material.prototype );
-	LineBasicMaterial$1.prototype.constructor = LineBasicMaterial$1;
+	LineBasicMaterial.prototype = Object.create( Material.prototype );
+	LineBasicMaterial.prototype.constructor = LineBasicMaterial;
 
-	LineBasicMaterial$1.prototype.isLineBasicMaterial = true;
+	LineBasicMaterial.prototype.isLineBasicMaterial = true;
 
-	LineBasicMaterial$1.prototype.copy = function ( source ) {
+	LineBasicMaterial.prototype.copy = function ( source ) {
 
 		Material.prototype.copy.call( this, source );
 
@@ -24312,7 +24312,7 @@
 		this.type = 'Line';
 
 		this.geometry = geometry !== undefined ? geometry : new BufferGeometry();
-		this.material = material !== undefined ? material : new LineBasicMaterial$1( { color: Math.random() * 0xffffff } );
+		this.material = material !== undefined ? material : new LineBasicMaterial( { color: Math.random() * 0xffffff } );
 
 	}
 
@@ -24986,7 +24986,7 @@
 
 		// build geometry
 
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 
 	}
 
@@ -25134,9 +25134,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 	}
 
@@ -25210,9 +25210,9 @@
 
 		// build non-indexed geometry
 
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertexBuffer, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( vertexBuffer.slice(), 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvBuffer, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertexBuffer, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( vertexBuffer.slice(), 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvBuffer, 2 ) );
 
 		if ( detail === 0 ) {
 
@@ -25819,9 +25819,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 		// functions
 
@@ -26099,9 +26099,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 		// this function calculates the current position on the torus curve
 
@@ -26249,9 +26249,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 	}
 
@@ -27061,8 +27061,8 @@
 		}
 
 		this.setIndex( options.arrays.index );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( options.arrays.position, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( options.arrays.uv, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( options.arrays.position, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( options.arrays.uv, 2 ) );
 
 	};
 
@@ -27692,8 +27692,8 @@
 		if ( ! options.arrays ) {
 
 			this.setIndex( indicesArray );
-			this.addAttribute( 'position', new Float32BufferAttribute$1( verticesArray, 3 ) );
-			this.addAttribute( 'uv', new Float32BufferAttribute$1( options.arrays.uv, 2 ) );
+			this.addAttribute( 'position', new Float32BufferAttribute( verticesArray, 3 ) );
+			this.addAttribute( 'uv', new Float32BufferAttribute( options.arrays.uv, 2 ) );
 
 		}
 
@@ -27968,9 +27968,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 	}
 
@@ -28112,9 +28112,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 	}
 
@@ -28245,8 +28245,8 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 		// generate normals
 
@@ -28384,9 +28384,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 
 		// helper functions
@@ -28567,7 +28567,7 @@
 
 		// build geometry
 
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
 
 	}
 
@@ -28666,9 +28666,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 		function generateTorso() {
 
@@ -29036,9 +29036,9 @@
 		// build geometry
 
 		this.setIndex( indices );
-		this.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		this.addAttribute( 'normal', new Float32BufferAttribute$1( normals, 3 ) );
-		this.addAttribute( 'uv', new Float32BufferAttribute$1( uvs, 2 ) );
+		this.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		this.addAttribute( 'normal', new Float32BufferAttribute( normals, 3 ) );
+		this.addAttribute( 'uv', new Float32BufferAttribute( uvs, 2 ) );
 
 	}
 
@@ -29780,7 +29780,7 @@
 
 	function LineDashedMaterial( parameters ) {
 
-		LineBasicMaterial$1.call( this );
+		LineBasicMaterial.call( this );
 
 		this.type = 'LineDashedMaterial';
 
@@ -29792,14 +29792,14 @@
 
 	}
 
-	LineDashedMaterial.prototype = Object.create( LineBasicMaterial$1.prototype );
+	LineDashedMaterial.prototype = Object.create( LineBasicMaterial.prototype );
 	LineDashedMaterial.prototype.constructor = LineDashedMaterial;
 
 	LineDashedMaterial.prototype.isLineDashedMaterial = true;
 
 	LineDashedMaterial.prototype.copy = function ( source ) {
 
-		LineBasicMaterial$1.prototype.copy.call( this, source );
+		LineBasicMaterial.prototype.copy.call( this, source );
 
 		this.scale = source.scale;
 		this.dashSize = source.dashSize;
@@ -29827,7 +29827,7 @@
 		MeshDistanceMaterial: MeshDistanceMaterial,
 		MeshBasicMaterial: MeshBasicMaterial,
 		LineDashedMaterial: LineDashedMaterial,
-		LineBasicMaterial: LineBasicMaterial$1,
+		LineBasicMaterial: LineBasicMaterial,
 		Material: Material
 	});
 
@@ -36615,9 +36615,9 @@
 
 			var geometry = new BufferGeometry();
 
-			if ( position.length > 0 ) geometry.addAttribute( 'position', new Float32BufferAttribute$1( position, 3 ) );
-			if ( normal.length > 0 ) geometry.addAttribute( 'normal', new Float32BufferAttribute$1( normal, 3 ) );
-			if ( color.length > 0 ) geometry.addAttribute( 'color', new Float32BufferAttribute$1( color, 3 ) );
+			if ( position.length > 0 ) geometry.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) );
+			if ( normal.length > 0 ) geometry.addAttribute( 'normal', new Float32BufferAttribute( normal, 3 ) );
+			if ( color.length > 0 ) geometry.addAttribute( 'color', new Float32BufferAttribute( color, 3 ) );
 
 			geometry.computeBoundingSphere();
 
@@ -36631,7 +36631,7 @@
 
 			} else {
 
-				material.color.setHex( Math.random() * 0xffffff );
+				material.color.setHex(0x6CA6CD);
 
 			}
 
@@ -40925,11 +40925,11 @@
 
 		var geometry = new BufferGeometry();
 
-		var positions = new Float32BufferAttribute$1( nNormals * 2 * 3, 3 );
+		var positions = new Float32BufferAttribute( nNormals * 2 * 3, 3 );
 
 		geometry.addAttribute( 'position', positions );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color, linewidth: width } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color, linewidth: width } ) );
 
 		//
 
@@ -41074,9 +41074,9 @@
 
 		}
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
-		var material = new LineBasicMaterial$1( { fog: false } );
+		var material = new LineBasicMaterial( { fog: false } );
 
 		this.cone = new LineSegments( geometry, material );
 		this.add( this.cone );
@@ -41183,10 +41183,10 @@
 
 		}
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
-		var material = new LineBasicMaterial$1( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true } );
+		var material = new LineBasicMaterial( { vertexColors: VertexColors, depthTest: false, depthWrite: false, transparent: true } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41349,7 +41349,7 @@
 
 		this.color = color;
 
-		var material = new LineBasicMaterial$1( { fog: false } );
+		var material = new LineBasicMaterial( { fog: false } );
 
 		var geometry = new BufferGeometry();
 
@@ -41522,10 +41522,10 @@
 		}
 
 		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
-		var material = new LineBasicMaterial$1( { vertexColors: VertexColors } );
+		var material = new LineBasicMaterial( { vertexColors: VertexColors } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41609,10 +41609,10 @@
 		}
 
 		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
-		var material = new LineBasicMaterial$1( { vertexColors: VertexColors } );
+		var material = new LineBasicMaterial( { vertexColors: VertexColors } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -41658,11 +41658,11 @@
 
 		var geometry = new BufferGeometry();
 
-		var positions = new Float32BufferAttribute$1( nNormals * 2 * 3, 3 );
+		var positions = new Float32BufferAttribute( nNormals * 2 * 3, 3 );
 
 		geometry.addAttribute( 'position', positions );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color, linewidth: width } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color, linewidth: width } ) );
 
 		//
 
@@ -41751,7 +41751,7 @@
 		if ( size === undefined ) size = 1;
 
 		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( [
+		geometry.addAttribute( 'position', new Float32BufferAttribute( [
 			- size,   size, 0,
 			  size,   size, 0,
 			  size, - size, 0,
@@ -41759,13 +41759,13 @@
 			- size,   size, 0
 		], 3 ) );
 
-		var material = new LineBasicMaterial$1( { fog: false } );
+		var material = new LineBasicMaterial( { fog: false } );
 
 		this.lightPlane = new Line$1( geometry, material );
 		this.add( this.lightPlane );
 
 		geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 0, 1 ], 3 ) );
 
 		this.targetLine = new Line$1( geometry, material );
 		this.add( this.targetLine );
@@ -41832,7 +41832,7 @@
 	function CameraHelper( camera ) {
 
 		var geometry = new BufferGeometry();
-		var material = new LineBasicMaterial$1( { color: 0xffffff, vertexColors: FaceColors } );
+		var material = new LineBasicMaterial( { color: 0xffffff, vertexColors: FaceColors } );
 
 		var vertices = [];
 		var colors = [];
@@ -41916,8 +41916,8 @@
 
 		}
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
 		LineSegments.call( this, geometry, material );
 
@@ -42036,7 +42036,7 @@
 		geometry.setIndex( new BufferAttribute( indices, 1 ) );
 		geometry.addAttribute( 'position', new BufferAttribute( positions, 3 ) );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color } ) );
 
 		this.matrixAutoUpdate = false;
 
@@ -42135,9 +42135,9 @@
 
 		geometry.setIndex( new BufferAttribute( indices, 1 ) );
 
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 
-		LineSegments.call( this, geometry, new LineBasicMaterial$1( { color: color } ) );
+		LineSegments.call( this, geometry, new LineBasicMaterial( { color: color } ) );
 
 		this.geometry.computeBoundingSphere();
 
@@ -42179,17 +42179,17 @@
 		var positions = [ 1, - 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, - 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0 ];
 
 		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( positions, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( positions, 3 ) );
 		geometry.computeBoundingSphere();
 
-		Line$1.call( this, geometry, new LineBasicMaterial$1( { color: color } ) );
+		Line$1.call( this, geometry, new LineBasicMaterial( { color: color } ) );
 
 		//
 
 		var positions2 = [ 1, 1, 1, - 1, 1, 1, - 1, - 1, 1, 1, 1, 1, - 1, - 1, 1, 1, - 1, 1 ];
 
 		var geometry2 = new BufferGeometry();
-		geometry2.addAttribute( 'position', new Float32BufferAttribute$1( positions2, 3 ) );
+		geometry2.addAttribute( 'position', new Float32BufferAttribute( positions2, 3 ) );
 		geometry2.computeBoundingSphere();
 
 		this.add( new Mesh$1( geometry2, new MeshBasicMaterial( { color: color, opacity: 0.2, transparent: true, depthWrite: false } ) ) );
@@ -42249,7 +42249,7 @@
 		if ( lineGeometry === undefined ) {
 
 			lineGeometry = new BufferGeometry();
-			lineGeometry.addAttribute( 'position', new Float32BufferAttribute$1( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
+			lineGeometry.addAttribute( 'position', new Float32BufferAttribute( [ 0, 0, 0, 0, 1, 0 ], 3 ) );
 
 			coneGeometry = new CylinderBufferGeometry( 0, 0.5, 1, 5, 1 );
 			coneGeometry.translate( 0, - 0.5, 0 );
@@ -42258,7 +42258,7 @@
 
 		this.position.copy( origin );
 
-		this.line = new Line$1( lineGeometry, new LineBasicMaterial$1( { color: color } ) );
+		this.line = new Line$1( lineGeometry, new LineBasicMaterial( { color: color } ) );
 		this.line.matrixAutoUpdate = false;
 		this.add( this.line );
 
@@ -42348,10 +42348,10 @@
 		];
 
 		var geometry = new BufferGeometry();
-		geometry.addAttribute( 'position', new Float32BufferAttribute$1( vertices, 3 ) );
-		geometry.addAttribute( 'color', new Float32BufferAttribute$1( colors, 3 ) );
+		geometry.addAttribute( 'position', new Float32BufferAttribute( vertices, 3 ) );
+		geometry.addAttribute( 'color', new Float32BufferAttribute( colors, 3 ) );
 
-		var material = new LineBasicMaterial$1( { vertexColors: VertexColors } );
+		var material = new LineBasicMaterial( { vertexColors: VertexColors } );
 
 		LineSegments.call( this, geometry, material );
 
@@ -43292,6 +43292,7 @@
 	/**
 	 * @author arodic / https://github.com/arodic
 	 */
+
 
 
 	function TransformControls () {
@@ -44587,7 +44588,7 @@
 	function Float32Attribute( array, itemSize ) {
 
 		console.warn( 'THREE.Float32Attribute has been removed. Use new THREE.Float32BufferAttribute() instead.' );
-		return new Float32BufferAttribute$1( array, itemSize );
+		return new Float32BufferAttribute( array, itemSize );
 
 	}
 
@@ -44683,7 +44684,7 @@
 	function EdgesHelper( object, hex ) {
 
 		console.warn( 'THREE.EdgesHelper has been removed. Use THREE.EdgesGeometry instead.' );
-		return new LineSegments( new EdgesGeometry( object.geometry ), new LineBasicMaterial$1( { color: hex !== undefined ? hex : 0xffffff } ) );
+		return new LineSegments( new EdgesGeometry( object.geometry ), new LineBasicMaterial( { color: hex !== undefined ? hex : 0xffffff } ) );
 
 	}
 
@@ -44702,7 +44703,7 @@
 	function WireframeHelper( object, hex ) {
 
 		console.warn( 'THREE.WireframeHelper has been removed. Use THREE.WireframeGeometry instead.' );
-		return new LineSegments( new WireframeGeometry( object.geometry ), new LineBasicMaterial$1( { color: hex !== undefined ? hex : 0xffffff } ) );
+		return new LineSegments( new WireframeGeometry( object.geometry ), new LineBasicMaterial( { color: hex !== undefined ? hex : 0xffffff } ) );
 
 	}
 
@@ -46143,10 +46144,10 @@
 	exports.MeshDistanceMaterial = MeshDistanceMaterial;
 	exports.MeshBasicMaterial = MeshBasicMaterial;
 	exports.LineDashedMaterial = LineDashedMaterial;
-	exports.LineBasicMaterial = LineBasicMaterial$1;
+	exports.LineBasicMaterial = LineBasicMaterial;
 	exports.Material = Material;
 	exports.Float64BufferAttribute = Float64BufferAttribute;
-	exports.Float32BufferAttribute = Float32BufferAttribute$1;
+	exports.Float32BufferAttribute = Float32BufferAttribute;
 	exports.Uint32BufferAttribute = Uint32BufferAttribute;
 	exports.Int32BufferAttribute = Int32BufferAttribute;
 	exports.Uint16BufferAttribute = Uint16BufferAttribute;
