@@ -26,7 +26,7 @@ function Object3D() {
 	this.name = '';
 	this.type = 'Object3D';
 
-	this.parent = null;
+	this.parents = [];
 	this.children = [];
 
 	this.up = Object3D.DefaultUp.clone();
@@ -325,13 +325,7 @@ Object.assign( Object3D.prototype, EventDispatcher.prototype, {
 
 		if ( ( object && object.isObject3D ) ) {
 
-			if ( object.parent !== null ) {
-
-				object.parent.remove( object );
-
-			}
-
-			object.parent = this;
+			object.parents.push(this);
 			object.dispatchEvent( { type: 'added' } );
 
 			this.children.push( object );
@@ -364,12 +358,18 @@ Object.assign( Object3D.prototype, EventDispatcher.prototype, {
 
 		if ( index !== - 1 ) {
 
-			object.parent = null;
-
 			object.dispatchEvent( { type: 'removed' } );
 
 			this.children.splice( index, 1 );
 
+		}
+		
+		var index2 = object.parents.indexOf( this );
+		
+		if ( index2 !== - 1 ) {
+			
+			object.parents.splice(index2, 1);
+			
 		}
 
 		return this;
@@ -549,13 +549,15 @@ Object.assign( Object3D.prototype, EventDispatcher.prototype, {
 
 		if ( this.matrixWorldNeedsUpdate || force ) {
 
-			if ( this.parent === null ) {
+			if ( this.parents.length == 0) {
 
 				this.matrixWorld.copy( this.matrix );
 
 			} else {
-
-				this.matrixWorld.multiplyMatrices( this.parent.matrixWorld, this.matrix );
+				
+				for(var i = 0; i < this.parents.length; i++){
+					this.matrixWorld.multiplyMatrices( this.parents[i].matrixWorld, this.matrix );
+				}
 
 			}
 
