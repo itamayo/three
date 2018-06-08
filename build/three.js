@@ -36608,6 +36608,13 @@
 						normal.push( dataview.getFloat32( row + offset.normal_z, this.littleEndian ) );
 
 					}
+					if ( offset.intensity !== undefined ) {
+
+	                 		   color.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+			                   color.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+			                   color.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+
+	                		}
 
 				}
 
