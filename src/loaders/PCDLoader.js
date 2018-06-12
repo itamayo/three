@@ -7,7 +7,7 @@
  * Limitations: Compressed binary files are not supported.
  *
  */
-import {Group} frpm '../objects/Group.js';
+import {Group} from '../objects/Group';
 import {FileLoader} from './FileLoader';
 import { BufferGeometry } from '../core/BufferGeometry';
 import { Float32BufferAttribute } from '../core/BufferAttribute';
