@@ -1056,8 +1056,7 @@ function WebGLRenderer( parameters ) {
 
 		// update camera matrices and frustum
 
-		if ( camera.parent === null ) camera.updateMatrixWorld();
-
+		if ( camera.parents.length == 0) camera.updateMatrixWorld();
 		if ( vr.enabled ) {
 
 			camera = vr.getCamera( camera );
