@@ -88,5 +88,6 @@
     "lint": "eslint src",
     "test": "rollup -c test/rollup.unit.config.js -w"
   },
-  "version": "0.87.1"
+  "version": "0.87.1",
+  "dependencies": {}
 }

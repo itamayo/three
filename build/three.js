@@ -21928,8 +21928,7 @@
 
 			// update camera matrices and frustum
 
-			if ( camera.parent === null ) camera.updateMatrixWorld();
-
+			if ( camera.parents.length == 0) camera.updateMatrixWorld();
 			if ( vr.enabled ) {
 
 				camera = vr.getCamera( camera );
@@ -24715,7 +24714,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 */
 
-	function Group() {
+	function Group$1() {
 
 		Object3D.call( this );
 
@@ -24723,9 +24722,9 @@
 
 	}
 
-	Group.prototype = Object.assign( Object.create( Object3D.prototype ), {
+	Group$1.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
-		constructor: Group
+		constructor: Group$1
 
 	} );
 
@@ -34631,7 +34630,7 @@
 
 					case 'Group':
 
-						object = new Group();
+						object = new Group$1();
 
 						break;
 
@@ -36578,43 +36577,80 @@
 
 			}
 
-			if ( PCDheader.data === 'binary' ) {
+
+				if ( PCDheader.data === 'binary' ) {
 
 				var dataview = new DataView( data, PCDheader.headerLen );
 				var offset = PCDheader.offset;
 
 				for ( var i = 0, row = 0; i < PCDheader.points; i ++, row += PCDheader.rowSize ) {
+					
+					
+					//separate floor points
+					var isFloor = false;
+					
+					if ( offset.x !== undefined ) {
+						if( dataview.getFloat32( row + offset.z, this.littleEndian ) < -0.3 || dataview.getFloat32( row + offset.z, this.littleEndian ) > 0.3){
+							isFloor = false;
+						}
+						else{
+							isFloor = true;
+						}
+					}
+						
 
 					if ( offset.x !== undefined ) {
 
-						position.push( dataview.getFloat32( row + offset.x, this.littleEndian ) );
-						position.push( dataview.getFloat32( row + offset.y, this.littleEndian ) );
-						position.push( dataview.getFloat32( row + offset.z, this.littleEndian ) );
-
+						if(isFloor){
+							position2.push( dataview.getFloat32( row + offset.x, this.littleEndian ) );
+							position2.push( dataview.getFloat32( row + offset.y, this.littleEndian ) );
+							position2.push( dataview.getFloat32( row + offset.z, this.littleEndian ) );
+						}
+						else{
+							position1.push( dataview.getFloat32( row + offset.x, this.littleEndian ) );
+							position1.push( dataview.getFloat32( row + offset.y, this.littleEndian ) );
+							position1.push( dataview.getFloat32( row + offset.z, this.littleEndian ) );
+						}
 					}
 
 					if ( offset.rgb !== undefined ) {
-
-						color.push( dataview.getUint8( row + offset.rgb + 0 ) / 255.0 );
-						color.push( dataview.getUint8( row + offset.rgb + 1 ) / 255.0 );
-						color.push( dataview.getUint8( row + offset.rgb + 2 ) / 255.0 );
-
+						if(isFloor){
+							color2.push( dataview.getUint8( row + offset.rgb + 0 ) / 255.0 );
+							color2.push( dataview.getUint8( row + offset.rgb + 1 ) / 255.0 );
+							color2.push( dataview.getUint8( row + offset.rgb + 2 ) / 255.0 );
+						}
+						else{
+							color1.push( dataview.getUint8( row + offset.rgb + 0 ) / 255.0 );
+							color1.push( dataview.getUint8( row + offset.rgb + 1 ) / 255.0 );
+							color1.push( dataview.getUint8( row + offset.rgb + 2 ) / 255.0 );
+						}
+					}
+					
+					if ( offset.intensity !== undefined ) {
+						if(isFloor){
+							color2.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+							color2.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+							color2.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+						}
+						else{
+							color1.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+							color1.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+							color1.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
+						}
 					}
 
 					if ( offset.normal_x !== undefined ) {
-
-						normal.push( dataview.getFloat32( row + offset.normal_x, this.littleEndian ) );
-						normal.push( dataview.getFloat32( row + offset.normal_y, this.littleEndian ) );
-						normal.push( dataview.getFloat32( row + offset.normal_z, this.littleEndian ) );
-
+						if(isFloor){
+							normal2.push( dataview.getFloat32( row + offset.normal_x, this.littleEndian ) );
+							normal2.push( dataview.getFloat32( row + offset.normal_y, this.littleEndian ) );
+							normal2.push( dataview.getFloat32( row + offset.normal_z, this.littleEndian ) );
+						}
+						else{
+							normal1.push( dataview.getFloat32( row + offset.normal_x, this.littleEndian ) );
+							normal1.push( dataview.getFloat32( row + offset.normal_y, this.littleEndian ) );
+							normal1.push( dataview.getFloat32( row + offset.normal_z, this.littleEndian ) );
+						}
 					}
-					if ( offset.intensity !== undefined ) {
-
-	                 		   color.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-			                   color.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-			                   color.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-
-	                		}
 
 				}
 
@@ -36622,37 +36658,64 @@
 
 			// build geometry
 
-			var geometry = new BufferGeometry();
+			var geometry1 = new BufferGeometry();
+			var geometry2 = new BufferGeometry();
 
-			if ( position.length > 0 ) geometry.addAttribute( 'position', new Float32BufferAttribute( position, 3 ) );
-			if ( normal.length > 0 ) geometry.addAttribute( 'normal', new Float32BufferAttribute( normal, 3 ) );
-			if ( color.length > 0 ) geometry.addAttribute( 'color', new Float32BufferAttribute( color, 3 ) );
+			if ( position1.length > 0 ) geometry1.addAttribute( 'position', new Float32BufferAttribute( position1, 3 ) );
+			if ( normal1.length > 0 ) geometry1.addAttribute( 'normal', new Float32BufferAttribute( normal1, 3 ) );
+			if ( color1.length > 0 ) geometry1.addAttribute( 'color', new Float32BufferAttribute( color1, 3 ) );
+			
+			if ( position2.length > 0 ) geometry2.addAttribute( 'position', new Float32BufferAttribute( position2, 3 ) );
+			if ( normal2.length > 0 ) geometry2.addAttribute( 'normal', new Float32BufferAttribute( normal2, 3 ) );
+			if ( color2.length > 0 ) geometry2.addAttribute( 'color', new Float32BufferAttribute( color2, 3 ) );
 
-			geometry.computeBoundingSphere();
+			geometry1.computeBoundingSphere();
+			geometry2.computeBoundingSphere();
 
 			// build material
 
-			var material = new PointsMaterial( { size: 0.005 } );
+			var material1 = new PointsMaterial( { size: 0.005 } );
+			var material2 = new PointsMaterial( { size: 0.005 } );
+			if ( color1.length > 0 ) {
 
-			if ( color.length > 0 ) {
-
-				material.vertexColors = true;
+				material1.vertexColors = true;
 
 			} else {
 
-				material.color.setHex(0x6CA6CD);
+				material1.color.setHex(0x6CA6CD);
+
+			}
+			
+			if ( color2.length > 0 ) {
+
+				material2.vertexColors = true;
+
+			} else {
+
+				material2.color.setHex(0x6CA6CD);
 
 			}
 
 			// build mesh
 
-			var mesh = new Points( geometry, material );
-			var name = url.split( '' ).reverse().join( '' );
-			name = /([^\/]*)/.exec( name );
-			name = name[ 1 ].split( '' ).reverse().join( '' );
-			mesh.name = name;
-
-			return mesh;
+			var mesh1 = new Points( geometry1, material1 );
+			var name1 = url.split( '' ).reverse().join( '' );
+			name1 = /([^\/]*)/.exec( name1 );
+			name1 = name1[ 1 ].split( '' ).reverse().join( '' );
+			mesh1.name = name1 + '_no_floor';
+			
+			var mesh2 = new Points( geometry2, material2 );
+			var name2 = url.split( '' ).reverse().join( '' );
+			name2 = /([^\/]*)/.exec( name2 );
+			name2 = name2[ 1 ].split( '' ).reverse().join( '' );
+			mesh2.name = name2 + '_floor';
+			
+			var gr = new Group();
+			
+			gr.add(mesh1);
+			gr.add(mesh2);
+			gr.name = name1;
+			return gr;
 
 		}
 
@@ -42642,7 +42705,7 @@
 
 		createMultiMaterialObject: function ( geometry, materials ) {
 
-			var group = new Group();
+			var group = new Group$1();
 
 			for ( var i = 0, l = materials.length; i < l; i ++ ) {
 
@@ -45959,7 +46022,7 @@
 	exports.LineLoop = LineLoop;
 	exports.Line = Line$1;
 	exports.Points = Points;
-	exports.Group = Group;
+	exports.Group = Group$1;
 	exports.VideoTexture = VideoTexture;
 	exports.DataTexture = DataTexture;
 	exports.CompressedTexture = CompressedTexture;
