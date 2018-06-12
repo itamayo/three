@@ -24714,7 +24714,7 @@
 	 * @author mrdoob / http://mrdoob.com/
 	 */
 
-	function Group$1() {
+	function Group() {
 
 		Object3D.call( this );
 
@@ -24722,9 +24722,9 @@
 
 	}
 
-	Group$1.prototype = Object.assign( Object.create( Object3D.prototype ), {
+	Group.prototype = Object.assign( Object.create( Object3D.prototype ), {
 
-		constructor: Group$1
+		constructor: Group
 
 	} );
 
@@ -34630,7 +34630,7 @@
 
 					case 'Group':
 
-						object = new Group$1();
+						object = new Group();
 
 						break;
 
@@ -42708,7 +42708,7 @@
 
 		createMultiMaterialObject: function ( geometry, materials ) {
 
-			var group = new Group$1();
+			var group = new Group();
 
 			for ( var i = 0, l = materials.length; i < l; i ++ ) {
 
@@ -46025,7 +46025,7 @@
 	exports.LineLoop = LineLoop;
 	exports.Line = Line$1;
 	exports.Points = Points;
-	exports.Group = Group$1;
+	exports.Group = Group;
 	exports.VideoTexture = VideoTexture;
 	exports.DataTexture = DataTexture;
 	exports.CompressedTexture = CompressedTexture;
