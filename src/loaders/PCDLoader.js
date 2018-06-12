@@ -156,9 +156,12 @@ Object.assign(PCDLoader.prototype,{
 
 		// parse data
 
-		var position = [];
-		var normal = [];
-		var color = [];
+		var position1 = [];
+		var normal1 = [];
+		var color1 = [];
+		var position2 = [];
+		var normal2 = [];
+		var color2 = [];
 
 		// ascii
 
