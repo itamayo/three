@@ -24744,7 +24744,7 @@
 
 			requestAnimationFrame( update );
 
-			if ( video.readyState >= video.HAVE_CURRENT_DATA ) {
+			if ( video && video.readyState >= video.HAVE_CURRENT_DATA ) {
 
 				scope.needsUpdate = true;
 
@@ -29048,7 +29048,7 @@
 
 
 
-	var Geometries = Object.freeze({
+	var Geometries = /*#__PURE__*/Object.freeze({
 		WireframeGeometry: WireframeGeometry,
 		ParametricGeometry: ParametricGeometry,
 		ParametricBufferGeometry: ParametricBufferGeometry,
@@ -29812,7 +29812,7 @@
 
 
 
-	var Materials = Object.freeze({
+	var Materials = /*#__PURE__*/Object.freeze({
 		ShadowMaterial: ShadowMaterial,
 		SpriteMaterial: SpriteMaterial,
 		RawShaderMaterial: RawShaderMaterial,
