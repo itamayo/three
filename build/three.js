@@ -36390,144 +36390,29 @@
 
 	Object.assign(PCDLoader.prototype,{
 		load: function ( url, onLoad, onProgress, onError ) {
+			var myWorker = new Worker('/assets/PcdWorker.js');
 
 			var scope = this;
+
 
 			var loader = new FileLoader( scope.manager );
 			loader.setResponseType( 'arraybuffer' );
 			loader.load( url, function ( data ) {
 
-				onLoad( scope.parse( data, url ) );
+				onLoad( scope.parse( data, url,myWorker ) );
 
 			}, onProgress, onError );
 
 		},
 
-		parse: function ( data, url ) {
+		parse: function ( data, url,myWorker ) {
+			var PCDheader = {};
+			var gr = new Group();
 
-			function parseHeader( data ) {
-
-				var PCDheader = {};
-				var result1 = data.search( /[\r\n]DATA\s(\S*)\s/i );
-				var result2 = /[\r\n]DATA\s(\S*)\s/i.exec( data.substr( result1 - 1 ) );
-
-				PCDheader.data = result2[ 1 ];
-				PCDheader.headerLen = result2[ 0 ].length + result1;
-				PCDheader.str = data.substr( 0, PCDheader.headerLen );
-
-				// remove comments
-
-				PCDheader.str = PCDheader.str.replace( /\#.*/gi, '' );
-
-				// parse
-
-				PCDheader.version = /VERSION (.*)/i.exec( PCDheader.str );
-				PCDheader.fields = /FIELDS (.*)/i.exec( PCDheader.str );
-				PCDheader.size = /SIZE (.*)/i.exec( PCDheader.str );
-				PCDheader.type = /TYPE (.*)/i.exec( PCDheader.str );
-				PCDheader.count = /COUNT (.*)/i.exec( PCDheader.str );
-				PCDheader.width = /WIDTH (.*)/i.exec( PCDheader.str );
-				PCDheader.height = /HEIGHT (.*)/i.exec( PCDheader.str );
-				PCDheader.viewpoint = /VIEWPOINT (.*)/i.exec( PCDheader.str );
-				PCDheader.points = /POINTS (.*)/i.exec( PCDheader.str );
-
-				// evaluate
-
-				if ( PCDheader.version !== null )
-					PCDheader.version = parseFloat( PCDheader.version[ 1 ] );
-
-				if ( PCDheader.fields !== null )
-					PCDheader.fields = PCDheader.fields[ 1 ].split( ' ' );
-
-				if ( PCDheader.type !== null )
-					PCDheader.type = PCDheader.type[ 1 ].split( ' ' );
-
-				if ( PCDheader.width !== null )
-					PCDheader.width = parseInt( PCDheader.width[ 1 ] );
-
-				if ( PCDheader.height !== null )
-					PCDheader.height = parseInt( PCDheader.height[ 1 ] );
-
-				if ( PCDheader.viewpoint !== null )
-					PCDheader.viewpoint = PCDheader.viewpoint[ 1 ];
-
-				if ( PCDheader.points !== null )
-					PCDheader.points = parseInt( PCDheader.points[ 1 ], 10 );
-
-				if ( PCDheader.points === null )
-					PCDheader.points = PCDheader.width * PCDheader.height;
-
-				if ( PCDheader.size !== null ) {
-
-					PCDheader.size = PCDheader.size[ 1 ].split( ' ' ).map( function ( x ) {
-
-						return parseInt( x, 10 );
-
-					} );
-
-				}
-
-				if ( PCDheader.count !== null ) {
-
-					PCDheader.count = PCDheader.count[ 1 ].split( ' ' ).map( function ( x ) {
-
-						return parseInt( x, 10 );
-
-					} );
-
-				} else {
-
-					PCDheader.count = [];
-
-					for ( var i = 0, l = PCDheader.fields.length; i < l; i ++ ) {
-
-						PCDheader.count.push( 1 );
-
-					}
-
-				}
-
-				PCDheader.offset = {};
-
-				var sizeSum = 0;
-
-				for ( var i = 0, l = PCDheader.fields.length; i < l; i ++ ) {
-
-					if ( PCDheader.data === 'ascii' ) {
-
-						PCDheader.offset[ PCDheader.fields[ i ] ] = i;
-
-					} else {
-
-						PCDheader.offset[ PCDheader.fields[ i ] ] = sizeSum;
-						sizeSum += PCDheader.size[ i ];
-
-					}
-
-				}
-
-				// for binary only
-
-				PCDheader.rowSize = sizeSum;
-
-				return PCDheader;
-
-			}
-
-			var textData = LoaderUtils.decodeText( data );
-
-			// parse header (always ascii format)
-
-			var PCDheader = parseHeader( textData );
-
-			// parse data
-
-			var position1 = [];
-			var normal1 = [];
-			var color1 = [];
-			var position2 = [];
-			var normal2 = [];
-			var color2 = [];
+			myWorker.postMessage([{type:'initialize'},data]);
+			myWorker.onmessage=function(ev){
+				if (ev.data[0].type=="initialized"){
+				 PCDheader = ev.data[1].PCDheader;
 
 			// ascii
 
@@ -36582,98 +36467,56 @@
 
 
 				if ( PCDheader.data === 'binary' ) {
-
-				var dataview = new DataView( data, PCDheader.headerLen );
-				var offset = PCDheader.offset;
-
-				for ( var i = 0, row = 0; i < PCDheader.points; i ++, row += PCDheader.rowSize ) {
-					
-					
-					//separate floor points
-					var isFloor = false;
-					
-					if ( offset.x !== undefined ) {
-						if( dataview.getFloat32( row + offset.z, this.littleEndian ) < -0.3 || dataview.getFloat32( row + offset.z, this.littleEndian ) > 0.3){
-							isFloor = false;
-						}
-						else{
-							isFloor = true;
-						}
-					}
-						
-
-					if ( offset.x !== undefined ) {
-
-						if(isFloor){
-							position2.push( dataview.getFloat32( row + offset.x, this.littleEndian ) );
-							position2.push( dataview.getFloat32( row + offset.y, this.littleEndian ) );
-							position2.push( dataview.getFloat32( row + offset.z, this.littleEndian ) );
-						}
-						else{
-							position1.push( dataview.getFloat32( row + offset.x, this.littleEndian ) );
-							position1.push( dataview.getFloat32( row + offset.y, this.littleEndian ) );
-							position1.push( dataview.getFloat32( row + offset.z, this.littleEndian ) );
-						}
-					}
-
-					if ( offset.rgb !== undefined ) {
-						if(isFloor){
-							color2.push( dataview.getUint8( row + offset.rgb + 0 ) / 255.0 );
-							color2.push( dataview.getUint8( row + offset.rgb + 1 ) / 255.0 );
-							color2.push( dataview.getUint8( row + offset.rgb + 2 ) / 255.0 );
-						}
-						else{
-							color1.push( dataview.getUint8( row + offset.rgb + 0 ) / 255.0 );
-							color1.push( dataview.getUint8( row + offset.rgb + 1 ) / 255.0 );
-							color1.push( dataview.getUint8( row + offset.rgb + 2 ) / 255.0 );
-						}
-					}
-					
-					if ( offset.intensity !== undefined ) {
-						if(isFloor){
-							color2.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-							color2.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-							color2.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-						}
-						else{
-							color1.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-							color1.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-							color1.push( dataview.getUint8( row + offset.intensity + 0 ) / 255.0 );
-						}
-					}
-
-					if ( offset.normal_x !== undefined ) {
-						if(isFloor){
-							normal2.push( dataview.getFloat32( row + offset.normal_x, this.littleEndian ) );
-							normal2.push( dataview.getFloat32( row + offset.normal_y, this.littleEndian ) );
-							normal2.push( dataview.getFloat32( row + offset.normal_z, this.littleEndian ) );
-						}
-						else{
-							normal1.push( dataview.getFloat32( row + offset.normal_x, this.littleEndian ) );
-							normal1.push( dataview.getFloat32( row + offset.normal_y, this.littleEndian ) );
-							normal1.push( dataview.getFloat32( row + offset.normal_z, this.littleEndian ) );
-						}
-					}
-
-				}
-
+					myWorker.postMessage([{type:'process'},data,PCDheader]);
 			}
+		 }
 
 			// build geometry
 
+		if (ev.data[0].type=="processed"){
+			this.terminate();
+			var position1 = ev.data[1].position1;
+			var normal1 = ev.data[1].normal1;
+			var color1 = ev.data[1].color1;
+			var position2 = ev.data[1].position2;
+			var normal2 = ev.data[1].normal2;
+			var color2 = ev.data[1].color2;
+			var d1 = new Date().getTime();
 			var geometry1 = new BufferGeometry();
 			var geometry2 = new BufferGeometry();
+			if ( position1.array ){
+				position1 = new Float32BufferAttribute(position1.array,3);
+				geometry1.addAttribute( 'position', position1);
+			}
+			if ( normal1.array ) {
+				normal1 = new Float32BufferAttribute(normal1.array,3);
+				geometry1.addAttribute( 'normal', normal1 );
+			}
+			if ( color1.array ) {
+				color1 = new Float32BufferAttribute(color1.array,3);
+				geometry1.addAttribute( 'color', color1 );
+			}
 
-			if ( position1.length > 0 ) geometry1.addAttribute( 'position', new Float32BufferAttribute( position1, 3 ) );
-			if ( normal1.length > 0 ) geometry1.addAttribute( 'normal', new Float32BufferAttribute( normal1, 3 ) );
-			if ( color1.length > 0 ) geometry1.addAttribute( 'color', new Float32BufferAttribute( color1, 3 ) );
-			
-			if ( position2.length > 0 ) geometry2.addAttribute( 'position', new Float32BufferAttribute( position2, 3 ) );
-			if ( normal2.length > 0 ) geometry2.addAttribute( 'normal', new Float32BufferAttribute( normal2, 3 ) );
-			if ( color2.length > 0 ) geometry2.addAttribute( 'color', new Float32BufferAttribute( color2, 3 ) );
+			if ( position2.array ){
+				 position2 = new Float32BufferAttribute(position2.array,3);
+				 geometry2.addAttribute( 'position',  position2 );
 
+			 }
+			if ( normal2.array ) {
+				normal2 = new Float32BufferAttribute(normal2.array,3);
+				geometry2.addAttribute( 'normal',  normal2 );
+
+			}
+			if ( color2.array ){
+					color2 = new Float32BufferAttribute(color2.array,3);
+
+					geometry2.addAttribute( 'color', color2 );
+			}
+			var d2 = new Date().getTime();
+			console.log("DIFF",d2-d1);
 			geometry1.computeBoundingSphere();
 			geometry2.computeBoundingSphere();
+
 
 			// build material
 
@@ -36688,7 +36531,7 @@
 				material1.color.setHex(0x6CA6CD);
 
 			}
-			
+
 			if ( color2.length > 0 ) {
 
 				material2.vertexColors = true;
@@ -36706,20 +36549,31 @@
 			name1 = /([^\/]*)/.exec( name1 );
 			name1 = name1[ 1 ].split( '' ).reverse().join( '' );
 			mesh1.name = name1 + '_no_floor';
-			
+
 			var mesh2 = new Points( geometry2, material2 );
 			var name2 = url.split( '' ).reverse().join( '' );
 			name2 = /([^\/]*)/.exec( name2 );
 			name2 = name2[ 1 ].split( '' ).reverse().join( '' );
 			mesh2.name = name2 + '_floor';
-			
-			var gr = new Group();
-			
+
+
+
 			gr.add(mesh1);
 			gr.add(mesh2);
 			gr.name = name1;
-			return gr;
+		}
+	 };
+		var promise = new Promise(function(resolve,reject){
+			var idx = setInterval(function(){
+						if (typeof gr !=="undefined" && gr.children.length!=0){
+								clearInterval(idx);
+								resolve(gr);
+						}
+				},500);
 
+		});
+
+			return promise;
 		}
 
 	});
