@@ -36516,7 +36516,7 @@ Object.assign(PCDLoader.prototype,{
 
 		var material1 = new PointsMaterial( { size: 0.005 } );
 		var material2 = new PointsMaterial( { size: 0.005 } );
-		if ( color1.length > 0 ) {
+		if ( color1.count > 0 ) {
 
 			material1.vertexColors = true;
 
@@ -36526,7 +36526,7 @@ Object.assign(PCDLoader.prototype,{
 
 		}
 
-		if ( color2.length > 0 ) {
+		if ( color2.count > 0 ) {
 
 			material2.vertexColors = true;
 
